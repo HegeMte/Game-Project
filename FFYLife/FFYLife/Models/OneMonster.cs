@@ -15,6 +15,7 @@ namespace FFYLife.Models
             Hp = monsterLvl * 2;
             AttackDMG = monsterLvl;
             AttackSpeed = 1; //todo
+            IsDead = false;
         }
 
      
@@ -22,5 +23,6 @@ namespace FFYLife.Models
         public int Hp { get ; set; }
         public int AttackDMG { get ; set ; }
         public int AttackSpeed { get ; set ; }
+        public bool IsDead { get; set; }
     }
 }

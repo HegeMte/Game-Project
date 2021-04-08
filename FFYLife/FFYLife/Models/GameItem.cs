@@ -13,6 +13,10 @@ namespace Models
         public double CX { get; set; } 
         public double CY { get; set; }
 
+
+        public double rotDegree;
+
+
         public Geometry RealArea
         {
 
@@ -20,7 +24,7 @@ namespace Models
             {
                 TransformGroup tg = new TransformGroup();
                 tg.Children.Add(new TranslateTransform(CX, CY));
-               // tg.Children.Add(new RotateTransform(rotDegree, CX, CY));
+                tg.Children.Add(new RotateTransform(rotDegree, CX, CY));
                 area.Transform = tg;
                 return area.GetFlattenedPathGeometry();
 

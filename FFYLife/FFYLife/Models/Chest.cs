@@ -13,7 +13,11 @@ namespace FFYLife.Models
             this.CY = cy;
         }
 
+        public Chest()
+        {
 
+
+        }
 
         public int RewardCash { get; set; }
 
