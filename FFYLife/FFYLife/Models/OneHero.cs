@@ -24,6 +24,22 @@ namespace FFYLife.Models
             IsDefending = false;
         }
 
+
+        public OneHero(double cx, double cy, int Hp , int DMG, int Armor , int Cash)
+        {
+            this.CX = cx;
+            this.CY = cy;
+            DX = 10;
+
+            this.Hp = Hp;
+            this.AttackDMG = DMG;
+            AttackSpeed = 1;
+            this.Armor = Armor;
+            this.Cash = Cash;
+            IsDefending = false;
+        }
+
+        
         public int Hp { get; set; }
 
         public int AttackDMG { get; set; }

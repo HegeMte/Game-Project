@@ -7,14 +7,15 @@ namespace FFYLife.Models
 {
     public class Chest : GameItem
     {
-        public Chest(double cx, double cy )
-        {
-            this.CX = cx;
-            this.CY = cy;
-        }
 
         public Chest()
         {
+
+        }
+        public Chest(double cx, double cy) //Load
+        {
+            this.CX = cx;
+            this.CY = cy;
 
 
         }
@@ -25,7 +26,7 @@ namespace FFYLife.Models
 
         public List<string> Answers { get; set; }
 
-        public int Helyes { get; set; }
+        public int Right { get; set; }
 
     }
 }

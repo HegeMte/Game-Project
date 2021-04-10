@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FFYLife", "FFYLife\FFYLife.csproj", "{932FBE6A-1BB1-49D5-A21A-6DC97DA4806B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLogic", "GameLogic\GameLogic.csproj", "{A171135D-ACE0-4D3C-ADEF-3681AA8CF903}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameLogic", "GameLogic\GameLogic.csproj", "{A171135D-ACE0-4D3C-ADEF-3681AA8CF903}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageRepository", "StorageRepository\StorageRepository.csproj", "{AD0CD122-7B30-4A58-915F-37702226EFE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A171135D-ACE0-4D3C-ADEF-3681AA8CF903}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A171135D-ACE0-4D3C-ADEF-3681AA8CF903}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A171135D-ACE0-4D3C-ADEF-3681AA8CF903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD0CD122-7B30-4A58-915F-37702226EFE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD0CD122-7B30-4A58-915F-37702226EFE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD0CD122-7B30-4A58-915F-37702226EFE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD0CD122-7B30-4A58-915F-37702226EFE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

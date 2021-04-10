@@ -11,14 +11,16 @@ namespace FFYLife.Models
         {
             this.CX = cx;
             this.CY = cy;
-            RewardCash = monsterLvl;
+            RewardCash = monsterLvl + 1;
             Hp = monsterLvl * 2;
             AttackDMG = monsterLvl;
             AttackSpeed = 1; //todo
             IsDead = false;
+            MonsterLVL = monsterLvl;
+
         }
 
-     
+        public int MonsterLVL { get; set; }
         public int RewardCash { get; set; }
         public int Hp { get ; set; }
         public int AttackDMG { get ; set ; }
