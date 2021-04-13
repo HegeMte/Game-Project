@@ -1,20 +1,22 @@
-﻿using System;
+﻿using StorageRepository.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
-using FFYLife.Models;
+
+
 
 namespace StorageRepository
 {
-    public class StorageRepository:IStorageRepository
+    public class StorageRepo: IStorageRepository
     {
         public List<Chest> Chests { get; set; }
         public GameModel gameModel { get; set; }
 
-        public StorageRepository()
+        public StorageRepo()
         {
-            Chests = LoadChests();
+           // Chests = LoadChests();
             
         }
 
@@ -87,8 +89,8 @@ namespace StorageRepository
 
             }
 
-            
-            
+            saveGameXDoc.Save("Saves/" + DateTime.Now.ToString("yyyy.MM.dd_HH.mm") + ".xml");
+
         }
 
 

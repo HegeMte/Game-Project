@@ -2,10 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
+	  <UseWPF>true</UseWPF>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\FFYLife\FFYLife.csproj" />
-  </ItemGroup>
 
 </Project>

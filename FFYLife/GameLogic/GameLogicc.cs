@@ -1,10 +1,11 @@
-﻿using FFYLife.Models;
+﻿
 using StorageRepository;
+using StorageRepository.Models;
 using System;
 
 namespace GameLogic
 {
-    public class GameLogic :IGameLogic
+    public class GameLogicc :IGameLogic
     {
 
         IGameModel model;
@@ -12,7 +13,7 @@ namespace GameLogic
         private Random r = new Random();
 
 
-        public GameLogic(IGameModel model, IStorageRepository repository)
+        public GameLogicc(IGameModel model, IStorageRepository repository)
         {
             this.model = model;
             this.repo = repository;

@@ -1,9 +1,9 @@
-﻿using Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FFYLife.Models
+namespace StorageRepository.Models
 {
     public class OneMonster : GameItem, IMonster
     {

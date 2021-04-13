@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FFYLife\FFYLife.csproj" />
     <ProjectReference Include="..\StorageRepository\StorageRepository.csproj" />
   </ItemGroup>
 

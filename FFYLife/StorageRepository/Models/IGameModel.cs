@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FFYLife.Models
+namespace StorageRepository.Models
 {
     public interface IGameModel
     {
