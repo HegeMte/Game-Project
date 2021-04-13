@@ -1,20 +1,25 @@
 ﻿using FFYLife.Models;
+using StorageRepository;
 using System;
 
 namespace GameLogic
 {
-    public class GameLogic
+    public class GameLogic :IGameLogic
     {
 
-        GameModel model;
+        IGameModel model;
+        IStorageRepository repo;
+        private Random r = new Random();
 
 
-        public GameLogic(GameModel model)
+        public GameLogic(IGameModel model, IStorageRepository repository)
         {
             this.model = model;
+            this.repo = repository;
+
         }
 
-
+        
 
         public void MonsterAttack()
         {
@@ -50,8 +55,17 @@ namespace GameLogic
 
         }
 
+        public Chest ChestAhead()
+        {
+            if (model.Chest != null && model.Chest.CX == model.GameDisplayWidth / 4 )
+            {
+                return model.Chest;
+            }
+            return null;
+        }
 
-        void BlockTick(OneBlock block)
+
+        public void BlockTick(OneBlock block)
         {
             block.CX -= model.Hero.DX;
             if(block.CX <0)
@@ -63,7 +77,7 @@ namespace GameLogic
         
         }
 
-        void MonsterTick(OneMonster monster)//dead monster kereszt
+        public void MonsterTick(OneMonster monster)//dead monster kereszt
         {
             monster.CX -= model.Hero.DX;
             if (monster.CX < 0)
@@ -75,20 +89,24 @@ namespace GameLogic
         }
 
 
-        void ChestTick(Chest chest)
+        public void ChestTick(Chest chest)
         {
             if ((model.BlockNumber + 4)%10 ==0)
             {
-                model.Chest = new Chest(model.GameDisplayWidth / 5, model.GameDisplayHeight / 2);
+
+                //model.Chest = new Chest(model.GameDisplayWidth / 5, model.GameDisplayHeight / 2);
+                model.Chest = new Chest();
+                model.Chest = repo.Chests[r.Next(0, 10)];
+                model.Chest.CX = model.GameDisplayWidth / 5;
+                model.Chest.CY = model.GameDisplayHeight / 2;
             }
-            
-            
-            
-            //chest.CX -= model.Hero.DX;
-        
-        
+
+            chest.CX -= model.Hero.DX;
         
         }
+
+        
+
 
     }
 }

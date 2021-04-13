@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FFYLife.Models
 {
-    public class GameModel
+    public class GameModel :IGameModel
     {
         const int NumBlocks = 5;
 

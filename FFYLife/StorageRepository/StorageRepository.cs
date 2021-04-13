@@ -7,7 +7,7 @@ using FFYLife.Models;
 
 namespace StorageRepository
 {
-    public class StorageRepository
+    public class StorageRepository:IStorageRepository
     {
         public List<Chest> Chests { get; set; }
         public GameModel gameModel { get; set; }
