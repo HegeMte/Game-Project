@@ -14,7 +14,7 @@ namespace StorageRepository.Models
         {
             this.CX = cx;
             this.CY = cy;
-            DX = 10;
+            DX = 130;
 
             Hp = 10;
             AttackDMG = 1;

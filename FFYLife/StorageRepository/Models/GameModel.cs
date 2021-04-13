@@ -16,6 +16,7 @@ namespace StorageRepository.Models
         public double BlockNumber { get; set; }
         public int HPPrice { get; set; }
         public int DmgPrice { get; set; }
+        public int ArmorPrice { get; set; }
 
         public string Name { get; set; }
 
@@ -38,22 +39,42 @@ namespace StorageRepository.Models
         public double UIHeight { get; set; }
         public double UIWidth { get; set; }
 
+        
+
         public GameModel(double w, double h , string Name )
         {
+            WindowHeight = h;
+            WindowWidth = w;
+
+
+            UIHeight = h;
+            UIWidth = w / 2;
+
+             
+
             GameDisplayHeight = h;
-            GameDisplayWidth = w;
+            GameDisplayWidth = w / 2;
 
             this.Name = Name;
-            
+
+            HPPrice = 0;
+             DmgPrice = 0;
+        
+            ArmorPrice = 0;
+
+           Blocks = new List<OneBlock>();
+
             for (int i = 0; i < NumBlocks; i++)
             {
-                Blocks.Add(new OneBlock(w / NumBlocks, h / 4));
+                Blocks.Add(new OneBlock(i * GameDisplayWidth / NumBlocks, h / 2));
             }
+            
+            Hero = new OneHero(GameDisplayWidth / 20  ,h/4 * 3 - 200);
 
-            Hero = new OneHero(w/5,h/2);
 
-            Monsters.Add(new OneMonster(w / 3, h / 2, 1 ));
-            Monsters.Add(new OneMonster(w / 1, h / 2, 1));
+            Monsters = new List<OneMonster>();
+            Monsters.Add(new OneMonster(GameDisplayWidth / 5 * 3 - 86, h / 4 * 3 - 200,1));
+            Monsters.Add(new OneMonster(GameDisplayWidth / 5 * 5 - 86, h / 4 * 3 - 200,1));
 
 
 

@@ -11,7 +11,7 @@ namespace StorageRepository.Models
         double BlockNumber { get; set; }
 
         int HPPrice { get; set; }
-
+        int ArmorPrice { get; set; }
         int DmgPrice { get; set; }
 
         string Name { get; set; }

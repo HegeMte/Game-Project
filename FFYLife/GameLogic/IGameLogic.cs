@@ -15,7 +15,8 @@ namespace GameLogic
 
         void HeroAttack();
         void BlockTick(OneBlock block);
-        void MonsterTick(OneMonster monster);
+        void MonstersTick(List<OneMonster> monsters);
         void ChestTick(Chest chest);
+        void StepTick();
     }
 }

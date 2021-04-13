@@ -7,7 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\armor.png" />
+    <None Remove="Images\hearth.png" />
+    <None Remove="Images\sword.png" />
+    <None Remove="Images\vbuck.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\armor.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\hearth.png" />
+    <EmbeddedResource Include="Images\sword.png" />
+    <EmbeddedResource Include="Images\vbuck.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GameLogic\GameLogic.csproj" />
+    <ProjectReference Include="..\StorageRepository\StorageRepository.csproj" />
   </ItemGroup>
 
 </Project>

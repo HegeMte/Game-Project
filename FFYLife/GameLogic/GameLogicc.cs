@@ -2,6 +2,7 @@
 using StorageRepository;
 using StorageRepository.Models;
 using System;
+using System.Collections.Generic;
 
 namespace GameLogic
 {
@@ -74,19 +75,31 @@ namespace GameLogic
                 block.CX = model.GameDisplayWidth;
              
             }
-            model.BlockNumber++;
+            
         
         }
 
-        public void MonsterTick(OneMonster monster)//dead monster kereszt
+        public void MonstersTick(List<OneMonster> monsters)//dead monster kereszt
         {
-            monster.CX -= model.Hero.DX;
-            if (monster.CX < 0)
+            List<OneMonster> copy = new List<OneMonster>();
+
+            foreach (var monster in monsters)
             {
-                model.Monsters.Remove(monster);
-                model.Monsters.Add(new OneMonster(model.GameDisplayWidth / 5, model.GameDisplayHeight / 2, Convert.ToInt32(Math.Ceiling(model.BlockNumber/10))));
+                monster.CX -= model.Hero.DX;
+                if (monster.CX < 100)
+                {
+                    
+                    copy.Add(new OneMonster(model.GameDisplayWidth / 5 * 5 - 86, model.GameDisplayHeight / 4 * 3 - 200,  Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10))));
+
+                }
+                else
+                {
+                    copy.Add(monster);
+                }
 
             }
+
+            model.Monsters = copy;
         }
 
 
@@ -106,7 +119,22 @@ namespace GameLogic
         
         }
 
-        
+        public void StepTick()
+        {
+            foreach (var block in model.Blocks)
+            {
+                BlockTick(block);
+
+
+                
+            }
+
+
+
+            MonstersTick(model.Monsters);
+            
+
+        }
 
 
     }
