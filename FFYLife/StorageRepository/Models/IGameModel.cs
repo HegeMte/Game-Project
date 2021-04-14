@@ -27,6 +27,8 @@ namespace StorageRepository.Models
          Chest Chest { get; set; }
         int ChestNum { get; set; }
 
+
+         bool ChestIsOn { get; set; }
          double WindowHeight { get; set; }
          double WindowWidth { get; set; }
 

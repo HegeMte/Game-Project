@@ -7,19 +7,42 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\anvil.png" />
     <None Remove="Images\armor.png" />
+    <None Remove="Images\armor1.png" />
+    <None Remove="Images\armor4.png" />
+    <None Remove="Images\armorPotion.png" />
+    <None Remove="Images\background.jpg" />
+    <None Remove="Images\block.png" />
     <None Remove="Images\hearth.png" />
+    <None Remove="Images\hero.png" />
+    <None Remove="Images\hero1.png" />
+    <None Remove="Images\potion.png" />
+    <None Remove="Images\questions.png" />
     <None Remove="Images\sword.png" />
+    <None Remove="Images\sword1.png" />
+    <None Remove="Images\sword2.png" />
+    <None Remove="Images\sword3.png" />
+    <None Remove="Images\sword4.png" />
+    <None Remove="Images\sword5.png" />
     <None Remove="Images\vbuck.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Images\armor.png" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <EmbeddedResource Include="Images\anvil.png" />
+    <EmbeddedResource Include="Images\armor4.png" />
+    <EmbeddedResource Include="Images\armorPotion.png" />
+    <EmbeddedResource Include="Images\background.jpg" />
+    <EmbeddedResource Include="Images\block.png" />
     <EmbeddedResource Include="Images\hearth.png" />
-    <EmbeddedResource Include="Images\sword.png" />
+    <EmbeddedResource Include="Images\hero.png" />
+    <EmbeddedResource Include="Images\potion.png" />
+    <EmbeddedResource Include="Images\questions.png" />
+    <EmbeddedResource Include="Images\sword1.png" />
+    <EmbeddedResource Include="Images\sword2.png" />
+    <EmbeddedResource Include="Images\sword3.png" />
+    <EmbeddedResource Include="Images\sword4.png" />
+    <EmbeddedResource Include="Images\sword5.png" />
     <EmbeddedResource Include="Images\vbuck.png" />
   </ItemGroup>
 

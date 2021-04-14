@@ -43,6 +43,7 @@ namespace FFYLife
             dg.Children.Add(GetHero());
             dg.Children.Add(GetMonsters());
             dg.Children.Add(GetShop());
+            //dg.Children.Add(GetChest());
             dg.Children.Add(GetButtons());
             return dg;
         }
@@ -78,18 +79,56 @@ namespace FFYLife
             return oldMonsters;
         }
 
-        
+        private Drawing GetChest()
+        {
+            DrawingGroup dg = new DrawingGroup();
+            ImageDrawing background = new ImageDrawing(GetImage("questions.png"), new Rect(650, 400, 650, 400));
+
+            FormattedText question = new FormattedText(this.model.Chest.Question.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black);
+            Geometry geo = question.BuildGeometry(new Point(760,500));
+            GeometryDrawing gd = new GeometryDrawing(Brushes.White, null, geo);
+
+
+            FormattedText answer0 = new FormattedText(this.model.Chest.Answers[0].ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black);
+            Geometry geo1 = answer0.BuildGeometry(new Point(730, 600));
+            GeometryDrawing gd1 = new GeometryDrawing(Brushes.White, null, geo1);
+
+
+            FormattedText answer1 = new FormattedText(this.model.Chest.Answers[1].ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black);
+            Geometry geo2 = answer1.BuildGeometry(new Point(1000, 600));
+            GeometryDrawing gd2 = new GeometryDrawing(Brushes.White, null, geo2);
+
+            FormattedText answer2 = new FormattedText(this.model.Chest.Answers[2].ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black);
+            Geometry geo3 = answer2.BuildGeometry(new Point(720, 685));
+            GeometryDrawing gd3 = new GeometryDrawing(Brushes.White, null, geo3);
+
+            FormattedText answer3 = new FormattedText(this.model.Chest.Answers[3].ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black);
+            Geometry geo4 = answer3.BuildGeometry(new Point(1010, 685));
+            GeometryDrawing gd4 = new GeometryDrawing(Brushes.White, null, geo4);
+
+
+
+            dg.Children.Add(background);
+            dg.Children.Add(gd);
+            dg.Children.Add(gd1);
+            dg.Children.Add(gd2);
+            dg.Children.Add(gd3);
+            dg.Children.Add(gd4);
+            return dg;
+        }
 
 
 
         private Drawing GetHero()
         {
-            if (oldHero == null)
-            {
-                Geometry g = new RectangleGeometry(new Rect(model.Hero.CX, model.Hero.CY, 40, 200));
-                oldHero = new GeometryDrawing(Brushes.Yellow, stroke, g);
-            }
+           
+            
+            ImageDrawing hero = new ImageDrawing(GetImage("hero.png"), new Rect(model.Hero.CX, model.Hero.CY, 200, 200));
 
+            //Geometry g = new RectangleGeometry(new Rect(model.Hero.CX, model.Hero.CY, 40, 200));
+            //oldHero = new GeometryDrawing(Brushes.Yellow, stroke, g);
+
+            oldHero = hero;
             return oldHero;
         }
 
@@ -97,15 +136,19 @@ namespace FFYLife
         {
             if (oldBlocks == null)
             {
-                GeometryGroup g = new GeometryGroup();
+                DrawingGroup dg = new DrawingGroup();
                 foreach (var block in model.Blocks)
                 {
-                    Geometry b = new RectangleGeometry(new Rect(block.CX, block.CY / 2 *3, model.GameDisplayWidth/5, model.GameDisplayHeight/4));
 
-                     g.Children.Add(b);
+                    ImageDrawing blockPic = new ImageDrawing(GetImage("block.png"), new Rect(block.CX, block.CY / 2 * 3, model.GameDisplayWidth / 5, model.GameDisplayHeight / 4));
+
+
+                  //  Geometry b = new RectangleGeometry(new Rect(block.CX, block.CY / 2 *3, model.GameDisplayWidth/5, model.GameDisplayHeight/4));
+
+                     dg.Children.Add(blockPic);
                 }
 
-                oldBlocks = new GeometryDrawing(Brushes.Brown, stroke, g);
+                oldBlocks = dg;
             }
 
             return oldBlocks;
@@ -113,14 +156,23 @@ namespace FFYLife
 
         private Drawing GetGamePlayBackground()
         {
+
+            ;
             if (oldGameplayBackground == null)
             {
-                Geometry g = new RectangleGeometry(new Rect(0,0,model.GameDisplayWidth,model.GameDisplayHeight));
-                oldGameplayBackground = new GeometryDrawing(Brushes.LightBlue , null , g);
+
+                oldGameplayBackground = new ImageDrawing(GetImage("background.jpg"), new Rect(  0, 0, model.GameDisplayWidth, model.GameDisplayHeight));
+
+                //Geometry g = new RectangleGeometry(new Rect(0,0,model.GameDisplayWidth,model.GameDisplayHeight));
+                //oldGameplayBackground = new GeometryDrawing(Brushes.LightBlue , null , g);
             }
 
             return oldGameplayBackground;
         }
+
+
+
+
 
         private Drawing GetButtons()
         {
@@ -183,12 +235,17 @@ namespace FFYLife
                 GeometryDrawing LeftRec = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(650, 400, model.GameDisplayWidth / 2, model.GameDisplayHeight / 4)));
                 GeometryDrawing RightRec = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(975, 600, model.GameDisplayWidth / 2, model.GameDisplayHeight / 4)));
 
-
-
+                ImageDrawing anvilPic = new ImageDrawing(GetImage("anvil.png"), new Rect(650, 400, 170, 170));
+                ImageDrawing potionPic = new ImageDrawing(GetImage("potion.png"), new Rect(950, 400, 170, 170));
+                ImageDrawing armorPotionPic = new ImageDrawing(GetImage("armorPotion.png"), new Rect(650, 600, 170, 170));
 
                 dg.Children.Add(Background);
                 dg.Children.Add(LeftRec);
                 dg.Children.Add(RightRec);
+                dg.Children.Add(GetButtons());
+                dg.Children.Add(anvilPic);
+                dg.Children.Add(potionPic);
+                dg.Children.Add(armorPotionPic);
 
 
                 oldShop = dg;
@@ -216,7 +273,7 @@ namespace FFYLife
                  //VBuck
               ImageDrawing VBuckPic = new ImageDrawing(GetImage("vbuck.png"), new Rect(1125, 20, 130, 130));
 
-                  FormattedText vbuckCount = new FormattedText(this.model.Hero.Cash.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130 , Brushes.Black );
+                FormattedText vbuckCount = new FormattedText(this.model.Hero.Cash.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130 , Brushes.Black );
                 Geometry geo = vbuckCount.BuildGeometry(new Point(985, 20));
                 GeometryDrawing gd = new GeometryDrawing(Brushes.Black, stroke, geo);
 
@@ -228,7 +285,7 @@ namespace FFYLife
                 GeometryDrawing gd2 = new GeometryDrawing(Brushes.Black, stroke, geo2);
 
                 //DMG
-                ImageDrawing DMGPic = new ImageDrawing(GetImage("sword.png"), new Rect(800, 220, 130, 130));
+                ImageDrawing DMGPic = new ImageDrawing(GetImage($"sword{this.model.Hero.AttackDMG}.png"), new Rect(800, 220, 130, 130));
 
                 FormattedText DMGCount = new FormattedText(this.model.Hero.AttackDMG.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black);
                 Geometry geo3 = DMGCount.BuildGeometry(new Point(660, 220));
@@ -236,7 +293,7 @@ namespace FFYLife
 
 
                 //Armor
-                ImageDrawing ArmmorPic = new ImageDrawing(GetImage("armor.png"), new Rect(1125, 220, 130, 130));
+                ImageDrawing ArmmorPic = new ImageDrawing(GetImage("armor4.png"), new Rect(1125, 220, 130, 130));
 
                 FormattedText ArmorCount = new FormattedText(this.model.Hero.Armor.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black);
                 Geometry geo4 = ArmorCount.BuildGeometry(new Point(985, 220));

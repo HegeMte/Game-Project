@@ -21,6 +21,7 @@ namespace StorageRepository.Models
         public string Name { get; set; }
 
         public List<Chest> Chests { get; set; }
+        public bool ChestIsOn { get; set; }
 
         public OneHero Hero { get; set; }
         public List<OneMonster> Monsters {get ; set; }
@@ -69,7 +70,7 @@ namespace StorageRepository.Models
                 Blocks.Add(new OneBlock(i * GameDisplayWidth / NumBlocks, h / 2));
             }
             
-            Hero = new OneHero(GameDisplayWidth / 20  ,h/4 * 3 - 200);
+            Hero = new OneHero(-50 ,410);
 
 
             Monsters = new List<OneMonster>();
@@ -77,7 +78,14 @@ namespace StorageRepository.Models
             Monsters.Add(new OneMonster(GameDisplayWidth / 5 * 5 - 86, h / 4 * 3 - 200,1));
 
 
-
+            Chest = new Chest();
+            Chest.Question = "Mekkora a faszod?";
+            Chest.Answers = new List<string>();
+            Chest.Answers.Add("5cm");
+            Chest.Answers.Add("10cm");
+            Chest.Answers.Add("15cm");
+            Chest.Answers.Add("20cm");
+            Chest.Right = 3;
 
         }
 
