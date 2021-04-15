@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace FFYLife
 {
@@ -20,6 +21,8 @@ namespace FFYLife
         IGameLogic logic;
         private double mouseX;
         private double mouseY;
+        private double Difference = 130;
+        DispatcherTimer OneStepTimer;
 
         public Control()
         {
@@ -37,7 +40,12 @@ namespace FFYLife
 
             Window win = Window.GetWindow(this);
 
-             
+            
+
+            //MonsterstepTimer.Interval = TimeSpan.FromMilliseconds(30);
+            //MonsterstepTimer.Tick += MonsterstepTimer_Tick;
+            //MonsterstepTimer.Start();
+
 
             if (win != null)
             {
@@ -50,6 +58,21 @@ namespace FFYLife
 
 
         }
+
+        //private void MonsterstepTimer_Tick(object sender, EventArgs e)
+        //{
+        //    if (gameModel.Monsters[0])
+        //    {
+        //        MonsterstepTimer.Stop();
+        //        return;
+        //    }
+               
+        //   logic.MonstersTick(gameModel.Monsters);
+        //   InvalidateVisual();
+
+           
+            
+        //}
 
         private void Win_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -90,11 +113,13 @@ namespace FFYLife
                 }
                 if (mouseY >= 650 && mouseY <= 750 && mouseX >= 1135 && mouseX <= 1335)
                 {
-                    logic.ReturnToMenu();
+                    //logic.ReturnToMenu();
 
                 }
 
             }
+
+            InvalidateVisual();
         }
 
         protected override void OnRender(DrawingContext drawingContext)
@@ -108,12 +133,40 @@ namespace FFYLife
             switch (e.Key)
             {
                 case Key.Space :
-                    logic.StepTick();
+
+                    var entity = logic.StepCalculator();
+
+                    
+                    //logic.StepTick();
+                    OneStepTimer = new DispatcherTimer();
+                    double destination =   this.gameModel.Monsters[0].CX - Difference;
+                    OneStepTimer.Tick += delegate
+                    {
+                        if (logic.FindGameItem(entity).CX == 195)
+                        {
+                            
+                            OneStepTimer.Stop();
+                            return;
+                        }
+
+                        logic.StepTick();
+                        InvalidateVisual();
+
+
+                    };
+
+                    OneStepTimer.Interval = TimeSpan.FromMilliseconds(20);
+                    OneStepTimer.Start();
                     gameModel.BlockNumber++;
                     break;
             }
             InvalidateVisual();
 
         }
+
+
+        
+
+
     }
 }

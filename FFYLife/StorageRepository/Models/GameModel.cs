@@ -58,10 +58,12 @@ namespace StorageRepository.Models
 
             this.Name = Name;
 
-            HPPrice = 0;
-             DmgPrice = 0;
+            HPPrice = 5;
+             DmgPrice = 5;
         
-            ArmorPrice = 0;
+            ArmorPrice = 5;
+
+            
 
            Blocks = new List<OneBlock>();
 
@@ -73,19 +75,21 @@ namespace StorageRepository.Models
             Hero = new OneHero(-50 ,410);
 
 
+            Hero.Cash = 100;
+
             Monsters = new List<OneMonster>();
             Monsters.Add(new OneMonster(GameDisplayWidth / 5 * 3 - 86, h / 4 * 3 - 200,1));
             Monsters.Add(new OneMonster(GameDisplayWidth / 5 * 5 - 86, h / 4 * 3 - 200,1));
 
 
-            Chest = new Chest();
-            Chest.Question = "Mekkora a faszod?";
-            Chest.Answers = new List<string>();
-            Chest.Answers.Add("5cm");
-            Chest.Answers.Add("10cm");
-            Chest.Answers.Add("15cm");
-            Chest.Answers.Add("20cm");
-            Chest.Right = 3;
+            //Chest = new Chest();
+            //Chest.Question = "Mekkora a faszod?";
+            //Chest.Answers = new List<string>();
+            //Chest.Answers.Add("5cm");
+            //Chest.Answers.Add("10cm");
+            //Chest.Answers.Add("15cm");
+            //Chest.Answers.Add("20cm");
+            //Chest.Right = 3;
 
         }
 

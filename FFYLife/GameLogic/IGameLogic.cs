@@ -18,5 +18,16 @@ namespace GameLogic
         void MonstersTick(List<OneMonster> monsters);
         void ChestTick(Chest chest);
         void StepTick();
+        public bool BuyDmg();
+
+        public bool BuyHP();
+
+        public bool BuyArmor();
+
+        public void HeroIsDefending();
+
+         GameItem StepCalculator();
+
+        GameItem FindGameItem(GameItem item);
     }
 }

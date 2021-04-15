@@ -227,8 +227,8 @@ namespace FFYLife
         }
         private Drawing GetShop()
         {
-            if (oldShop == null)
-            {
+            //if (oldShop == null)
+            //{
                 DrawingGroup dg = new DrawingGroup();
 
                 GeometryDrawing Background = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(650, 400, model.GameDisplayWidth, model.GameDisplayHeight / 2)));
@@ -249,7 +249,7 @@ namespace FFYLife
 
 
                 oldShop = dg;
-            }
+            //}
 
             return oldShop;
         }

@@ -3,6 +3,7 @@ using StorageRepository;
 using StorageRepository.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GameLogic
 {
@@ -57,14 +58,72 @@ namespace GameLogic
 
         }
 
+        public void HeroIsDefending()
+        {
+
+            this.model.Hero.IsDefending = true;
+
+        }
+
+
         public Chest ChestAhead()
         {
             if (model.Chest != null && model.Chest.CX == model.GameDisplayWidth / 4 )
             {
+                this.model.ChestIsOn = true;
                 return model.Chest;
             }
             return null;
         }
+
+
+
+        public bool BuyDmg()
+        {
+
+            if (this.model.Hero.Cash >= this.model.DmgPrice)
+            {
+                this.model.Hero.AttackDMG += 1;
+                this.model.Hero.Cash -= this.model.DmgPrice;
+                this.model.DmgPrice += 10;
+                return true;
+            }
+            return false;
+
+        }
+
+
+
+        public bool BuyHP()
+        {
+
+            if (this.model.Hero.Cash >= this.model.HPPrice  && this.model.Hero.Hp <10)
+            {
+                this.model.Hero.Hp += 1;
+                this.model.Hero.Cash -= this.model.HPPrice;
+                this.model.HPPrice += 10;
+                return true;
+            }
+            return false;
+
+        }
+
+        public bool BuyArmor()
+        {
+            if (this.model.Hero.Cash >= this.model.HPPrice && this.model.Hero.Armor < 4)
+            {
+                this.model.Hero.Armor += 1;
+                this.model.Hero.Cash -= this.model.ArmorPrice;
+                this.model.ArmorPrice += 10;
+                
+                return true;
+            }
+            return false;
+
+
+        }
+
+
 
 
         public void BlockTick(OneBlock block)
@@ -81,25 +140,41 @@ namespace GameLogic
 
         public void MonstersTick(List<OneMonster> monsters)//dead monster kereszt
         {
-            List<OneMonster> copy = new List<OneMonster>();
+            //List<OneMonster> copy = new List<OneMonster>();
 
-            foreach (var monster in monsters)
+            //foreach (var monster in monsters)
+            //{
+            //    //monster.CX -= model.Hero.DX;
+            //    monster.CX -= 5;
+            //    if (monster.CX < 0)
+            //    {
+            //        copy.Add(new OneMonster(model.GameDisplayWidth / 5 * 5 - 86, model.GameDisplayHeight / 4 * 3 - 200,  Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10))));
+
+
+            //    }
+            //    else
+            //    {
+            //        copy.Add(monster);
+            //    }
+
+            //}
+            //model.Monsters = copy;
+            //model.Monsters[1] = copy[1];
+            //model.Monsters[0] = copy[1];
+
+            if (monsters[0].CX < 195)
             {
-                monster.CX -= model.Hero.DX;
-                if (monster.CX < 100)
-                {
-                    
-                    copy.Add(new OneMonster(model.GameDisplayWidth / 5 * 5 - 86, model.GameDisplayHeight / 4 * 3 - 200,  Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10))));
-
-                }
-                else
-                {
-                    copy.Add(monster);
-                }
+                monsters[0] = monsters[1];
+                monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5 - 86, model.GameDisplayHeight / 4 * 3 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10)));
 
             }
+            else
+            {
 
-            model.Monsters = copy;
+                monsters[0].CX -= 1;
+                monsters[1].CX -= 1;
+            }
+            
         }
 
 
@@ -115,27 +190,84 @@ namespace GameLogic
                 model.Chest.CY = model.GameDisplayHeight / 2;
             }
 
-            chest.CX -= model.Hero.DX;
+            chest.CX -= 1;
         
         }
 
         public void StepTick()
         {
-            foreach (var block in model.Blocks)
+            //foreach (var block in model.Blocks)
+            //{
+            //    BlockTick(block);
+
+
+
+            //}
+
+            if (model.Chest != null)
             {
-                BlockTick(block);
+                ChestTick(model.Chest);
+            }
+
+            
+            MonstersTick(model.Monsters);
+        }
+
+        public GameItem StepCalculator()
+        {
+
+            Chest chestcx = new Chest();
+            if (model.Chest != null)
+            {
+                 chestcx = model.Chests.OrderBy(x => x.CX).FirstOrDefault();
+            }
+            
+
+            var monstersx = model.Monsters.OrderBy(x => x.CX).FirstOrDefault();
+            if (chestcx.CX == 0)
+            {
+                return monstersx;
+            }
+         
 
 
+            if (monstersx.CX < chestcx.CX)
+            {
+                return monstersx;
+            }
+            else {
+
+                return chestcx;
+            }
+
+        }
+
+
+        public GameItem FindGameItem(GameItem item)
+        {
+
+            switch (item)
+            {
+                case Chest: return model.Chest;
+
+                case OneMonster: return model.Monsters.Find(x => x == item as OneMonster) ;            
+                
+                default:
+                    return null;
                 
             }
 
 
 
-            MonstersTick(model.Monsters);
-            
-
         }
 
 
+
+
+
+
     }
+
+
+
 }
