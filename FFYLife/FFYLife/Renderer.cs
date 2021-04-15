@@ -72,6 +72,25 @@ namespace FFYLife
 
         private Drawing GetMonsters()
         {
+           
+
+            DrawingGroup dg = new DrawingGroup();
+            foreach (var monster in model.Monsters)
+            {
+
+                ImageDrawing monsterPic = new ImageDrawing(GetImage($"monster{monster.MonsterLVL}.png"), new Rect(monster.CX, model.Hero.CY, model.GameDisplayWidth / 5, model.GameDisplayHeight / 4));
+
+
+                //  Geometry b = new RectangleGeometry(new Rect(block.CX, block.CY / 2 *3, model.GameDisplayWidth/5, model.GameDisplayHeight/4));
+
+                dg.Children.Add(monsterPic);
+            }
+
+            
+
+
+            /*
+
             if (oldMonsters == null || oldMonsterPosition.X != model.Monsters[0].CX )
             {
                 GeometryGroup g = new GeometryGroup();
@@ -85,7 +104,8 @@ namespace FFYLife
                 oldMonsters = new GeometryDrawing(Brushes.Red,stroke, g);
             }
 
-            return oldMonsters;
+            return oldMonsters;*/
+            return dg;
         }
 
         private Drawing GetChest()

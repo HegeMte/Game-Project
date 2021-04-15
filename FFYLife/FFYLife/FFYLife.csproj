@@ -17,6 +17,10 @@
     <None Remove="Images\hearth.png" />
     <None Remove="Images\hero.png" />
     <None Remove="Images\hero1.png" />
+    <None Remove="Images\monster1.png" />
+    <None Remove="Images\monster2.png" />
+    <None Remove="Images\monster3.png" />
+    <None Remove="Images\monster4.png" />
     <None Remove="Images\potion.png" />
     <None Remove="Images\questions.png" />
     <None Remove="Images\sword.png" />
@@ -36,6 +40,10 @@
     <EmbeddedResource Include="Images\block.png" />
     <EmbeddedResource Include="Images\hearth.png" />
     <EmbeddedResource Include="Images\hero.png" />
+    <EmbeddedResource Include="Images\monster1.png" />
+    <EmbeddedResource Include="Images\monster2.png" />
+    <EmbeddedResource Include="Images\monster3.png" />
+    <EmbeddedResource Include="Images\monster4.png" />
     <EmbeddedResource Include="Images\potion.png" />
     <EmbeddedResource Include="Images\questions.png" />
     <EmbeddedResource Include="Images\sword1.png" />

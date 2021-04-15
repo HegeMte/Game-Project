@@ -81,32 +81,32 @@ namespace FFYLife
 
             if (gameModel.ChestIsOn)
             {
-                if (mouseX >= 1200 && mouseX <= 1230)
-                {
+                //if (mouseX >= 1200 && mouseX <= 1230)
+                //{
 
-                    if (mouseY >= 615 && mouseY <= 645)
-                    {
-                        logic.AnswerA();
-                    }
-                    else if(mouseY >= 700 && mouseY <= 730)
-                    {
-                        logic.AnswerD();
-                    }
+                //    if (mouseY >= 615 && mouseY <= 645)
+                //    {
+                //        logic.AnswerA();
+                //    }
+                //    else if(mouseY >= 700 && mouseY <= 730)
+                //    {
+                //        logic.AnswerD();
+                //    }
 
 
-                }
-                if (mouseX >= 890 && mouseX <= 920)
-                {
-                    if (mouseY >= 615 && mouseY <= 645)
-                    {
-                        logic.AnswerB();
-                    }
-                    else if(mouseY >= 700 && mouseY <= 730)
-                    {
-                        logic.AnswerC();
-                    }
+                //}
+                //if (mouseX >= 890 && mouseX <= 920)
+                //{
+                //    if (mouseY >= 615 && mouseY <= 645)
+                //    {
+                //        logic.AnswerB();
+                //    }
+                //    else if(mouseY >= 700 && mouseY <= 730)
+                //    {
+                //        logic.AnswerC();
+                //    }
 
-                }
+                //}
 
             }
             else
