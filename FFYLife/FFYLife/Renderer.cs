@@ -42,9 +42,18 @@ namespace FFYLife
             dg.Children.Add(GetBlocks());
             dg.Children.Add(GetHero());
             dg.Children.Add(GetMonsters());
-            dg.Children.Add(GetShop());
-            //dg.Children.Add(GetChest());
-            dg.Children.Add(GetButtons());
+            if (!model.ChestIsOn)
+            {
+                dg.Children.Add(GetShop());
+                dg.Children.Add(GetButtons());
+            }
+            else
+            {
+                dg.Children.Add(GetChest());
+                dg.Children.Add(GetChestButtons());
+            }
+            
+            
             return dg;
         }
         
@@ -225,6 +234,55 @@ namespace FFYLife
             return dg;
 
         }
+        private Drawing GetChestButtons()
+        {
+            DrawingGroup dg = new DrawingGroup();
+
+            GeometryDrawing AButn = new GeometryDrawing(Brushes.LightGray, stroke, new RectangleGeometry(new Rect(1200, 615, 30, 30)));
+            
+            FormattedText AText = new FormattedText("B", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 25, Brushes.Black);
+            AText.TextAlignment = TextAlignment.Center;
+            Geometry aGeo = AText.BuildGeometry(new Point(1215, 615));
+            GeometryDrawing aTextGeo = new GeometryDrawing(Brushes.Black, null, aGeo);
+
+
+
+
+            GeometryDrawing BButn = new GeometryDrawing(Brushes.LightGray, stroke, new RectangleGeometry(new Rect(890, 615, 30, 30)));
+
+            FormattedText BText = new FormattedText("A", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 25, Brushes.Black);
+            BText.TextAlignment = TextAlignment.Center;
+            Geometry BGeo = BText.BuildGeometry(new Point(905, 615));
+            GeometryDrawing BTextGeo = new GeometryDrawing(Brushes.Black, null, BGeo);
+
+
+
+            GeometryDrawing CButn = new GeometryDrawing(Brushes.LightGray, stroke, new RectangleGeometry(new Rect(890, 700, 30, 30)));
+
+            FormattedText CText = new FormattedText("C", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 25, Brushes.Black);
+            CText.TextAlignment = TextAlignment.Center;
+            Geometry cGeo = CText.BuildGeometry(new Point(905, 700));
+            GeometryDrawing cTextGeo = new GeometryDrawing(Brushes.Black, null, cGeo);
+            
+            GeometryDrawing DButn = new GeometryDrawing(Brushes.LightGray, stroke, new RectangleGeometry(new Rect(1200, 700, 30, 30)));
+            FormattedText DText = new FormattedText("D", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 25, Brushes.Black);
+            DText.TextAlignment = TextAlignment.Center;
+            Geometry DGeo = DText.BuildGeometry(new Point(1215, 700));
+            GeometryDrawing DTextGeo = new GeometryDrawing(Brushes.Black, null, DGeo);
+
+
+            dg.Children.Add(AButn);
+            dg.Children.Add(aTextGeo);
+            dg.Children.Add(BButn);
+            dg.Children.Add(BTextGeo);
+            dg.Children.Add(CButn);
+            dg.Children.Add(cTextGeo);
+            dg.Children.Add(DButn);
+            dg.Children.Add(DTextGeo);
+
+            return dg;
+
+        }
         private Drawing GetShop()
         {
             //if (oldShop == null)
@@ -271,7 +329,7 @@ namespace FFYLife
 
 
                  //VBuck
-              ImageDrawing VBuckPic = new ImageDrawing(GetImage("vbuck.png"), new Rect(1125, 20, 130, 130));
+                ImageDrawing VBuckPic = new ImageDrawing(GetImage("vbuck.png"), new Rect(1197, 50, 100, 100));
 
                 FormattedText vbuckCount = new FormattedText(this.model.Hero.Cash.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130 , Brushes.Black );
                 Geometry geo = vbuckCount.BuildGeometry(new Point(985, 20));

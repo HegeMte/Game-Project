@@ -63,7 +63,7 @@ namespace StorageRepository.Models
         
             ArmorPrice = 5;
 
-            
+            ChestIsOn = false;
 
            Blocks = new List<OneBlock>();
 
@@ -82,15 +82,15 @@ namespace StorageRepository.Models
             Monsters.Add(new OneMonster(GameDisplayWidth / 5 * 5 - 86, h / 4 * 3 - 200,1));
 
 
-            //Chest = new Chest();
-            //Chest.Question = "Mekkora a faszod?";
-            //Chest.Answers = new List<string>();
-            //Chest.Answers.Add("5cm");
-            //Chest.Answers.Add("10cm");
-            //Chest.Answers.Add("15cm");
-            //Chest.Answers.Add("20cm");
-            //Chest.Right = 3;
-
+            //////Chest = new Chest();
+            //////Chest.Question = "Mekkora a faszod?";
+            //////Chest.Answers = new List<string>();
+            //////Chest.Answers.Add("5cm");
+            //////Chest.Answers.Add("10cm");
+            //////Chest.Answers.Add("15cm");
+            //////Chest.Answers.Add("20cm");
+            //////Chest.Right = 3;
+            
         }
 
         public GameModel()
