@@ -36,7 +36,8 @@ namespace StorageRepository
                 
             }
 
-
+            gameModel.Chests = Chests;
+            //Itt a chest Propertyt kene csak beallitani,a  logic metodusokban azt kernem le 
             return Chests;
 
         }

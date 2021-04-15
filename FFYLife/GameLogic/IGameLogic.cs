@@ -16,18 +16,21 @@ namespace GameLogic
         void HeroAttack();
         void BlockTick(OneBlock block);
         void MonstersTick(List<OneMonster> monsters);
-        void ChestTick(Chest chest);
+        void ChestTick();
         void StepTick();
-        public bool BuyDmg();
+         bool BuyDmg();
 
-        public bool BuyHP();
+         bool BuyHP();
 
-        public bool BuyArmor();
+         bool BuyArmor();
 
-        public void HeroIsDefending();
+         void HeroIsDefending();
 
          GameItem StepCalculator();
 
         GameItem FindGameItem(GameItem item);
+
+        bool ChestAhead();
+        void ChestCreate();
     }
 }
