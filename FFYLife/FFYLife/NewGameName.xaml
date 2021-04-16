@@ -1,0 +1,14 @@
+﻿<Window x:Class="FFYLife.NewGameNameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FFYLife"
+        mc:Ignorable="d"
+        Title="NewGameName" Height="300" Width="358">
+    <Grid Margin="0,0,10,9" >
+        <Label VerticalAlignment="Top" Margin="30,72,30,0">Nickname?</Label>
+        <TextBox x:Name="NameTextBox" VerticalAlignment="Top" Focusable="True" Margin="66,130,123,0" Height="26" Text="name here"/>
+        <Button Height="25" Width="78" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="222,0,0,63" Click="StartGameClick" IsDefault="True">Start game</Button>
+    </Grid>
+</Window>

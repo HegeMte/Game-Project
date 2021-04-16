@@ -4,6 +4,7 @@ using StorageRepository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 
 namespace GameLogic
 {
@@ -158,10 +159,10 @@ namespace GameLogic
             model.Monsters[1] = copy[1];
             model.Monsters[0] = copy[1];*/
 
-            if (monsters[0].CX < 195)
+            if (monsters[0].CX < 195) 
             {
                 monsters[0] = monsters[1];
-                monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5 - 86, model.GameDisplayHeight / 4 * 3 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10)));
+                monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5 - 86, model.GameDisplayHeight / 4 * 4 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10)));
             }
             else
             {
@@ -268,5 +269,8 @@ namespace GameLogic
                     return null;
             }
         }
+
+
+        
     }
 }

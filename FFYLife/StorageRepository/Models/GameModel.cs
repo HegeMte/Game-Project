@@ -51,7 +51,7 @@ namespace StorageRepository.Models
             UIHeight = h;
             UIWidth = w / 2;
 
-             
+            this.Name = Name;
 
             GameDisplayHeight = h;
             GameDisplayWidth = w / 2;
@@ -63,7 +63,7 @@ namespace StorageRepository.Models
         
             ArmorPrice = 5;
 
-            ChestIsOn = true;
+            ChestIsOn = false;
 
            Blocks = new List<OneBlock>();
 
@@ -151,5 +151,5 @@ namespace StorageRepository.Models
 
         }
 
-}
+    }
 }

@@ -29,6 +29,8 @@ namespace FFYLife
         Drawing oldMonsters;
         Drawing buttons;
         Pen stroke = new Pen(Brushes.Black , 3);
+        Pen Is = new Pen(Brushes.White,2);
+
         Point oldMonsterPosition ;
         
 
@@ -189,9 +191,9 @@ namespace FFYLife
             ;
             if (oldGameplayBackground == null)
             {
-
-                oldGameplayBackground = new ImageDrawing(GetImage("background.jpg"), new Rect(  0, 0, model.GameDisplayWidth, model.GameDisplayHeight));
-
+                
+                oldGameplayBackground = new ImageDrawing(GetImage("ringBackground.gif"), new Rect(  0, 0, model.GameDisplayWidth, model.GameDisplayHeight));
+                
                 //Geometry g = new RectangleGeometry(new Rect(0,0,model.GameDisplayWidth,model.GameDisplayHeight));
                 //oldGameplayBackground = new GeometryDrawing(Brushes.LightBlue , null , g);
             }
@@ -376,12 +378,16 @@ namespace FFYLife
                 FormattedText ArmorCount = new FormattedText(this.model.Hero.Armor.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black);
                 Geometry geo4 = ArmorCount.BuildGeometry(new Point(985, 220));
                 GeometryDrawing gd4 = new GeometryDrawing(Brushes.Black, stroke, geo4);
-
-                FormattedText BlockCount = new FormattedText(this.model.BlockNumber.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black);
-                Geometry geo5 = BlockCount.BuildGeometry(new Point(450, 50));
-                GeometryDrawing gd5 = new GeometryDrawing(Brushes.Black, stroke, geo5);
-
                 
+                FormattedText BlockCount = new FormattedText(this.model.BlockNumber.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Wheat);
+                Geometry geo5 = BlockCount.BuildGeometry(new Point(450, 50));
+                GeometryDrawing gd5 = new GeometryDrawing(Brushes.Black, Is, geo5);
+
+                 FormattedText Name = new FormattedText(this.model.Name.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 80, Brushes.Wheat);
+                 Geometry geo6 = Name.BuildGeometry(new Point(50, 50));
+                 GeometryDrawing gd6 = new GeometryDrawing(Brushes.Black, Is, geo6);
+
+
                 dg.Children.Add(Background);
                 dg.Children.Add(LeftRec);
                 dg.Children.Add(RightRec);
@@ -390,6 +396,7 @@ namespace FFYLife
                 dg.Children.Add(gd3);
                 dg.Children.Add(gd4);
                 dg.Children.Add(gd5);
+                dg.Children.Add(gd6);
                 dg.Children.Add(HPPic);
                 dg.Children.Add(DMGPic);
                 dg.Children.Add(ArmmorPic);

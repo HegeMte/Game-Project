@@ -23,6 +23,7 @@
     <None Remove="Images\monster4.png" />
     <None Remove="Images\potion.png" />
     <None Remove="Images\questions.png" />
+    <None Remove="Images\ringBackground.gif" />
     <None Remove="Images\sword.png" />
     <None Remove="Images\sword1.png" />
     <None Remove="Images\sword2.png" />
@@ -46,6 +47,7 @@
     <EmbeddedResource Include="Images\monster4.png" />
     <EmbeddedResource Include="Images\potion.png" />
     <EmbeddedResource Include="Images\questions.png" />
+    <EmbeddedResource Include="Images\ringBackground.gif" />
     <EmbeddedResource Include="Images\sword1.png" />
     <EmbeddedResource Include="Images\sword2.png" />
     <EmbeddedResource Include="Images\sword3.png" />

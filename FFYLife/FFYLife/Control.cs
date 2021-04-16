@@ -23,6 +23,7 @@ namespace FFYLife
         private double mouseY;
         private double Difference = 130;
         DispatcherTimer OneStepTimer;
+        static public string PlayerName = "teszt";
 
         public Control()
         {
@@ -31,9 +32,11 @@ namespace FFYLife
 
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
+
+
             repo = new StorageRepo();
-            gameModel = new GameModel(1300,800,"Fasz");
-           
+            gameModel = new GameModel(1300,800,PlayerName);
+            
             logic = new GameLogicc(gameModel, repo);
             renderer = new Renderer(gameModel);
 
@@ -137,9 +140,12 @@ namespace FFYLife
                     }
 
                 }
-                if (mouseY >= 650 && mouseY <= 750 && mouseX >= 1135 && mouseX <= 1335)
+                if (mouseY >= 650 && mouseY <= 750 && mouseX >= 1035 && mouseX <= 1235)
                 {
-                    //logic.ReturnToMenu();
+                    if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        ReturnToMenu();
+                    }
 
                 }
 
@@ -158,6 +164,20 @@ namespace FFYLife
         { 
             switch (e.Key)
             {
+                case Key.Escape:
+                    if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        //Window win = Window.GetWindow(this);
+                        //win.Close();
+                        ReturnToMenu();
+
+                        
+                    }
+
+                    break;
+                
+                
+                
                 case Key.Space :
 
                     var entity = logic.StepCalculator();
@@ -191,7 +211,23 @@ namespace FFYLife
         }
 
 
-        
+        private void ReturnToMenu()
+        {
+            MainMenu menu = new MainMenu();
+            Window win = Window.GetWindow(this);
+            menu.Show();
+            win.Close();
+        }
+
+
+        //private void GameOver()
+        //{
+        //    GameLogic.LostEncounter();
+        //    MessageBox.Show("GAME OVER!");
+        //    this.ReturnToMenu();
+        //}
+
+
 
 
     }

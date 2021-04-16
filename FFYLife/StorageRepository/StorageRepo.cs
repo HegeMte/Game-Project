@@ -9,15 +9,15 @@ using System.Xml.Linq;
 
 namespace StorageRepository
 {
-    public class StorageRepo: IStorageRepository
+    public class StorageRepo : IStorageRepository
     {
         public List<Chest> Chests { get; set; }
         public GameModel gameModel { get; set; }
 
         public StorageRepo()
         {
-           // Chests = LoadChests();
-            
+            // Chests = LoadChests();
+
         }
 
         private List<Chest> LoadChests()
@@ -33,13 +33,40 @@ namespace StorageRepository
                 c.Answers.Add(chest.Element("Answer2")?.Value);
                 c.Answers.Add(chest.Element("Answer3")?.Value);
                 c.Right = int.Parse(chest.Element("Right")?.Value);
-                
+
             }
 
             gameModel.Chests = Chests;
             //Itt a chest Propertyt kene csak beallitani,a  logic metodusokban azt kernem le 
             return Chests;
 
+        }
+
+        public void SaveHighScore(GameModel gm)
+        {
+            if (File.Exists("highscores.txt"))
+            {
+                StreamWriter sw = File.AppendText("highscores.txt");
+                sw.WriteLine(gm.Name + ";" + gm.BlockNumber);
+                sw.Close();
+            }
+            else
+            {
+                StreamWriter sw = new StreamWriter("highscores.txt");
+                sw.WriteLine(gm.Name + ";" + gm.BlockNumber);
+                sw.Close();
+            }
+        }
+
+
+        public static string[] LoadHighScores()
+        {
+            if (File.Exists("highscores.txt"))
+            {
+                return File.ReadAllLines("highscores.txt");
+            }
+
+            return null;
         }
 
 
@@ -123,31 +150,9 @@ namespace StorageRepository
                 }
 
                
-
-
-
-
-                
-
             }
             
-
-            
-
-
-
-            
-
-           
-
-
-
         }
-
-
-
-
-
 
     }
 }
