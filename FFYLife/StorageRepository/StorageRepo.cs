@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
 
@@ -69,10 +70,13 @@ namespace StorageRepository
             return null;
         }
 
+        public static string[] SavedGamesList()
+        {
+            return Directory.GetFiles("Saves");
+        }
 
 
-
-        public void SaveGame(GameModel gameModel)
+        public void SaveGame(IGameModel gameModel)
         {
             if (!Directory.Exists("Saves/"))
             {
@@ -117,41 +121,46 @@ namespace StorageRepository
 
             }
 
-            saveGameXDoc.Save("Saves/" + DateTime.Now.ToString("yyyy.MM.dd_HH.mm") + ".xml");
+            saveGameXDoc.Save("Saves/"+ gameModel.Name  + DateTime.Now.ToString("yyyy.MM.dd_HH.mm") + ".xml");
 
         }
 
 
-        public void LoadGame()
+        public GameModel LoadGame(string savefile)
         {
 
+            savefile = savefile.Substring(6);
+            savefile = "C:\\Users\\veres\\Desktop\\prog4 játék\\projekt\\oenik_prog4_2021_1_ppkmx9_isguoh\\FFYLife\\FFYLife\\bin\\Debug\\net5.0-windows\\Saves\\" + savefile;
+            XDocument save = XDocument.Load(savefile);
 
-           
-
-
-            foreach (var save in XDocument.Load("saves.xml").Descendants("Save"))
-            {
-
+            int s = int.Parse(save.Root.Element("ChestCX").Value);
 
 
-                if (int.Parse(save.Element("ChestCX").Value) == -1)
+
+
+
+                if (int.Parse(save.Root.Element("ChestCX").Value) == -1)
                 {
-                    gameModel = new GameModel(int.Parse(save.Element("w").Value), int.Parse(save.Element("h").Value), save.Element("Name").Value, int.Parse(save.Element("HeroHP").Value), int.Parse(save.Element("Damage").Value),
-                   int.Parse(save.Element("Armor").Value), int.Parse(save.Element("Cash").Value), int.Parse(save.Element("BlockNumber").Value), int.Parse(save.Element("DmgPrice").Value), int.Parse(save.Element("HPPrice").Value),
-                   int.Parse(save.Element("Monster1LVL").Value), int.Parse(save.Element("Monster1CX").Value), int.Parse(save.Element("Monster1CY").Value), int.Parse(save.Element("Monster2LVL").Value), int.Parse(save.Element("Monster2CX").Value),
-                   int.Parse(save.Element("Monster2CY").Value));
+                   GameModel  gm = new GameModel(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value),
+                   int.Parse(save.Root.Element("Armor").Value), int.Parse(save.Root.Element("Cash").Value), int.Parse(save.Root.Element("BlockNumber").Value), int.Parse(save.Root.Element("DmgPrice").Value), int.Parse(save.Root.Element("HPPrice").Value),
+                   int.Parse(save.Root.Element("Monster1LVL").Value), int.Parse(save.Root.Element("Monster1CX").Value), int.Parse(save.Root.Element("Monster1CY").Value), int.Parse(save.Root.Element("Monster2LVL").Value), int.Parse(save.Root.Element("Monster2CX").Value),
+                   int.Parse(save.Root.Element("Monster2CY").Value));
+                   return gm;
+            
                 }
                 else
                 {
-                    gameModel = new GameModel(int.Parse(save.Element("w").Value), int.Parse(save.Element("h").Value), save.Element("Name").Value, int.Parse(save.Element("HeroHP").Value), int.Parse(save.Element("Damage").Value),
-                   int.Parse(save.Element("Armor").Value), int.Parse(save.Element("Cash").Value), int.Parse(save.Element("BlockNumber").Value), int.Parse(save.Element("DmgPrice").Value), int.Parse(save.Element("HPPrice").Value),
-                   int.Parse(save.Element("Monster1LVL").Value), int.Parse(save.Element("Monster1CX").Value), int.Parse(save.Element("Monster1CY").Value), int.Parse(save.Element("Monster2LVL").Value), int.Parse(save.Element("Monster2CX").Value),
-                   int.Parse(save.Element("Monster2CY").Value),int.Parse(save.Element("ChestCX").Value), int.Parse(save.Element("ChestCY").Value), int.Parse(save.Element("ChestNum").Value));
+                     GameModel gm = new GameModel(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value),
+                      int.Parse(save.Root.Element("Armor").Value), int.Parse(save.Root.Element("Cash").Value), int.Parse(save.Root.Element("BlockNumber").Value), int.Parse(save.Root.Element("DmgPrice").Value), int.Parse(save.Root.Element("HPPrice").Value),
+                           int.Parse(save.Root.Element("Monster1LVL").Value), int.Parse(save.Root.Element("Monster1CX").Value), int.Parse(save.Root.Element("Monster1CY").Value), int.Parse(save.Root.Element("Monster2LVL").Value), int.Parse(save.Root.Element("Monster2CX").Value),
+                        int.Parse(save.Root.Element("Monster2CY").Value), int.Parse(save.Root.Element("ChestCX").Value), int.Parse(save.Root.Element("ChestCY").Value), int.Parse(save.Root.Element("ChestNum").Value));
+
+                   return gm;
+
                 }
 
-               
-            }
-            
+
+
         }
 
     }

@@ -26,13 +26,10 @@ namespace FFYLife
         Drawing oldShop;
         Drawing oldBlocks;
         Drawing oldHero;
-        Drawing oldMonsters;
-        Drawing buttons;
+       
         Pen stroke = new Pen(Brushes.Black , 3);
         Pen Is = new Pen(Brushes.White,2);
 
-        Point oldMonsterPosition ;
-        
 
 
         public Drawing BuildDrawing()

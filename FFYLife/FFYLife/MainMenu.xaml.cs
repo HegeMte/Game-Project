@@ -37,11 +37,17 @@ namespace FFYLife
 
         private void LoadGameBtnClick(object sender, RoutedEventArgs e)
         {
-
+            LoadAGameWindow win = new LoadAGameWindow();
+            win.Show();
         }
 
         private void HighscoresBtnClick(object sender, RoutedEventArgs e)
         {
+            HighScoreWindow win = new HighScoreWindow();
+            if (win.HighScores != null)
+            {
+                win.Show();
+            }
 
         }
 

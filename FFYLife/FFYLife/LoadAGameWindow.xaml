@@ -1,0 +1,14 @@
+﻿<Window x:Class="FFYLife.LoadAGameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FFYLife"
+        mc:Ignorable="d"
+        Title="Load A Game" Height="459" Width="415">
+    <Grid >
+        <ListBox x:Name="Listbox"/>
+        <Button Height="25" Width="122" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="261,0,0,55" Click="LoadGameClick" Focusable="True">Continue this game</Button>
+        <Button Height="25" Width="60" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,306,55" Click="CancelClick" IsCancel="True">Back</Button>
+    </Grid>
+</Window>

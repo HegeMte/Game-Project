@@ -24,6 +24,7 @@ namespace FFYLife
         private double Difference = 130;
         DispatcherTimer OneStepTimer;
         static public string PlayerName = "teszt";
+        static public string SaveFile;
 
         public Control()
         {
@@ -35,7 +36,16 @@ namespace FFYLife
 
 
             repo = new StorageRepo();
-            gameModel = new GameModel(1300,800,PlayerName);
+            ;
+            if (SaveFile == null)
+            {
+                gameModel = new GameModel(1300, 800, PlayerName);
+            }
+            else
+            {
+               gameModel =   repo.LoadGame(SaveFile);
+            }
+            
             
             logic = new GameLogicc(gameModel, repo);
             renderer = new Renderer(gameModel);
@@ -142,8 +152,9 @@ namespace FFYLife
                 }
                 if (mouseY >= 650 && mouseY <= 750 && mouseX >= 1035 && mouseX <= 1235)
                 {
-                    if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    if (MessageBox.Show("Are you sure you want to save and quit?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
+                        repo.SaveGame(gameModel);
                         ReturnToMenu();
                     }
 

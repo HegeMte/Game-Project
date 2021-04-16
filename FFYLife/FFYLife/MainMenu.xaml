@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FFYLife"
         mc:Ignorable="d"
-        Title="MainMenu" Height="600" Width="800">
+        Title="Fight For Your Life" Height="600" Width="800">
     <Grid>
         <StackPanel>
             <Button Height="100" Width="400" Margin="20" Click="NewGameBtnClick">New Game</Button>

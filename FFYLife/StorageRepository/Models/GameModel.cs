@@ -105,18 +105,20 @@ namespace StorageRepository.Models
 
             this.Name = Name;
 
+
+            Blocks = new List<OneBlock>();
             for (int i = 0; i < NumBlocks; i++)
             {
-                Blocks.Add(new OneBlock(w / NumBlocks, h / 4));
+                Blocks.Add(new OneBlock(i * GameDisplayWidth / NumBlocks, h / 2));
             }
 
-            Hero = new OneHero(w / 5, h / 2, HeroHp, DMG, Armor, Cash);
+            Hero = new OneHero(-50, 410, HeroHp, DMG, Armor, Cash);
 
             this.BlockNumber = blockNumber;
             this.DmgPrice = DmgPrice;
             this.HPPrice = HpPrice;
 
-
+            Monsters = new List<OneMonster>();
             Monsters.Add(new OneMonster(monster1CX, monster1CY, monster1Lvl));
             Monsters.Add(new OneMonster(monster2CX, monster2CY, monster2Lvl));
 
@@ -129,16 +131,17 @@ namespace StorageRepository.Models
 
             this.Name = Name;
 
+            Blocks = new List<OneBlock>();
             for (int i = 0; i < NumBlocks; i++)
             {
-                Blocks.Add(new OneBlock(w / NumBlocks, h / 4));
+                Blocks.Add(new OneBlock(i * GameDisplayWidth / NumBlocks, h / 2));
             }
 
-            Hero = new OneHero(w / 5, h / 2, HeroHp, DMG, Armor, Cash);
+            Hero = new OneHero(-50, 410, HeroHp, DMG, Armor, Cash);
 
-            Chest c = Chests[chestNum];
-            c.CX = chestCX;
-            c.CY = chestCy;
+            //Chest c = Chests[chestNum];
+            //c.CX = chestCX;
+            //c.CY = chestCy;
 
 
 
@@ -146,6 +149,7 @@ namespace StorageRepository.Models
             this.DmgPrice = DmgPrice;
             this.HPPrice = HpPrice;
 
+            Monsters = new List<OneMonster>();
             Monsters.Add(new OneMonster(monster1CX, monster1CY, monster1Lvl));
             Monsters.Add(new OneMonster(monster2CX, monster2CY, monster2Lvl));
 
