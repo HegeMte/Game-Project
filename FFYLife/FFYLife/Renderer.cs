@@ -151,7 +151,7 @@ namespace FFYLife
         {
            
             
-            ImageDrawing hero = new ImageDrawing(GetImage("hero.png"), new Rect(model.Hero.CX, model.Hero.CY, 200, 200));
+            ImageDrawing hero = new ImageDrawing(GetImage("bigchungus.png"), new Rect(model.Hero.CX, model.Hero.CY - 170, 200,400));
 
             //Geometry g = new RectangleGeometry(new Rect(model.Hero.CX, model.Hero.CY, 40, 200));
             //oldHero = new GeometryDrawing(Brushes.Yellow, stroke, g);

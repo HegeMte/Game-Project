@@ -46,10 +46,13 @@ namespace FFYLife
 
             if (Listbox.SelectedItem != null)
             {
+                ;
                 Control.SaveFile = Listbox.SelectedItem.ToString();
                 MainWindow mw = new MainWindow();
                 mw.Show();
                 this.Close();
+                
+
             }
             else
             {
@@ -60,8 +63,9 @@ namespace FFYLife
 
         private void CancelClick(object sender, RoutedEventArgs e)
         {
+            MainMenu mm = new MainMenu();
+            mm.Show();
             this.Close();
-
         }
     }
 }

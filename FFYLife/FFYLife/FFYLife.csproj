@@ -14,6 +14,7 @@
     <None Remove="Images\armorPotion.png" />
     <None Remove="Images\background.jpg" />
     <None Remove="Images\background2.jfif" />
+    <None Remove="Images\bigchungus.png" />
     <None Remove="Images\block.png" />
     <None Remove="Images\hearth.png" />
     <None Remove="Images\hero.png" />
@@ -25,6 +26,7 @@
     <None Remove="Images\potion.png" />
     <None Remove="Images\questions.png" />
     <None Remove="Images\ringBackground.gif" />
+    <None Remove="Images\shrek.png" />
     <None Remove="Images\sword.png" />
     <None Remove="Images\sword1.png" />
     <None Remove="Images\sword2.png" />
@@ -41,6 +43,8 @@
     <EmbeddedResource Include="Images\armor4.png" />
     <EmbeddedResource Include="Images\armorPotion.png" />
     <EmbeddedResource Include="Images\background2.jfif" />
+    <EmbeddedResource Include="Images\bigchungus.png" />
+    <EmbeddedResource Include="Images\shrek.png" />
     <EmbeddedResource Include="Images\terraira.jfif" />
     <EmbeddedResource Include="Images\terraria.png" />
     <Resource Include="Images\background.jpg" />

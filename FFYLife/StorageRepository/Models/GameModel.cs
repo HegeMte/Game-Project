@@ -98,7 +98,7 @@ namespace StorageRepository.Models
 
         }
 
-        public GameModel(double w, double h, string Name, int HeroHp, int DMG, int Armor, int Cash, int blockNumber, int DmgPrice, int HpPrice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY) //For the reload without the chest
+        public GameModel(double w, double h, string Name, int HeroHp, int DMG, int Armor,int ArmorPrice, int Cash, int blockNumber, int DmgPrice, int HpPrice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY) //For the reload without the chest
         {
             GameDisplayHeight = h;
             GameDisplayWidth = w;
@@ -124,7 +124,7 @@ namespace StorageRepository.Models
 
         }
 
-        public GameModel(double w, double h, string Name, int HeroHp, int DMG, int Armor, int Cash, int blockNumber, int DmgPrice, int HpPrice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY, int chestCX, int chestCy, int chestNum) //For the reload with the chest
+        public GameModel(double w, double h, string Name, int HeroHp, int DMG, int Armor, int ArmorPrice, int Cash, int blockNumber, int DmgPrice, int HpPrice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY, int chestCX, int chestCy, int chestNum) //For the reload with the chest
         {
             GameDisplayHeight = h;
             GameDisplayWidth = w;
@@ -148,6 +148,7 @@ namespace StorageRepository.Models
             this.BlockNumber = blockNumber;
             this.DmgPrice = DmgPrice;
             this.HPPrice = HpPrice;
+            this.ArmorPrice = ArmorPrice;
 
             Monsters = new List<OneMonster>();
             Monsters.Add(new OneMonster(monster1CX, monster1CY, monster1Lvl));

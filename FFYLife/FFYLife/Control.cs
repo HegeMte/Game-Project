@@ -128,7 +128,7 @@ namespace FFYLife
                 {
                     if (mouseX >= 825 && mouseX <= 925)
                     {
-                        if (!logic.BuyDmg())
+                        if (logic.BuyDmg())
                         {
                             MessageBox.Show("You don't have enough vbuck , ask mommy to buy some more!");
                         }

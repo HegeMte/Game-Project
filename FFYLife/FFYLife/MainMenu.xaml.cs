@@ -43,6 +43,8 @@ namespace FFYLife
         {
             LoadAGameWindow win = new LoadAGameWindow();
             win.Show();
+            this.Close();
+           
         }
 
         private void HighscoresBtnClick(object sender, RoutedEventArgs e)
