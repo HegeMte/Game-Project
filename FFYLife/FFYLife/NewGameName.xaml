@@ -3,12 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:FFYLife"
         mc:Ignorable="d"
         Title="New Game" Height="300" Width="358">
-    <Grid Margin="0,0,10,9" >
-        <Label VerticalAlignment="Top" Margin="30,72,30,0">Nickname?</Label>
-        <TextBox x:Name="NameTextBox" VerticalAlignment="Top" Focusable="True" Margin="66,130,134,0" Height="19" Text="name here"/>
-        <Button Height="25" Width="78" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="222,0,0,63" Click="StartGameClick" IsDefault="True">Start game</Button>
+    <Grid Background="Beige" Margin="0,0,0,-1" >
+      
+        <Label TextElement.FontSize="30" VerticalAlignment="Top" Margin="30,72,79,0" Height="53">Nickname?</Label>
+        <TextBox x:Name="NameTextBox" TextElement.FontSize="20" VerticalAlignment="Top" Focusable="True" Margin="26,182,161,0" Height="30" BorderThickness="4" BorderBrush="Brown" />
+        <Button Height="30" Width="78" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="245,0,0,73" Click="StartGameClick" IsDefault="True">Start game</Button>
     </Grid>
 </Window>

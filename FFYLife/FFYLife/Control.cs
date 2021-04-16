@@ -25,7 +25,7 @@ namespace FFYLife
         DispatcherTimer OneStepTimer;
         static public string PlayerName = "teszt";
         static public string SaveFile;
-
+        
         public Control()
         {
             Loaded += Control_Loaded;
@@ -60,10 +60,17 @@ namespace FFYLife
             //MonsterstepTimer.Start();
 
 
+
             if (win != null)
             {
                 win.MouseLeftButtonDown += Win_MouseLeftButtonDown;
                 win.KeyDown += Win_KeyDown;
+            }
+
+
+            if (true)
+            {
+
             }
 
 
@@ -128,26 +135,36 @@ namespace FFYLife
                 {
                     if (mouseX >= 825 && mouseX <= 925)
                     {
-                        if (logic.BuyDmg())
+                        if (!logic.BuyDmg())
                         {
                             MessageBox.Show("You don't have enough vbuck , ask mommy to buy some more!");
                         }
+                        
                     }
                     else if (mouseX >= 1150 && mouseX <= 1250)
                     {
-                        if (!logic.BuyHP())
+                        if (logic.BuyHP() == 1)
                         {
                             MessageBox.Show("You don't have enough vbuck , ask mommy to buy some more!");
+                        }
+                        else if (logic.BuyHP() == 2)
+                        {
+                            MessageBox.Show("You are already at full HP");
                         }
 
                     }
                 }
                 if (mouseY >= 730 && mouseY <= 780 && mouseX >= 825 && mouseX <= 925)
                 {
-                    if (!logic.BuyArmor())
+                    if (logic.BuyArmor() == 1)
                     {
                         MessageBox.Show("You don't have enough vbuck , ask mommy to buy some more!");
                     }
+                    else if (logic.BuyArmor() == 2)
+                    {
+                        MessageBox.Show("You are already at full Armor");
+                    }
+                    
 
                 }
                 if (mouseY >= 650 && mouseY <= 750 && mouseX >= 1035 && mouseX <= 1235)

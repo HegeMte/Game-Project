@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace FFYLife
 {
     /// <summary>
@@ -25,6 +26,8 @@ namespace FFYLife
             this.NameTextBox.Focus();
         }
 
+
+        
         private void StartGameClick(object sender, RoutedEventArgs e)
         {
             Control.PlayerName = this.NameTextBox.Text;

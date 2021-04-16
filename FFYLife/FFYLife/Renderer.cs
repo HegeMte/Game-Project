@@ -151,7 +151,7 @@ namespace FFYLife
         {
            
             
-            ImageDrawing hero = new ImageDrawing(GetImage("bigchungus.png"), new Rect(model.Hero.CX, model.Hero.CY - 170, 200,400));
+            ImageDrawing hero = new ImageDrawing(GetImage("shrek.png"), new Rect(model.Hero.CX, model.Hero.CY - 170, 200,400));
 
             //Geometry g = new RectangleGeometry(new Rect(model.Hero.CX, model.Hero.CY, 40, 200));
             //oldHero = new GeometryDrawing(Brushes.Yellow, stroke, g);
@@ -206,7 +206,7 @@ namespace FFYLife
         {
             DrawingGroup dg = new DrawingGroup();
 
-            GeometryDrawing HPButn = new GeometryDrawing(Brushes.LightGray,stroke, new RectangleGeometry(new Rect(1150,530, 100, 50)));
+            GeometryDrawing HPButn = new GeometryDrawing(Brushes.LightGray,stroke, new RectangleGeometry(new Rect(1150,530, 100, 50 )));
 
             FormattedText HPText = new FormattedText(model.HPPrice.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 50, Brushes.Black);
             HPText.TextAlignment = TextAlignment.Center;
@@ -308,17 +308,20 @@ namespace FFYLife
             //{
                 DrawingGroup dg = new DrawingGroup();
 
-                GeometryDrawing Background = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(650, 400, model.GameDisplayWidth, model.GameDisplayHeight / 2)));
-                GeometryDrawing LeftRec = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(650, 400, model.GameDisplayWidth / 2, model.GameDisplayHeight / 4)));
-                GeometryDrawing RightRec = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(975, 600, model.GameDisplayWidth / 2, model.GameDisplayHeight / 4)));
+            ////GeometryDrawing Background = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(650, 400, model.GameDisplayWidth, model.GameDisplayHeight / 2)));
+            //GeometryDrawing LeftRec = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(650, 400, model.GameDisplayWidth / 2, model.GameDisplayHeight / 4)));
+            //GeometryDrawing RightRec = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(975, 600, model.GameDisplayWidth / 2, model.GameDisplayHeight / 4)));
 
-                ImageDrawing anvilPic = new ImageDrawing(GetImage("anvil.png"), new Rect(650, 400, 170, 170));
+            ImageDrawing background = new ImageDrawing(GetImage("shopBackground.jpg"), new Rect(650, 400, 650, 400));
+
+            ImageDrawing anvilPic = new ImageDrawing(GetImage("anvil.png"), new Rect(650, 400, 170, 170));
                 ImageDrawing potionPic = new ImageDrawing(GetImage("potion.png"), new Rect(950, 400, 170, 170));
                 ImageDrawing armorPotionPic = new ImageDrawing(GetImage("armorPotion.png"), new Rect(650, 600, 170, 170));
 
-                dg.Children.Add(Background);
-                dg.Children.Add(LeftRec);
-                dg.Children.Add(RightRec);
+                dg.Children.Add(background);
+                //dg.Children.Add(LeftRec);
+                //dg.Children.Add(RightRec);
+
                 dg.Children.Add(GetButtons());
                 dg.Children.Add(anvilPic);
                 dg.Children.Add(potionPic);

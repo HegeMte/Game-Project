@@ -117,6 +117,8 @@ namespace StorageRepository.Models
             this.BlockNumber = blockNumber;
             this.DmgPrice = DmgPrice;
             this.HPPrice = HpPrice;
+            this.ArmorPrice = ArmorPrice;
+
 
             Monsters = new List<OneMonster>();
             Monsters.Add(new OneMonster(monster1CX, monster1CY, monster1Lvl));

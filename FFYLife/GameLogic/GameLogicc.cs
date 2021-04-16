@@ -79,7 +79,7 @@ namespace GameLogic
 
 
 
-        public bool BuyDmg()
+        public bool  BuyDmg()
         {
 
             if (this.model.Hero.Cash >= this.model.DmgPrice)
@@ -95,31 +95,48 @@ namespace GameLogic
 
 
 
-        public bool BuyHP()
+        public int BuyHP()
         {
 
-            if (this.model.Hero.Cash >= this.model.HPPrice  && this.model.Hero.Hp <10)
+            if (this.model.Hero.Cash >= this.model.HPPrice  && this.model.Hero.Hp < 10)
             {
                 this.model.Hero.Hp += 1;
                 this.model.Hero.Cash -= this.model.HPPrice;
                 this.model.HPPrice += 10;
-                return true;
+                return 0;
             }
-            return false;
+            else if (this.model.Hero.Cash < this.model.HPPrice)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
+
+            
 
         }
 
-        public bool BuyArmor()
+        public int BuyArmor()
         {
             if (this.model.Hero.Cash >= this.model.HPPrice && this.model.Hero.Armor < 4)
             {
                 this.model.Hero.Armor += 1;
                 this.model.Hero.Cash -= this.model.ArmorPrice;
                 this.model.ArmorPrice += 10;
-                
-                return true;
+
+                return 0;
             }
-            return false;
+            else if (this.model.Hero.Cash < this.model.ArmorPrice)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
+
         }
 
 

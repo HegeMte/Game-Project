@@ -26,6 +26,7 @@
     <None Remove="Images\potion.png" />
     <None Remove="Images\questions.png" />
     <None Remove="Images\ringBackground.gif" />
+    <None Remove="Images\shopBackground.jpg" />
     <None Remove="Images\shrek.png" />
     <None Remove="Images\sword.png" />
     <None Remove="Images\sword1.png" />
@@ -44,6 +45,7 @@
     <EmbeddedResource Include="Images\armorPotion.png" />
     <EmbeddedResource Include="Images\background2.jfif" />
     <EmbeddedResource Include="Images\bigchungus.png" />
+    <EmbeddedResource Include="Images\shopBackground.jpg" />
     <EmbeddedResource Include="Images\shrek.png" />
     <EmbeddedResource Include="Images\terraira.jfif" />
     <EmbeddedResource Include="Images\terraria.png" />
@@ -64,6 +66,10 @@
     <EmbeddedResource Include="Images\sword4.png" />
     <EmbeddedResource Include="Images\sword5.png" />
     <EmbeddedResource Include="Images\vbuck.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
