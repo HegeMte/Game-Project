@@ -13,6 +13,7 @@
     <None Remove="Images\armor4.png" />
     <None Remove="Images\armorPotion.png" />
     <None Remove="Images\background.jpg" />
+    <None Remove="Images\background2.jfif" />
     <None Remove="Images\block.png" />
     <None Remove="Images\hearth.png" />
     <None Remove="Images\hero.png" />
@@ -30,6 +31,8 @@
     <None Remove="Images\sword3.png" />
     <None Remove="Images\sword4.png" />
     <None Remove="Images\sword5.png" />
+    <None Remove="Images\terraira.jfif" />
+    <None Remove="Images\terraria.png" />
     <None Remove="Images\vbuck.png" />
   </ItemGroup>
 
@@ -37,7 +40,10 @@
     <EmbeddedResource Include="Images\anvil.png" />
     <EmbeddedResource Include="Images\armor4.png" />
     <EmbeddedResource Include="Images\armorPotion.png" />
-    <EmbeddedResource Include="Images\background.jpg" />
+    <EmbeddedResource Include="Images\background2.jfif" />
+    <EmbeddedResource Include="Images\terraira.jfif" />
+    <EmbeddedResource Include="Images\terraria.png" />
+    <Resource Include="Images\background.jpg" />
     <EmbeddedResource Include="Images\block.png" />
     <EmbeddedResource Include="Images\hearth.png" />
     <EmbeddedResource Include="Images\hero.png" />

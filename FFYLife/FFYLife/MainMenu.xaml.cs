@@ -22,6 +22,10 @@ namespace FFYLife
         public MainMenu()
         {
             InitializeComponent();
+            //ImageBrush myBrush = new ImageBrush();
+            //myBrush.ImageSource =
+            //    new BitmapImage(new Uri("C:\\Users\\veres\\Desktop\\prog4 játék\\projekt\\oenik_prog4_2021_1_ppkmx9_isguoh\\FFYLife\\FFYLife\\Images\\background2.jfif", UriKind.Absolute));
+            //this.Background = myBrush;
         }
 
         private void NewGameBtnClick(object sender, RoutedEventArgs e)
