@@ -1,6 +1,6 @@
 ﻿using GameLogic;
 using StorageRepository;
-using StorageRepository.Models;
+using GameModel.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +42,7 @@ namespace FFYLife
             ;
             if (SaveFile == null)
             {
-                gameModel = new GameModel(1300, 800, PlayerName);
+                gameModel = new GameModel.Models.GameModel(1300, 800, PlayerName);
             }
             else
             {
@@ -246,12 +246,12 @@ namespace FFYLife
                     double destination =   this.gameModel.Monsters[0].CX - Difference;
                     OneStepTimer.Tick += delegate
                     {
-                        if (logic.FindGameItem(entity).CX == 195)
+                        if (logic.FindGameItem(entity).CX == 196)
                         {
-                            
+
                             OneStepTimer.Stop();
-                            
-                           
+
+
                             return;
                         }
 

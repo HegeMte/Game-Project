@@ -1,5 +1,5 @@
 ﻿
-using StorageRepository.Models;
+using GameModel.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +12,8 @@ namespace StorageRepository
     {
         void SaveGame(IGameModel gameModel);
 
-        GameModel LoadGame(string savefile);
+        GameModel.Models.GameModel LoadGame(string savefile);
         List<Chest> Chests { get; set; }
-        GameModel gameModel { get; set; }
+        GameModel.Models.GameModel gameModel { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using StorageRepository.Models;
+﻿using GameModel.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +13,7 @@ namespace StorageRepository
     public class StorageRepo : IStorageRepository
     {
         public List<Chest> Chests { get; set; }
-        public GameModel gameModel { get; set; }
+        public GameModel.Models.GameModel gameModel { get; set; }
 
         public StorageRepo()
         {
@@ -43,7 +43,7 @@ namespace StorageRepository
 
         }
 
-        public void SaveHighScore(GameModel gm)
+        public void SaveHighScore(GameModel.Models.GameModel gm)
         {
             if (File.Exists("highscores.txt"))
             {
@@ -127,11 +127,11 @@ namespace StorageRepository
         }
 
 
-        public GameModel LoadGame(string savefile)
+        public GameModel.Models.GameModel LoadGame(string savefile)
         {
 
             savefile = savefile.Substring(6);
-            savefile = "C:\\Users\\veres\\Desktop\\prog4 játék\\projekt\\oenik_prog4_2021_1_ppkmx9_isguoh\\FFYLife\\FFYLife\\bin\\Debug\\net5.0-windows\\Saves\\" + savefile;
+            savefile = "Saves\\" + savefile;
             XDocument save = XDocument.Load(savefile);
 
             int s = int.Parse(save.Root.Element("ChestCX").Value);
@@ -142,7 +142,7 @@ namespace StorageRepository
 
                 if (int.Parse(save.Root.Element("ChestCX").Value) == -1)
                 {
-                   GameModel  gm = new GameModel(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value),
+                GameModel.Models.GameModel  gm = new GameModel.Models.GameModel(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value),
                    int.Parse(save.Root.Element("Armor").Value), int.Parse(save.Root.Element("ArmorPrice").Value), int.Parse(save.Root.Element("Cash").Value), int.Parse(save.Root.Element("BlockNumber").Value), int.Parse(save.Root.Element("DmgPrice").Value), int.Parse(save.Root.Element("HPPrice").Value),
                    int.Parse(save.Root.Element("Monster1LVL").Value), int.Parse(save.Root.Element("Monster1CX").Value), int.Parse(save.Root.Element("Monster1CY").Value), int.Parse(save.Root.Element("Monster2LVL").Value), int.Parse(save.Root.Element("Monster2CX").Value),
                    int.Parse(save.Root.Element("Monster2CY").Value));
@@ -151,7 +151,7 @@ namespace StorageRepository
                 }
                 else
                 {
-                     GameModel gm = new GameModel(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value),
+                GameModel.Models.GameModel gm = new GameModel.Models.GameModel(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value),
                       int.Parse(save.Root.Element("Armor").Value), int.Parse(save.Root.Element("ArmorPrice").Value), int.Parse(save.Root.Element("Cash").Value), int.Parse(save.Root.Element("BlockNumber").Value), int.Parse(save.Root.Element("DmgPrice").Value), int.Parse(save.Root.Element("HPPrice").Value),
                            int.Parse(save.Root.Element("Monster1LVL").Value), int.Parse(save.Root.Element("Monster1CX").Value), int.Parse(save.Root.Element("Monster1CY").Value), int.Parse(save.Root.Element("Monster2LVL").Value), int.Parse(save.Root.Element("Monster2CX").Value),
                         int.Parse(save.Root.Element("Monster2CY").Value), int.Parse(save.Root.Element("ChestCX").Value), int.Parse(save.Root.Element("ChestCY").Value), int.Parse(save.Root.Element("ChestNum").Value));

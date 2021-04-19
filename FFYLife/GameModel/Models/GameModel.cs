@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace StorageRepository.Models
+namespace GameModel.Models
 {
     public class GameModel :IGameModel
     {

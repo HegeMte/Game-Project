@@ -1,6 +1,6 @@
 ﻿
 using StorageRepository;
-using StorageRepository.Models;
+using GameModel.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -176,16 +176,19 @@ namespace GameLogic
             model.Monsters[1] = copy[1];
             model.Monsters[0] = copy[1];*/
 
-            if (monsters[0].CX < 195) 
-            {
-                monsters[0] = monsters[1];
-                monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5 - 86, model.GameDisplayHeight / 4 * 4 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10)));
-            }
-            else
-            {
-                monsters[0].CX -= 1;
-                monsters[1].CX -= 1;
-            }
+            
+                if (monsters[0].CX < 195)
+                {
+                    monsters[0] = monsters[1];
+                    monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5 - 86, model.GameDisplayHeight / 4 * 4 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10)));
+                }
+                else
+                {
+                    monsters[0].CX -= 2;
+                    monsters[1].CX -= 2;
+                }
+           
+            
         }
 
 

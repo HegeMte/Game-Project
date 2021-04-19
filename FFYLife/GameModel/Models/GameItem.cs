@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Media;
 
-namespace StorageRepository.Models
+namespace GameModel.Models
 {
     public abstract class GameItem
     {

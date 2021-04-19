@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace StorageRepository.Models
+namespace GameModel.Models
 {
     public interface IUnit
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StorageRepository.Models
+namespace GameModel.Models
 {
     public interface IGameModel
     {

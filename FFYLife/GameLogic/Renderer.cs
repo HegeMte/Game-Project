@@ -1,4 +1,4 @@
-﻿using StorageRepository.Models;
+﻿using GameModel.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

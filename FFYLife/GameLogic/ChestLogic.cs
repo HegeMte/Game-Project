@@ -1,7 +1,7 @@
 ﻿
 
 using StorageRepository;
-using StorageRepository.Models;
+using GameModel.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace GameLogic
 {
     public class ChestLogic : FrameworkElement
     {
-        GameModel gm = new GameModel();
+        GameModel.Models.GameModel gm = new GameModel.Models.GameModel();
 
 
         StorageRepo SavedGame = new StorageRepo();
