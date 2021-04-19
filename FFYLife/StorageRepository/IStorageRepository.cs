@@ -13,7 +13,7 @@ namespace StorageRepository
         void SaveGame(IGameModel gameModel);
 
         GameModel.Models.GameModel LoadGame(string savefile);
-        List<Chest> Chests { get; set; }
+        List<Chest> ChestList { get; set; }
         GameModel.Models.GameModel gameModel { get; set; }
     }
 }

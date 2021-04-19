@@ -16,6 +16,7 @@
     <None Remove="Images\background2.jfif" />
     <None Remove="Images\bigchungus.png" />
     <None Remove="Images\block.png" />
+    <None Remove="Images\chest.png" />
     <None Remove="Images\hearth.png" />
     <None Remove="Images\hero.png" />
     <None Remove="Images\hero1.png" />
@@ -45,6 +46,7 @@
     <EmbeddedResource Include="Images\armorPotion.png" />
     <EmbeddedResource Include="Images\background2.jfif" />
     <EmbeddedResource Include="Images\bigchungus.png" />
+    <EmbeddedResource Include="Images\chest.png" />
     <EmbeddedResource Include="Images\shopBackground.jpg" />
     <EmbeddedResource Include="Images\shrek.png" />
     <EmbeddedResource Include="Images\terraira.jfif" />

@@ -16,7 +16,7 @@ namespace GameModel.Models
             this.CY = cy;
             DX = 130;
 
-            Hp = 10;
+            Hp = 100;
             AttackDMG = 1;
             AttackSpeed = 1;
             Armor = 4;

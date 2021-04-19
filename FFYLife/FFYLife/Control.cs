@@ -80,7 +80,16 @@ namespace FFYLife
                 EnemyAttackTimer = new DispatcherTimer();
                 EnemyAttackTimer.Tick += delegate
                 {
-                    logic.MonsterAttack();
+                    
+                    if (gameModel.GameOver)
+                    {
+                        GameOver();
+                        EnemyAttackTimer.Stop();
+                    }
+                    else
+                    {
+                        logic.MonsterAttack();
+                    }
                     InvalidateVisual();
 
                 };
@@ -290,6 +299,14 @@ namespace FFYLife
             Window win = Window.GetWindow(this);
             menu.Show();
             win.Close();
+        }
+
+
+        private void GameOver()
+        {
+            MessageBox.Show("Game over dickhole!");
+            ReturnToMenu();
+
         }
 
 

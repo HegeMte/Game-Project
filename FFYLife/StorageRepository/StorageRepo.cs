@@ -12,12 +12,21 @@ namespace StorageRepository
 {
     public class StorageRepo : IStorageRepository
     {
-        public List<Chest> Chests { get; set; }
+        public List<Chest> ChestList { get; set; }
         public GameModel.Models.GameModel gameModel { get; set; }
 
         public StorageRepo()
         {
             // Chests = LoadChests();
+            ChestList = new List<Chest>();
+            ChestList.Add(new Chest() { Question = "Elérjük Péter Árpádot?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 1 });
+            //Chest c1 = new Chest();
+            //c1.Question = "Elérjük Péter Árpádot?";
+            ChestList.Add(new Chest() { Question = "Mennyi 5+5?", Answers = new List<string>() { "10", "15", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
+            //Chest c1 = new Chest();
+            ChestList.Add(new Chest() { Question = "Dua Lipa 10/?", Answers = new List<string>() { "10", "2", "11", "100" }, RewardCash = 10, Right = 3 });
+            ChestList.Add(new Chest() { Question = "Meglesz a prog4?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
+            ChestList.Add(new Chest() { Question = "Buta vagy?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
 
         }
 

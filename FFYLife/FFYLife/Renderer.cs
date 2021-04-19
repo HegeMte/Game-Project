@@ -86,7 +86,11 @@ namespace FFYLife
                 dg.Children.Add(monsterPic);
             }
 
-            
+            if (model.ChestIsOn)
+            {
+                ImageDrawing chestpic = new ImageDrawing(GetImage($"chest.png"), new Rect(model.Chest.CX,  model.Chest.CY, 60, 100));
+                dg.Children.Add(chestpic);
+            }
 
 
             /*

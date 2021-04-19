@@ -41,7 +41,7 @@ namespace GameModel.Models
         public double UIHeight { get; set; }
         public double UIWidth { get; set; }
 
-        
+        public bool  GameOver { get; set; }
 
         public GameModel(double w, double h , string Name )
         {
@@ -58,6 +58,8 @@ namespace GameModel.Models
             GameDisplayWidth = w / 2;
 
             this.Name = Name;
+
+
 
 
             IsInFight = false;

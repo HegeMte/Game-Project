@@ -20,7 +20,7 @@ namespace GameLogic
         {
             this.model = model;
             this.repo = repository;
-
+            model.Chests = repo.ChestList;
         }
 
 
@@ -40,6 +40,11 @@ namespace GameLogic
                 else
                 {
                     model.Hero.Hp -= model.Monsters[0].AttackDMG;
+                    if (model.Hero.Hp <= 0)
+                    {
+                        model.GameOver = true;
+                    }
+
                 }
             }
               
@@ -160,7 +165,13 @@ namespace GameLogic
         {
             
                 monsters[0] = monsters[1];
-                monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5 , model.GameDisplayHeight / 4 * 4 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10) +1 ));
+
+                 ChestCreate();
+                 
+               
+                      monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5, model.GameDisplayHeight / 4 * 4 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10) + 1));
+                
+                 
                 model.IsInFight = false;
           
         }
@@ -219,9 +230,11 @@ namespace GameLogic
             {
                 //model.Chest = new Chest(model.GameDisplayWidth / 5, model.GameDisplayHeight / 2);
                 model.Chest = new Chest();
-                model.Chest = model.Chests[r.Next(0, model.Chests.Count-1)];
-                model.Chest.CX = model.GameDisplayWidth / 5 *4 + 65;
+                model.Chest = repo.ChestList[0];
+                model.Chest.CX = 195;
                 model.Chest.CY = model.GameDisplayHeight / 2;
+
+                model.ChestIsOn = true;
                 
             }
 
