@@ -26,11 +26,10 @@ namespace FFYLife
         Drawing oldShop;
         Drawing oldBlocks;
         Drawing oldHero;
-        Drawing oldMonsters;
-        Drawing buttons;
+       
         Pen stroke = new Pen(Brushes.Black , 3);
-        Point oldMonsterPosition ;
-        
+        Pen Is = new Pen(Brushes.White,2);
+
 
 
         public Drawing BuildDrawing()
@@ -152,7 +151,7 @@ namespace FFYLife
         {
            
             
-            ImageDrawing hero = new ImageDrawing(GetImage("hero.png"), new Rect(model.Hero.CX, model.Hero.CY, 200, 200));
+            ImageDrawing hero = new ImageDrawing(GetImage("shrek.png"), new Rect(model.Hero.CX, model.Hero.CY - 170, 200,400));
 
             //Geometry g = new RectangleGeometry(new Rect(model.Hero.CX, model.Hero.CY, 40, 200));
             //oldHero = new GeometryDrawing(Brushes.Yellow, stroke, g);
@@ -189,9 +188,9 @@ namespace FFYLife
             ;
             if (oldGameplayBackground == null)
             {
-
-                oldGameplayBackground = new ImageDrawing(GetImage("background.jpg"), new Rect(  0, 0, model.GameDisplayWidth, model.GameDisplayHeight));
-
+                
+                oldGameplayBackground = new ImageDrawing(GetImage("ringBackground.gif"), new Rect(  0, 0, model.GameDisplayWidth, model.GameDisplayHeight));
+                
                 //Geometry g = new RectangleGeometry(new Rect(0,0,model.GameDisplayWidth,model.GameDisplayHeight));
                 //oldGameplayBackground = new GeometryDrawing(Brushes.LightBlue , null , g);
             }
@@ -207,7 +206,7 @@ namespace FFYLife
         {
             DrawingGroup dg = new DrawingGroup();
 
-            GeometryDrawing HPButn = new GeometryDrawing(Brushes.LightGray,stroke, new RectangleGeometry(new Rect(1150,530, 100, 50)));
+            GeometryDrawing HPButn = new GeometryDrawing(Brushes.LightGray,stroke, new RectangleGeometry(new Rect(1150,530, 100, 50 )));
 
             FormattedText HPText = new FormattedText(model.HPPrice.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 50, Brushes.Black);
             HPText.TextAlignment = TextAlignment.Center;
@@ -309,17 +308,20 @@ namespace FFYLife
             //{
                 DrawingGroup dg = new DrawingGroup();
 
-                GeometryDrawing Background = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(650, 400, model.GameDisplayWidth, model.GameDisplayHeight / 2)));
-                GeometryDrawing LeftRec = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(650, 400, model.GameDisplayWidth / 2, model.GameDisplayHeight / 4)));
-                GeometryDrawing RightRec = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(975, 600, model.GameDisplayWidth / 2, model.GameDisplayHeight / 4)));
+            ////GeometryDrawing Background = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(650, 400, model.GameDisplayWidth, model.GameDisplayHeight / 2)));
+            //GeometryDrawing LeftRec = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(650, 400, model.GameDisplayWidth / 2, model.GameDisplayHeight / 4)));
+            //GeometryDrawing RightRec = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(975, 600, model.GameDisplayWidth / 2, model.GameDisplayHeight / 4)));
 
-                ImageDrawing anvilPic = new ImageDrawing(GetImage("anvil.png"), new Rect(650, 400, 170, 170));
+            ImageDrawing background = new ImageDrawing(GetImage("shopBackground.jpg"), new Rect(650, 400, 650, 400));
+
+            ImageDrawing anvilPic = new ImageDrawing(GetImage("anvil.png"), new Rect(650, 400, 170, 170));
                 ImageDrawing potionPic = new ImageDrawing(GetImage("potion.png"), new Rect(950, 400, 170, 170));
                 ImageDrawing armorPotionPic = new ImageDrawing(GetImage("armorPotion.png"), new Rect(650, 600, 170, 170));
 
-                dg.Children.Add(Background);
-                dg.Children.Add(LeftRec);
-                dg.Children.Add(RightRec);
+                dg.Children.Add(background);
+                //dg.Children.Add(LeftRec);
+                //dg.Children.Add(RightRec);
+
                 dg.Children.Add(GetButtons());
                 dg.Children.Add(anvilPic);
                 dg.Children.Add(potionPic);
@@ -376,13 +378,20 @@ namespace FFYLife
                 FormattedText ArmorCount = new FormattedText(this.model.Hero.Armor.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black);
                 Geometry geo4 = ArmorCount.BuildGeometry(new Point(985, 220));
                 GeometryDrawing gd4 = new GeometryDrawing(Brushes.Black, stroke, geo4);
-
-                FormattedText BlockCount = new FormattedText(this.model.BlockNumber.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black);
-                Geometry geo5 = BlockCount.BuildGeometry(new Point(450, 50));
-                GeometryDrawing gd5 = new GeometryDrawing(Brushes.Black, stroke, geo5);
-
                 
-                dg.Children.Add(Background);
+                FormattedText BlockCount = new FormattedText(this.model.BlockNumber.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Wheat);
+                Geometry geo5 = BlockCount.BuildGeometry(new Point(450, 50));
+                GeometryDrawing gd5 = new GeometryDrawing(Brushes.Black, Is, geo5);
+
+                 FormattedText Name = new FormattedText(this.model.Name.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 80, Brushes.Wheat);
+                 Geometry geo6 = Name.BuildGeometry(new Point(50, 50));
+                 GeometryDrawing gd6 = new GeometryDrawing(Brushes.Black, Is, geo6);
+
+
+           
+
+
+            dg.Children.Add(Background);
                 dg.Children.Add(LeftRec);
                 dg.Children.Add(RightRec);
                 dg.Children.Add(gd);
@@ -390,7 +399,9 @@ namespace FFYLife
                 dg.Children.Add(gd3);
                 dg.Children.Add(gd4);
                 dg.Children.Add(gd5);
-                dg.Children.Add(HPPic);
+                dg.Children.Add(gd6);
+           
+            dg.Children.Add(HPPic);
                 dg.Children.Add(DMGPic);
                 dg.Children.Add(ArmmorPic);
                 dg.Children.Add(VBuckPic);

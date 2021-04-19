@@ -23,7 +23,12 @@ namespace FFYLife
         private double mouseY;
         private double Difference = 130;
         DispatcherTimer OneStepTimer;
+        DispatcherTimer EnemyAttackTimer;
 
+        
+        static public string PlayerName = "teszt";
+        static public string SaveFile;
+        
         public Control()
         {
             Loaded += Control_Loaded;
@@ -31,9 +36,20 @@ namespace FFYLife
 
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
+
+
             repo = new StorageRepo();
-            gameModel = new GameModel(1300,800,"Fasz");
-           
+            ;
+            if (SaveFile == null)
+            {
+                gameModel = new GameModel(1300, 800, PlayerName);
+            }
+            else
+            {
+               gameModel =   repo.LoadGame(SaveFile);
+            }
+            
+            
             logic = new GameLogicc(gameModel, repo);
             renderer = new Renderer(gameModel);
 
@@ -47,16 +63,47 @@ namespace FFYLife
             //MonsterstepTimer.Start();
 
 
+
             if (win != null)
             {
+               
                 win.MouseLeftButtonDown += Win_MouseLeftButtonDown;
                 win.KeyDown += Win_KeyDown;
+                win.KeyUp += Win_KeyUp;
+            }
+
+
+            if (gameModel.IsInFight)
+            {
+                EnemyAttackTimer = new DispatcherTimer();
+                EnemyAttackTimer.Tick += delegate
+                {
+                    logic.MonsterAttack();
+                    InvalidateVisual();
+
+                };
+                EnemyAttackTimer.Interval = TimeSpan.FromMilliseconds(1500);
+                EnemyAttackTimer.Start();
             }
 
 
             InvalidateVisual();
 
 
+        }
+
+        private void Win_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.Key) {
+
+                case Key.D:
+
+                    gameModel.Hero.IsDefending = false;
+                    break;
+
+            }
+
+            
         }
 
         //private void MonsterstepTimer_Tick(object sender, EventArgs e)
@@ -66,12 +113,12 @@ namespace FFYLife
         //        MonsterstepTimer.Stop();
         //        return;
         //    }
-               
+
         //   logic.MonstersTick(gameModel.Monsters);
         //   InvalidateVisual();
 
-           
-            
+
+
         //}
 
         private void Win_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -119,27 +166,41 @@ namespace FFYLife
                         {
                             MessageBox.Show("You don't have enough vbuck , ask mommy to buy some more!");
                         }
+                        
                     }
                     else if (mouseX >= 1150 && mouseX <= 1250)
                     {
-                        if (!logic.BuyHP())
+                        if (logic.BuyHP() == 1)
                         {
                             MessageBox.Show("You don't have enough vbuck , ask mommy to buy some more!");
+                        }
+                        else if (logic.BuyHP() == 2)
+                        {
+                            MessageBox.Show("You are already at full HP");
                         }
 
                     }
                 }
                 if (mouseY >= 730 && mouseY <= 780 && mouseX >= 825 && mouseX <= 925)
                 {
-                    if (!logic.BuyArmor())
+                    if (logic.BuyArmor() == 1)
                     {
                         MessageBox.Show("You don't have enough vbuck , ask mommy to buy some more!");
                     }
+                    else if (logic.BuyArmor() == 2)
+                    {
+                        MessageBox.Show("You are already at full Armor");
+                    }
+                    
 
                 }
-                if (mouseY >= 650 && mouseY <= 750 && mouseX >= 1135 && mouseX <= 1335)
+                if (mouseY >= 650 && mouseY <= 750 && mouseX >= 1035 && mouseX <= 1235)
                 {
-                    //logic.ReturnToMenu();
+                    if (MessageBox.Show("Are you sure you want to save and quit?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        repo.SaveGame(gameModel);
+                        ReturnToMenu();
+                    }
 
                 }
 
@@ -158,6 +219,23 @@ namespace FFYLife
         { 
             switch (e.Key)
             {
+                case Key.Escape:
+                    if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        //Window win = Window.GetWindow(this);
+                        //win.Close();
+                        ReturnToMenu();
+
+                        
+                    }
+
+                    break;
+
+                case Key.D:
+
+                    gameModel.Hero.IsDefending = true;
+                    break;
+                
                 case Key.Space :
 
                     var entity = logic.StepCalculator();
@@ -172,6 +250,8 @@ namespace FFYLife
                         {
                             
                             OneStepTimer.Stop();
+                            
+                           
                             return;
                         }
 
@@ -191,7 +271,23 @@ namespace FFYLife
         }
 
 
-        
+        private void ReturnToMenu()
+        {
+            MainMenu menu = new MainMenu();
+            Window win = Window.GetWindow(this);
+            menu.Show();
+            win.Close();
+        }
+
+
+        //private void GameOver()
+        //{
+        //    GameLogic.LostEncounter();
+        //    MessageBox.Show("GAME OVER!");
+        //    this.ReturnToMenu();
+        //}
+
+
 
 
     }

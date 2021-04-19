@@ -13,6 +13,8 @@
     <None Remove="Images\armor4.png" />
     <None Remove="Images\armorPotion.png" />
     <None Remove="Images\background.jpg" />
+    <None Remove="Images\background2.jfif" />
+    <None Remove="Images\bigchungus.png" />
     <None Remove="Images\block.png" />
     <None Remove="Images\hearth.png" />
     <None Remove="Images\hero.png" />
@@ -23,12 +25,17 @@
     <None Remove="Images\monster4.png" />
     <None Remove="Images\potion.png" />
     <None Remove="Images\questions.png" />
+    <None Remove="Images\ringBackground.gif" />
+    <None Remove="Images\shopBackground.jpg" />
+    <None Remove="Images\shrek.png" />
     <None Remove="Images\sword.png" />
     <None Remove="Images\sword1.png" />
     <None Remove="Images\sword2.png" />
     <None Remove="Images\sword3.png" />
     <None Remove="Images\sword4.png" />
     <None Remove="Images\sword5.png" />
+    <None Remove="Images\terraira.jfif" />
+    <None Remove="Images\terraria.png" />
     <None Remove="Images\vbuck.png" />
   </ItemGroup>
 
@@ -36,7 +43,13 @@
     <EmbeddedResource Include="Images\anvil.png" />
     <EmbeddedResource Include="Images\armor4.png" />
     <EmbeddedResource Include="Images\armorPotion.png" />
-    <EmbeddedResource Include="Images\background.jpg" />
+    <EmbeddedResource Include="Images\background2.jfif" />
+    <EmbeddedResource Include="Images\bigchungus.png" />
+    <EmbeddedResource Include="Images\shopBackground.jpg" />
+    <EmbeddedResource Include="Images\shrek.png" />
+    <EmbeddedResource Include="Images\terraira.jfif" />
+    <EmbeddedResource Include="Images\terraria.png" />
+    <Resource Include="Images\background.jpg" />
     <EmbeddedResource Include="Images\block.png" />
     <EmbeddedResource Include="Images\hearth.png" />
     <EmbeddedResource Include="Images\hero.png" />
@@ -46,12 +59,17 @@
     <EmbeddedResource Include="Images\monster4.png" />
     <EmbeddedResource Include="Images\potion.png" />
     <EmbeddedResource Include="Images\questions.png" />
+    <EmbeddedResource Include="Images\ringBackground.gif" />
     <EmbeddedResource Include="Images\sword1.png" />
     <EmbeddedResource Include="Images\sword2.png" />
     <EmbeddedResource Include="Images\sword3.png" />
     <EmbeddedResource Include="Images\sword4.png" />
     <EmbeddedResource Include="Images\sword5.png" />
     <EmbeddedResource Include="Images\vbuck.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

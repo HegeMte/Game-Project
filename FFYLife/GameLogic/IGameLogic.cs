@@ -20,9 +20,9 @@ namespace GameLogic
         void StepTick();
          bool BuyDmg();
 
-         bool BuyHP();
+         int BuyHP();
 
-         bool BuyArmor();
+         int BuyArmor();
 
          void HeroIsDefending();
 

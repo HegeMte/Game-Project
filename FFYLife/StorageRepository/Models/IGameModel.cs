@@ -10,6 +10,7 @@ namespace StorageRepository.Models
     {
         double BlockNumber { get; set; }
 
+        bool IsInFight { get; set; }
         int HPPrice { get; set; }
         int ArmorPrice { get; set; }
         int DmgPrice { get; set; }

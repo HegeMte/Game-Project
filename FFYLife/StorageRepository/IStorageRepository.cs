@@ -10,9 +10,9 @@ namespace StorageRepository
 {
     public interface IStorageRepository
     {
-        void SaveGame(GameModel gameModel);
+        void SaveGame(IGameModel gameModel);
 
-        void LoadGame();
+        GameModel LoadGame(string savefile);
         List<Chest> Chests { get; set; }
         GameModel gameModel { get; set; }
     }
