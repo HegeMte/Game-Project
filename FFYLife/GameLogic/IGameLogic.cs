@@ -32,5 +32,14 @@ namespace GameLogic
 
         bool ChestAhead();
         void ChestCreate();
+
+
+        bool AnswerA();
+
+        bool AnswerB();
+
+        bool AnswerC();
+
+        bool AnswerD();
     }
 }

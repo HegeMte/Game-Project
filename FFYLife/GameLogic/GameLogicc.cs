@@ -226,17 +226,80 @@ namespace GameLogic
 
         public void ChestCreate()
         {
+
+            //if ((model.BlockNumber + 4) % 10 == 0)
+
             if ((model.BlockNumber + 4) % 10 == 0)
             {
                 //model.Chest = new Chest(model.GameDisplayWidth / 5, model.GameDisplayHeight / 2);
                 model.Chest = new Chest();
-                model.Chest = repo.ChestList[0];
+                model.Chest = repo.ChestList[r.Next(0, repo.ChestList.Count)];
                 model.Chest.CX = 195;
                 model.Chest.CY = model.GameDisplayHeight / 2;
 
                 model.ChestIsOn = true;
                 
             }
+
+        }
+
+        public bool AnswerA()
+        {
+            if (model.Chest.Right == 0)
+            {
+                model.Hero.Cash += model.Chest.RewardCash;
+                model.ChestIsOn = false;
+                model.Chest = null;
+                return true;
+            }
+            model.ChestIsOn = false;
+            model.Chest = null;
+            return false;
+        
+        }
+
+        public bool AnswerB()
+        {
+            if (model.Chest.Right == 1)
+            {
+                model.Hero.Cash += model.Chest.RewardCash;
+                model.ChestIsOn = false;
+                model.Chest = null;
+                return true;
+            }
+            model.ChestIsOn = false;
+            model.Chest = null;
+            return false;
+        }
+
+
+        public bool AnswerC()
+        {
+            if (model.Chest.Right == 2)
+            {
+                model.Hero.Cash += model.Chest.RewardCash;
+                model.Chest = null;
+                model.ChestIsOn = false;
+                return true;
+            }
+            model.ChestIsOn = false;
+            model.Chest = null;
+            return false;
+
+        }
+
+        public bool AnswerD()
+        {
+            if (model.Chest.Right == 3)
+            {
+                model.Hero.Cash += model.Chest.RewardCash;
+                model.ChestIsOn = false;
+                model.Chest = null;
+                return true;
+            }
+            model.ChestIsOn = false;
+            model.Chest = null;
+            return false;
 
         }
 
@@ -250,10 +313,13 @@ namespace GameLogic
             }
             if (model.Chest.CX < 195)
             {
+                model.ChestIsOn = false;
                 model.Chest = null;
             }
         
         }
+
+
 
         public void StepTick()
         {
@@ -261,12 +327,6 @@ namespace GameLogic
             //{
             //    BlockTick(block);
             //}
-
-            if (model.Chest != null)
-            {
-                ChestTick();
-            }
-
             MonstersTick(model.Monsters);
         }
 

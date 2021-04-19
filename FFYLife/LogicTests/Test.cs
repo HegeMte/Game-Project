@@ -2,7 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using StorageRepository;
-using StorageRepository.Models;
+using GameModel.Models;
 using System;
 using System.Collections.Generic;
 
@@ -15,7 +15,7 @@ namespace LogicTests
     {
         private static IGameLogic gameLogic;
         private static Mock<IStorageRepository> RepoMock;
-        private static Mock<GameModel> ModelMock;
+        private static Mock<GameModel.Models.GameModel> ModelMock;
 
         [SetUp]
         public void Init()
@@ -31,11 +31,11 @@ namespace LogicTests
             ChestList.Add(new Chest() { Question = "Buta vagy?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
 
             RepoMock = new Mock<IStorageRepository>();
-            RepoMock.Object.Chests = ChestList;
+            RepoMock.Object.ChestList = ChestList;
 
             //Model
 
-            ModelMock = new Mock<GameModel>();
+            ModelMock = new Mock<GameModel.Models.GameModel>();
 
 
             //x = -50 y 410
