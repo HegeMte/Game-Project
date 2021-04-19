@@ -28,10 +28,10 @@ namespace GameLogic
         public void MonsterAttack()
         {
 
-            if (model.Monsters[0].CX == 195 && model.Monsters[0].IsDead == false)
+            if (model.Monsters[0].IsDead == false)
             {
-                model.Monsters[0].rotDegree = 45;
-                if (model.Hero.IsDefending == true && model.Hero.Armor > 0)
+                
+                if (model.Hero.IsDefending && model.Hero.Armor > 0)
                 {
                     model.Hero.Armor -= model.Monsters[0].AttackDMG;
                 }

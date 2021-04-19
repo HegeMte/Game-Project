@@ -15,6 +15,7 @@ namespace StorageRepository.Models
         //public int Damage { get; set; }
         public double BlockNumber { get; set; }
         public int HPPrice { get; set; }
+        public bool IsInFight { get; set; }
         public int DmgPrice { get; set; }
         public int ArmorPrice { get; set; }
 
@@ -82,14 +83,14 @@ namespace StorageRepository.Models
             Monsters.Add(new OneMonster(GameDisplayWidth / 5 * 5 - 86, h / 4 * 3 - 200,1));
 
 
-            Chest = new Chest();
-            Chest.Question = "Mekkora a faszod?";
-            Chest.Answers = new List<string>();
-            Chest.Answers.Add("5cm");
-            Chest.Answers.Add("10cm");
-            Chest.Answers.Add("15cm");
-            Chest.Answers.Add("20cm");
-            Chest.Right = 3;
+            //Chest = new Chest();
+            //Chest.Question = "Mekkora a faszod?";
+            //Chest.Answers = new List<string>();
+            //Chest.Answers.Add("5cm");
+            //Chest.Answers.Add("10cm");
+            //Chest.Answers.Add("15cm");
+            //Chest.Answers.Add("20cm");
+            //Chest.Right = 3;
 
         }
 

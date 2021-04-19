@@ -23,6 +23,9 @@ namespace FFYLife
         private double mouseY;
         private double Difference = 130;
         DispatcherTimer OneStepTimer;
+        DispatcherTimer EnemyAttackTimer;
+
+        
         static public string PlayerName = "teszt";
         static public string SaveFile;
         
@@ -63,20 +66,44 @@ namespace FFYLife
 
             if (win != null)
             {
+               
                 win.MouseLeftButtonDown += Win_MouseLeftButtonDown;
                 win.KeyDown += Win_KeyDown;
+                win.KeyUp += Win_KeyUp;
             }
 
 
-            if (true)
+            if (gameModel.IsInFight)
             {
+                EnemyAttackTimer = new DispatcherTimer();
+                EnemyAttackTimer.Tick += delegate
+                {
+                    logic.MonsterAttack();
+                    InvalidateVisual();
 
+                };
+                EnemyAttackTimer.Interval = TimeSpan.FromMilliseconds(1500);
+                EnemyAttackTimer.Start();
             }
 
 
             InvalidateVisual();
 
 
+        }
+
+        private void Win_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.Key) {
+
+                case Key.D:
+
+                    gameModel.Hero.IsDefending = false;
+                    break;
+
+            }
+
+            
         }
 
         //private void MonsterstepTimer_Tick(object sender, EventArgs e)
@@ -86,12 +113,12 @@ namespace FFYLife
         //        MonsterstepTimer.Stop();
         //        return;
         //    }
-               
+
         //   logic.MonstersTick(gameModel.Monsters);
         //   InvalidateVisual();
 
-           
-            
+
+
         //}
 
         private void Win_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -203,8 +230,11 @@ namespace FFYLife
                     }
 
                     break;
-                
-                
+
+                case Key.D:
+
+                    gameModel.Hero.IsDefending = true;
+                    break;
                 
                 case Key.Space :
 
@@ -220,6 +250,8 @@ namespace FFYLife
                         {
                             
                             OneStepTimer.Stop();
+                            
+                           
                             return;
                         }
 

@@ -388,7 +388,10 @@ namespace FFYLife
                  GeometryDrawing gd6 = new GeometryDrawing(Brushes.Black, Is, geo6);
 
 
-                dg.Children.Add(Background);
+           
+
+
+            dg.Children.Add(Background);
                 dg.Children.Add(LeftRec);
                 dg.Children.Add(RightRec);
                 dg.Children.Add(gd);
@@ -397,7 +400,8 @@ namespace FFYLife
                 dg.Children.Add(gd4);
                 dg.Children.Add(gd5);
                 dg.Children.Add(gd6);
-                dg.Children.Add(HPPic);
+           
+            dg.Children.Add(HPPic);
                 dg.Children.Add(DMGPic);
                 dg.Children.Add(ArmmorPic);
                 dg.Children.Add(VBuckPic);
