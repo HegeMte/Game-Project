@@ -8,5 +8,7 @@ namespace GameModel.Models
     {
         int RewardCash { get; set; }
 
+        bool IsStopped { get; set; }
+
     }
 }

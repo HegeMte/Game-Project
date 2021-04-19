@@ -72,6 +72,12 @@ namespace StorageRepository
 
         public static string[] SavedGamesList()
         {
+            if (!Directory.Exists("Saves/"))
+            {
+                Directory.CreateDirectory("Saves");
+            }
+
+
             return Directory.GetFiles("Saves");
         }
 

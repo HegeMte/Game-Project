@@ -70,11 +70,13 @@ namespace FFYLife
                 win.MouseLeftButtonDown += Win_MouseLeftButtonDown;
                 win.KeyDown += Win_KeyDown;
                 win.KeyUp += Win_KeyUp;
+                
             }
 
 
-            if (gameModel.IsInFight)
-            {
+            
+
+           
                 EnemyAttackTimer = new DispatcherTimer();
                 EnemyAttackTimer.Tick += delegate
                 {
@@ -84,7 +86,7 @@ namespace FFYLife
                 };
                 EnemyAttackTimer.Interval = TimeSpan.FromMilliseconds(1500);
                 EnemyAttackTimer.Start();
-            }
+          
 
 
             InvalidateVisual();
@@ -92,16 +94,80 @@ namespace FFYLife
 
         }
 
-        private void Win_KeyUp(object sender, KeyEventArgs e)
+        private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            switch (e.Key) {
+            switch (e.Key)
+            {
+                case Key.Escape:
+                    if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        //Window win = Window.GetWindow(this);
+                        //win.Close();
+                        ReturnToMenu();
 
-                case Key.D:
 
-                    gameModel.Hero.IsDefending = false;
+                    }
+
                     break;
 
+                case Key.D:
+                   
+                    
+                        gameModel.Hero.IsDefending = true;
+                    
+                    
+                    
+                    break;
+
+
+                case Key.S:
+
+
+                    gameModel.Hero.IsDefending = false;
+
+
+
+                    break;
+
+
+                case Key.Space:
+
+                    var entity = logic.StepCalculator();
+
+
+                    //logic.StepTick();
+
+                    //logic.FindGameItem(entity);
+                    if (gameModel.Monsters[0].CX <= 195)
+                    {
+                        gameModel.IsInFight = true;
+                    }
+                    if (entity.CX >= 195)
+                    {
+                        logic.StepTick();
+                       
+                    }
+                    
+                     
+                    
+                    InvalidateVisual();
+
+                    break;
+                case Key.A:
+
+
+                    logic.HeroAttack();
+
+
+                    break;
             }
+            InvalidateVisual();
+
+        }
+
+        private void Win_KeyUp(object sender, KeyEventArgs e)
+        {
+            
 
             
         }
@@ -114,7 +180,7 @@ namespace FFYLife
         //        return;
         //    }
 
-        //   logic.MonstersTick(gameModel.Monsters);
+        //   logic.MonstersTick(gameModel.Monsters)
         //   InvalidateVisual();
 
 
@@ -215,60 +281,7 @@ namespace FFYLife
            
         }
 
-        private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        { 
-            switch (e.Key)
-            {
-                case Key.Escape:
-                    if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                    {
-                        //Window win = Window.GetWindow(this);
-                        //win.Close();
-                        ReturnToMenu();
-
-                        
-                    }
-
-                    break;
-
-                case Key.D:
-
-                    gameModel.Hero.IsDefending = true;
-                    break;
-                
-                case Key.Space :
-
-                    var entity = logic.StepCalculator();
-
-                    
-                    //logic.StepTick();
-                    OneStepTimer = new DispatcherTimer();
-                    double destination =   this.gameModel.Monsters[0].CX - Difference;
-                    OneStepTimer.Tick += delegate
-                    {
-                        if (logic.FindGameItem(entity).CX == 196)
-                        {
-
-                            OneStepTimer.Stop();
-
-
-                            return;
-                        }
-
-                        logic.StepTick();
-                        InvalidateVisual();
-
-
-                    };
-
-                    OneStepTimer.Interval = TimeSpan.FromMilliseconds(20);
-                    OneStepTimer.Start();
-                    gameModel.BlockNumber++;
-                    break;
-            }
-            InvalidateVisual();
-
-        }
+       
 
 
         private void ReturnToMenu()

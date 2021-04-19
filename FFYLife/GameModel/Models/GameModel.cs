@@ -59,6 +59,9 @@ namespace GameModel.Models
 
             this.Name = Name;
 
+
+            IsInFight = false;
+
             HPPrice = 5;
              DmgPrice = 5;
         
@@ -101,6 +104,9 @@ namespace GameModel.Models
 
         public GameModel(double w, double h, string Name, int HeroHp, int DMG, int Armor,int ArmorPrice, int Cash, int blockNumber, int DmgPrice, int HpPrice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY) //For the reload without the chest
         {
+
+            IsInFight = false;
+
             GameDisplayHeight = h;
             GameDisplayWidth = w;
 

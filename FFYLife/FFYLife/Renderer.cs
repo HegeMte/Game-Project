@@ -37,8 +37,9 @@ namespace FFYLife
 
             DrawingGroup dg = new DrawingGroup();
             dg.Children.Add(GetGamePlayBackground());
-            dg.Children.Add(GetUIBackground());
             dg.Children.Add(GetBlocks());
+            dg.Children.Add(GetUIBackground());
+           
             dg.Children.Add(GetHero());
             dg.Children.Add(GetMonsters());
             if (!model.ChestIsOn)
@@ -379,7 +380,7 @@ namespace FFYLife
                 Geometry geo4 = ArmorCount.BuildGeometry(new Point(985, 220));
                 GeometryDrawing gd4 = new GeometryDrawing(Brushes.Black, stroke, geo4);
                 
-                FormattedText BlockCount = new FormattedText(this.model.BlockNumber.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Wheat);
+                FormattedText BlockCount = new FormattedText(this.model.Hero.IsDefending.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Wheat);
                 Geometry geo5 = BlockCount.BuildGeometry(new Point(450, 50));
                 GeometryDrawing gd5 = new GeometryDrawing(Brushes.Black, Is, geo5);
 
@@ -388,10 +389,28 @@ namespace FFYLife
                  GeometryDrawing gd6 = new GeometryDrawing(Brushes.Black, Is, geo6);
 
 
+
+            //enemy hp
+
+
+            if (model.IsInFight)
+            {
+                GeometryDrawing EnemyHp = new GeometryDrawing(Brushes.LightGray, stroke, new RectangleGeometry(new Rect(220, 650, 70, 60)));
+
+
+
+                FormattedText EHP = new FormattedText(this.model.Monsters[0].Hp.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 50, Brushes.Wheat);
+                Geometry geo7 = EHP.BuildGeometry(new Point(240, 650));
+                GeometryDrawing gd7 = new GeometryDrawing(Brushes.Black, stroke, geo7);
+                dg.Children.Add(EnemyHp);
+                dg.Children.Add(gd7);       
+            }
            
 
 
-            dg.Children.Add(Background);
+
+
+                dg.Children.Add(Background);
                 dg.Children.Add(LeftRec);
                 dg.Children.Add(RightRec);
                 dg.Children.Add(gd);
@@ -400,7 +419,9 @@ namespace FFYLife
                 dg.Children.Add(gd4);
                 dg.Children.Add(gd5);
                 dg.Children.Add(gd6);
+          
            
+
             dg.Children.Add(HPPic);
                 dg.Children.Add(DMGPic);
                 dg.Children.Add(ArmmorPic);

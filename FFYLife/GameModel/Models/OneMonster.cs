@@ -26,5 +26,6 @@ namespace GameModel.Models
         public int AttackDMG { get ; set ; }
         public int AttackSpeed { get ; set ; }
         public bool IsDead { get; set; }
+        public bool IsStopped { get; set; }
     }
 }
