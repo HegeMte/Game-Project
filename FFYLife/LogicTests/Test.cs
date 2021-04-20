@@ -32,12 +32,13 @@ namespace LogicTests
 
             RepoMock = new Mock<IStorageRepository>();
             RepoMock.Object.ChestList = ChestList;
+            
 
             //Model
 
             ModelMock = new Mock<GameModel.Models.GameModel>();
 
-
+            
             //x = -50 y 410
             ModelMock.Object.Name = "Máté";
             ModelMock.Object.Hero = new OneHero(-50, 410, 10, 1, 4, 100);
@@ -202,6 +203,9 @@ namespace LogicTests
         [Test]
         public void HeroAttack()
         {
+            ModelMock.Object.IsInFight = true;
+            ModelMock.Object.Hero.IsDefending = false;
+            ModelMock.Object.Hero.CanAttack = true;
             ModelMock.Object.Monsters[0].CX = 195;
             //ModelMock.Object.Monsters[0].IsDead = false;
             int ExpectedMonsterHp = ModelMock.Object.Monsters[0].Hp - ModelMock.Object.Hero.AttackDMG;
@@ -211,20 +215,6 @@ namespace LogicTests
 
             // ASSERT
             Assert.That(ModelMock.Object.Monsters[0].Hp, Is.EqualTo(ExpectedMonsterHp));
-        }
-
-
-        [Test]
-        public void HeroAttackAndMonsterDead()
-        {
-            ModelMock.Object.Monsters[0].CX = 195;
-            ModelMock.Object.Monsters[0].Hp = 1;
-
-            // ACT
-            gameLogic.HeroAttack();
-
-            // ASSERT
-            Assert.That(ModelMock.Object.Monsters[0].IsDead, Is.True);
         }
 
         [Test]
@@ -265,8 +255,8 @@ namespace LogicTests
         {
 
             
-            double expectedMonster1Cx = ModelMock.Object.Monsters[0].CX - 1;
-            double expectedMonster2Cx = ModelMock.Object.Monsters[1].CX - 1;
+            double expectedMonster1Cx = ModelMock.Object.Monsters[0].CX - 5;
+            double expectedMonster2Cx = ModelMock.Object.Monsters[1].CX - 5;
 
             // ACT
             gameLogic.MonstersTick(ModelMock.Object.Monsters);
@@ -285,7 +275,7 @@ namespace LogicTests
             OneMonster monster = ModelMock.Object.Monsters[1];
             OneMonster removedmonster = ModelMock.Object.Monsters[0];
             // ACT
-            gameLogic.MonstersTick(ModelMock.Object.Monsters);
+            gameLogic.MonsterDied(ModelMock.Object.Monsters);
 
 
             // ASSERT
@@ -310,21 +300,22 @@ namespace LogicTests
         }
 
 
-        [Test]
-        public void ChestCreate()
-        {
-            ModelMock.Object.Chest = null;
-            ModelMock.Object.BlockNumber = 6;
+        //[Test]
+        //public void ChestCreate()
+        //{
+        //    ModelMock.Object.Chest = null;
+        //    //ModelMock.Object.Chests = RepoMock.Object.ChestList;
+        //    ModelMock.Object.BlockNumber = 6;
 
-            // ACT
-            gameLogic.ChestCreate();
+        //    // ACT
+        //    gameLogic.ChestCreate();
 
 
 
-            // ASSERT
-            Assert.That(ModelMock.Object.Chest, Is.Not.Null);
+        //    // ASSERT
+        //    Assert.That(ModelMock.Object.Chest, Is.Not.Null);
 
-        }
+        //}
 
         [Test]
         public void StepCalculator()
@@ -374,6 +365,72 @@ namespace LogicTests
             // ASSERT
             Assert.That(ModelMock.Object.Monsters[0], Is.InstanceOf<OneMonster>());
             Assert.That(ModelMock.Object.Monsters[0], Is.TypeOf<OneMonster>());
+
+
+        }
+
+        [Test]
+        public void AnswerA()
+        {
+            ModelMock.Object.Chest.Right = 0;
+            int expectedcash = ModelMock.Object.Hero.Cash + ModelMock.Object.Chest.RewardCash;
+
+
+            gameLogic.AnswerA();
+
+
+            Assert.That(ModelMock.Object.Hero.Cash, Is.EqualTo(expectedcash));
+            Assert.That(ModelMock.Object.Chest, Is.Null);
+            
+        
+        }
+
+
+        [Test]
+        public void AnswerB()
+        {
+            ModelMock.Object.Chest.Right = 1;
+            int expectedcash = ModelMock.Object.Hero.Cash + ModelMock.Object.Chest.RewardCash;
+
+
+            gameLogic.AnswerB();
+
+
+            Assert.That(ModelMock.Object.Hero.Cash, Is.EqualTo(expectedcash));
+            Assert.That(ModelMock.Object.Chest, Is.Null);
+
+
+        }
+
+
+        [Test]
+        public void AnswerC()
+        {
+            ModelMock.Object.Chest.Right = 2;
+            int expectedcash = ModelMock.Object.Hero.Cash + ModelMock.Object.Chest.RewardCash;
+
+
+            gameLogic.AnswerC();
+
+
+            Assert.That(ModelMock.Object.Hero.Cash, Is.EqualTo(expectedcash));
+            Assert.That(ModelMock.Object.Chest, Is.Null);
+
+
+        }
+
+        [Test]
+        public void AnswerD()
+        {
+            ModelMock.Object.Chest.Right = 3;
+            int expectedcash = ModelMock.Object.Hero.Cash + ModelMock.Object.Chest.RewardCash;
+
+
+            gameLogic.AnswerD();
+
+
+            Assert.That(ModelMock.Object.Hero.Cash, Is.EqualTo(expectedcash));
+            Assert.That(ModelMock.Object.Chest, Is.Null);
 
 
         }

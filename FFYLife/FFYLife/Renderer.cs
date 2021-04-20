@@ -379,13 +379,13 @@ namespace FFYLife
 
             //DMG
             ImageDrawing DMGPic;
-            if (this.model.Hero.AttackDMG <= 3 )
+            if (this.model.Hero.AttackDMG <= 4 )
             {
                  DMGPic = new ImageDrawing(GetImage($"sword{this.model.Hero.AttackDMG}.png"), new Rect(800, 220, 130, 130));
             }
             else
             {
-                 DMGPic = new ImageDrawing(GetImage($"sword4.png"), new Rect(800, 220, 130, 130));
+                 DMGPic = new ImageDrawing(GetImage($"sword5.png"), new Rect(800, 220, 130, 130));
             }
                
 
