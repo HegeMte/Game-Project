@@ -28,14 +28,13 @@ namespace GameLogic
         public void MonsterAttack()
         {
 
-            if (model.Monsters[0].IsDead == false && model.Monsters[0].CX <= 195)
+            if ( model.Monsters[0].CX <= 195)
             {
-
+                
                 if (model.Hero.IsDefending == true && model.Hero.Armor > 0)
                 {
                     model.Hero.Armor -= model.Monsters[0].AttackDMG;
-
-                    
+                    ;
                 }
                 else
                 {
@@ -54,7 +53,7 @@ namespace GameLogic
 
         public void HeroAttack()
         {
-            if ( model.Monsters[0].IsDead == false && !model.Hero.IsDefending && model.IsInFight)
+            if ( model.Hero.CanAttack && !model.Hero.IsDefending && model.IsInFight)
             {
 
                 model.Monsters[0].Hp -= model.Hero.AttackDMG;
@@ -229,7 +228,7 @@ namespace GameLogic
 
             //if ((model.BlockNumber + 4) % 10 == 0)
 
-            if ((model.BlockNumber + 4) % 10 == 0)
+            if (model.BlockNumber == 1)
             {
                 //model.Chest = new Chest(model.GameDisplayWidth / 5, model.GameDisplayHeight / 2);
                 model.Chest = new Chest();

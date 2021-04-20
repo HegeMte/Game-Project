@@ -9,6 +9,7 @@ namespace GameModel.Models
 
         int Armor { get; set; }
 
+        bool CanAttack { get; set; }
         int Cash { get; set; }
 
 

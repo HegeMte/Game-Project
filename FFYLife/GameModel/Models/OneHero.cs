@@ -51,5 +51,6 @@ namespace GameModel.Models
         public int Cash { get; set; }
 
         public bool IsDefending {get;set;}
+        public bool CanAttack { get; set; }
     }
 }

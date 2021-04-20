@@ -42,6 +42,7 @@ namespace GameModel.Models
         public double UIWidth { get; set; }
 
         public bool  GameOver { get; set; }
+        public bool CanAttack { get; set; }
 
         public GameModel(double w, double h , string Name )
         {

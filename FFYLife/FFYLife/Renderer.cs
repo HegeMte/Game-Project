@@ -77,8 +77,16 @@ namespace FFYLife
             DrawingGroup dg = new DrawingGroup();
             foreach (var monster in model.Monsters)
             {
-
-                ImageDrawing monsterPic = new ImageDrawing(GetImage($"monster{monster.MonsterLVL}.png"), new Rect(monster.CX, model.Hero.CY, model.GameDisplayWidth / 5, model.GameDisplayHeight / 4));
+                ImageDrawing monsterPic;
+                if (model.CanAttack && monster.CX <= 195 )
+                {
+                    monsterPic = new ImageDrawing(GetImage($"monster{monster.MonsterLVL}attack.png"), new Rect(monster.CX, model.Hero.CY, model.GameDisplayWidth / 5, model.GameDisplayHeight / 4));
+                }
+                else
+                {
+                    monsterPic = new ImageDrawing(GetImage($"monster{monster.MonsterLVL}.png"), new Rect(monster.CX, model.Hero.CY, model.GameDisplayWidth / 5, model.GameDisplayHeight / 4));
+                }
+                
 
 
                 //  Geometry b = new RectangleGeometry(new Rect(block.CX, block.CY / 2 *3, model.GameDisplayWidth/5, model.GameDisplayHeight/4));
@@ -88,7 +96,7 @@ namespace FFYLife
 
             if (model.ChestIsOn)
             {
-                ImageDrawing chestpic = new ImageDrawing(GetImage($"chest.png"), new Rect(model.Chest.CX,  model.Chest.CY, 60, 100));
+                ImageDrawing chestpic = new ImageDrawing(GetImage($"chest.png"), new Rect(model.Chest.CX,  model.Chest.CY + 57, 200, 200));
                 dg.Children.Add(chestpic);
             }
 
@@ -369,8 +377,17 @@ namespace FFYLife
                 Geometry geo2 = HPCount.BuildGeometry(new Point(660, 20));
                 GeometryDrawing gd2 = new GeometryDrawing(Brushes.Black, stroke, geo2);
 
-                //DMG
-                ImageDrawing DMGPic = new ImageDrawing(GetImage($"sword{this.model.Hero.AttackDMG}.png"), new Rect(800, 220, 130, 130));
+            //DMG
+            ImageDrawing DMGPic;
+            if (this.model.Hero.AttackDMG <= 3 )
+            {
+                 DMGPic = new ImageDrawing(GetImage($"sword{this.model.Hero.AttackDMG}.png"), new Rect(800, 220, 130, 130));
+            }
+            else
+            {
+                 DMGPic = new ImageDrawing(GetImage($"sword4.png"), new Rect(800, 220, 130, 130));
+            }
+               
 
                 FormattedText DMGCount = new FormattedText(this.model.Hero.AttackDMG.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black);
                 Geometry geo3 = DMGCount.BuildGeometry(new Point(660, 220));

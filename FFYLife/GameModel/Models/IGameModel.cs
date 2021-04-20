@@ -12,6 +12,7 @@ namespace GameModel.Models
 
          bool GameOver { get; set; }
         bool IsInFight { get; set; }
+        bool CanAttack { get; set; }
         int HPPrice { get; set; }
         int ArmorPrice { get; set; }
         int DmgPrice { get; set; }

@@ -21,9 +21,13 @@
     <None Remove="Images\hero.png" />
     <None Remove="Images\hero1.png" />
     <None Remove="Images\monster1.png" />
+    <None Remove="Images\monster1attack.png" />
     <None Remove="Images\monster2.png" />
+    <None Remove="Images\monster2attack.png" />
     <None Remove="Images\monster3.png" />
+    <None Remove="Images\monster3attack.png" />
     <None Remove="Images\monster4.png" />
+    <None Remove="Images\monster4attack.png" />
     <None Remove="Images\potion.png" />
     <None Remove="Images\questions.png" />
     <None Remove="Images\ringBackground.gif" />
@@ -47,6 +51,10 @@
     <EmbeddedResource Include="Images\background2.jfif" />
     <EmbeddedResource Include="Images\bigchungus.png" />
     <EmbeddedResource Include="Images\chest.png" />
+    <EmbeddedResource Include="Images\monster1attack.png" />
+    <EmbeddedResource Include="Images\monster2attack.png" />
+    <EmbeddedResource Include="Images\monster3attack.png" />
+    <EmbeddedResource Include="Images\monster4attack.png" />
     <EmbeddedResource Include="Images\shopBackground.jpg" />
     <EmbeddedResource Include="Images\shrek.png" />
     <EmbeddedResource Include="Images\terraira.jfif" />

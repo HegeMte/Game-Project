@@ -69,7 +69,7 @@ namespace FFYLife
                
                 win.MouseLeftButtonDown += Win_MouseLeftButtonDown;
                 win.KeyDown += Win_KeyDown;
-                win.KeyUp += Win_KeyUp;
+                
                 
             }
 
@@ -88,6 +88,18 @@ namespace FFYLife
                     }
                     else
                     {
+                        DispatcherTimer HitTime = new DispatcherTimer();
+                        gameModel.CanAttack = false;
+                        HitTime.Tick += delegate
+                        {
+                            gameModel.CanAttack = true;
+                            HitTime.Stop();
+                            InvalidateVisual();
+
+                        };
+                        HitTime.Interval = TimeSpan.FromMilliseconds(400);
+                        HitTime.Start();
+                        InvalidateVisual();
                         logic.MonsterAttack();
                     }
                     InvalidateVisual();
@@ -105,6 +117,7 @@ namespace FFYLife
 
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
+            DispatcherTimer HitCooldown = new DispatcherTimer();
             switch (e.Key)
             {
                 case Key.Escape:
@@ -164,8 +177,25 @@ namespace FFYLife
                     break;
                 case Key.A:
 
-
                     logic.HeroAttack();
+
+                    gameModel.Hero.CanAttack = false;
+                    HitCooldown.Tick += delegate
+                    {
+                        gameModel.Hero.CanAttack = true;
+                        HitCooldown.Stop();
+                        InvalidateVisual();
+
+                    };
+                    HitCooldown.Interval = TimeSpan.FromMilliseconds(500);
+                    HitCooldown.Start();
+                    InvalidateVisual();
+                    
+
+
+
+                    
+
 
 
                     break;
@@ -174,13 +204,7 @@ namespace FFYLife
 
         }
 
-        private void Win_KeyUp(object sender, KeyEventArgs e)
-        {
-            
-
-            
-        }
-
+    
         //private void MonsterstepTimer_Tick(object sender, EventArgs e)
         //{
         //    if (gameModel.Monsters[0])
