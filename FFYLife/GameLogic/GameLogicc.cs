@@ -34,7 +34,7 @@ namespace GameLogic
                 if (model.Hero.IsDefending == true && model.Hero.Armor > 0)
                 {
                     model.Hero.Armor -= model.Monsters[0].AttackDMG;
-                    ;
+                    
                 }
                 else
                 {
@@ -164,13 +164,8 @@ namespace GameLogic
         {
             
                 monsters[0] = monsters[1];
-
-                 ChestCreate();
-                 
-               
-                      monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5, model.GameDisplayHeight / 4 * 4 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10) + 1));
-                
-                 
+                ChestCreate();
+                monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5, model.GameDisplayHeight / 4 * 4 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10) + 1));
                 model.IsInFight = false;
           
         }
@@ -180,38 +175,14 @@ namespace GameLogic
         public void MonstersTick(List<OneMonster> monsters)//dead monster kereszt
         {
 
-            /*List<OneMonster> copy = new List<OneMonster>();
-
-            foreach (var monster in monsters)
-            {
-                //monster.CX -= model.Hero.DX;
-                monster.CX -= 5;
-                if (monster.CX < 0)
-                {
-                    copy.Add(new OneMonster(model.GameDisplayWidth / 5 * 5 - 86, model.GameDisplayHeight / 4 * 3 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10))));
-
-
-                }
-                else
-                {
-                    copy.Add(monster);
-                }
-
-            }
-            model.Monsters = copy;
-            model.Monsters[1] = copy[1];
-            model.Monsters[0] = copy[1];*/
                     monsters[0].CX -= 5;
                     monsters[1].CX -= 5;
-                
-           
-            
         }
 
 
         //public void ChestTick(Chest chest)
         //{
-        //    if ((model.BlockNumber + 4)%10 ==0)
+        //    if ((model.BlockNumber + 4) % 10 == 0)
         //    {
         //        //model.Chest = new Chest(model.GameDisplayWidth / 5, model.GameDisplayHeight / 2);
         //        model.Chest = new Chest();
@@ -228,11 +199,12 @@ namespace GameLogic
 
             //if ((model.BlockNumber + 4) % 10 == 0)
 
-            if (model.BlockNumber == 1)
+            if ((model.BlockNumber + 4) % 10 == 0)
             {
                 //model.Chest = new Chest(model.GameDisplayWidth / 5, model.GameDisplayHeight / 2);
                 model.Chest = new Chest();
                 model.Chest = repo.ChestList[r.Next(0, repo.ChestList.Count)];
+                //model.Chest = model.Chests[r.Next(0, model.Chests.Count)];
                 model.Chest.CX = 195;
                 model.Chest.CY = model.GameDisplayHeight / 2;
 

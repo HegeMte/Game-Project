@@ -41,5 +41,6 @@ namespace GameLogic
         bool AnswerC();
 
         bool AnswerD();
+        void MonsterDied(List<OneMonster> monsters);
     }
 }
