@@ -33,6 +33,7 @@ namespace FFYLife
             Control.PlayerName = this.NameTextBox.Text;
             this.DialogResult = true;
             this.Close();
+            
         }
 
       

@@ -43,6 +43,8 @@ namespace FFYLife
             if (SaveFile == null)
             {
                 gameModel = new GameModel.Models.GameModel(1300, 800, PlayerName);
+               
+
             }
             else
             {
@@ -107,9 +109,8 @@ namespace FFYLife
                 };
                 EnemyAttackTimer.Interval = TimeSpan.FromMilliseconds(1500);
                 EnemyAttackTimer.Start();
+
           
-
-
             InvalidateVisual();
 
 
@@ -118,6 +119,7 @@ namespace FFYLife
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             DispatcherTimer HitCooldown = new DispatcherTimer();
+            DispatcherTimer Move = new DispatcherTimer();
             switch (e.Key)
             {
                 case Key.Escape:
@@ -166,23 +168,43 @@ namespace FFYLife
                     }
                     if (entity.CX >= 195 && !gameModel.ChestIsOn)
                     {
+                         
+                        gameModel.Moving = true;
                         logic.StepTick();
+                        Move.Tick += delegate
+                        {
+
+                            
+                            HitCooldown.Stop();
+                            
+                            InvalidateVisual();
+
+                        };
+                        
+                        HitCooldown.Interval = TimeSpan.FromMilliseconds(50);
+                        HitCooldown.Start();
+                        gameModel.Moving = false;
+                        InvalidateVisual();
+                        
                        
-                    }
                     
-                     
+
+                    }
+                   
+
                     
                     InvalidateVisual();
 
                     break;
                 case Key.A:
-
+                    gameModel.Hero.CanAttack = true;
                     logic.HeroAttack();
 
-                    gameModel.Hero.CanAttack = false;
+                   
                     HitCooldown.Tick += delegate
                     {
-                        gameModel.Hero.CanAttack = true;
+                       
+                        gameModel.Hero.CanAttack = false;
                         HitCooldown.Stop();
                         InvalidateVisual();
 

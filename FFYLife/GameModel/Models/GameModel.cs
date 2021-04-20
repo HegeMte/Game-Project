@@ -43,7 +43,9 @@ namespace GameModel.Models
 
         public bool  GameOver { get; set; }
         public bool CanAttack { get; set; }
+        public bool Moving { get; set; }
 
+        
         public GameModel(double w, double h , string Name )
         {
             WindowHeight = h;

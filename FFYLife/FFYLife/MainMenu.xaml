@@ -42,19 +42,16 @@
             </Setter>
         </Style>
 
-        <!--<StackPanel x:Key="MyStackPanel">
-            <TextBlock Name="MainContent" Text="Watch Now" FontSize="20" />
-            <TextBlock Name="DurationValue" Text="{Binding ElementName=MyWindow, Path=(local:MyDependencyClass.CurrentDuration)}" FontSize="12" Foreground="Gainsboro" />
-        </StackPanel>-->
+        
     </Window.Resources>
   
     <Grid>
-        <!--<Grid.Background>
-            <ImageBrush ImageSource="C:\\Users\\veres\\Desktop\\prog4 játék\\projekt\\oenik_prog4_2021_1_ppkmx9_isguoh\\FFYLife\\FFYLife\\Images\\terraria.png"
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Images/terraria.png"
                     Stretch="Fill" TileMode="Tile"
                     ViewportUnits="Absolute" Viewport="0,0,1024,768"/>
-        </Grid.Background>-->
-        <!--<Grid.Triggers>
+        </Grid.Background>
+        <Grid.Triggers>
             <EventTrigger RoutedEvent="Loaded">
                 <BeginStoryboard>
                     <Storyboard>
@@ -64,7 +61,7 @@
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
-        </Grid.Triggers>-->
+        </Grid.Triggers>
         <StackPanel Margin="0,76,786,0">
             <Button  Height="100" Width="400" Margin="20" Click="NewGameBtnClick">New Game</Button>
             <Button Height="100" Width="400" Margin="20" Click="LoadGameBtnClick">Load Game</Button>

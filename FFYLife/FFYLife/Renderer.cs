@@ -162,9 +162,30 @@ namespace FFYLife
 
         private Drawing GetHero()
         {
-           
+
+            ImageDrawing hero;
+            if (model.Hero.IsDefending)
+            {
+                hero = new ImageDrawing(GetImage("steveDefend.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
+            }
+            else
+            {
+                if ( model.Moving)
+                {
+                    hero = new ImageDrawing(GetImage("steveMove.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
+                    ;
+                }
+                else if (!model.Hero.CanAttack)
+                {
+                    hero = new ImageDrawing(GetImage("steve.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 100, 200));
+                }
+                else
+                {
+                    hero = new ImageDrawing(GetImage("steveattack.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
+                }
+            }
             
-            ImageDrawing hero = new ImageDrawing(GetImage("shrek.png"), new Rect(model.Hero.CX, model.Hero.CY - 170, 200,400));
+            
 
             //Geometry g = new RectangleGeometry(new Rect(model.Hero.CX, model.Hero.CY, 40, 200));
             //oldHero = new GeometryDrawing(Brushes.Yellow, stroke, g);
