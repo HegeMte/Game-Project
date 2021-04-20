@@ -80,11 +80,27 @@ namespace FFYLife
                 ImageDrawing monsterPic;
                 if (model.CanAttack && monster.CX <= 195 )
                 {
-                    monsterPic = new ImageDrawing(GetImage($"monster{monster.MonsterLVL}attack.png"), new Rect(monster.CX, model.Hero.CY, model.GameDisplayWidth / 5, model.GameDisplayHeight / 4));
+                    if (monster.MonsterLVL < 4)
+                    {
+                        monsterPic = new ImageDrawing(GetImage($"monster{monster.MonsterLVL}attack.png"), new Rect(monster.CX, model.Hero.CY, model.GameDisplayWidth / 5, model.GameDisplayHeight / 4));
+                    }
+                    else
+                    {
+                        monsterPic = new ImageDrawing(GetImage($"boss{(monster.MonsterLVL)/5}attack.png"), new Rect(monster.CX, model.Hero.CY, model.GameDisplayWidth / 5, model.GameDisplayHeight / 4));
+                    }
+                  
                 }
                 else
                 {
-                    monsterPic = new ImageDrawing(GetImage($"monster{monster.MonsterLVL}.png"), new Rect(monster.CX, model.Hero.CY, model.GameDisplayWidth / 5, model.GameDisplayHeight / 4));
+                    if (monster.MonsterLVL < 4)
+                    {
+                        monsterPic = new ImageDrawing(GetImage($"monster{monster.MonsterLVL}.png"), new Rect(monster.CX, model.Hero.CY, model.GameDisplayWidth / 5, model.GameDisplayHeight / 4));
+                    }
+                    else
+                    {
+                        monsterPic = new ImageDrawing(GetImage($"boss{(monster.MonsterLVL) / 5}.png"), new Rect(monster.CX, model.Hero.CY, model.GameDisplayWidth / 5, model.GameDisplayHeight / 4));
+                    }
+                   
                 }
                 
 
@@ -422,7 +438,7 @@ namespace FFYLife
                 Geometry geo4 = ArmorCount.BuildGeometry(new Point(985, 220));
                 GeometryDrawing gd4 = new GeometryDrawing(Brushes.Black, stroke, geo4);
                 
-                FormattedText BlockCount = new FormattedText(this.model.Hero.IsDefending.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Wheat);
+                FormattedText BlockCount = new FormattedText(this.model.BlockNumber.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Wheat);
                 Geometry geo5 = BlockCount.BuildGeometry(new Point(450, 50));
                 GeometryDrawing gd5 = new GeometryDrawing(Brushes.Black, Is, geo5);
 

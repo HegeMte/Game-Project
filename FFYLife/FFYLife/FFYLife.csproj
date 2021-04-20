@@ -13,6 +13,14 @@
     <None Remove="Images\armor4.png" />
     <None Remove="Images\armorPotion.png" />
     <None Remove="Images\block.png" />
+    <None Remove="Images\boss1.png" />
+    <None Remove="Images\boss1attack.png" />
+    <None Remove="Images\boss2.png" />
+    <None Remove="Images\boss2attack.png" />
+    <None Remove="Images\boss3.png" />
+    <None Remove="Images\boss3attack.png" />
+    <None Remove="Images\boss4.png" />
+    <None Remove="Images\boss4attack.png" />
     <None Remove="Images\chest.png" />
     <None Remove="Images\hearth.png" />
     <None Remove="Images\hero1.png" />
@@ -44,6 +52,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Images\boss1.png" />
+    <EmbeddedResource Include="Images\boss1attack.png" />
+    <EmbeddedResource Include="Images\boss2.png" />
+    <EmbeddedResource Include="Images\boss2attack.png" />
+    <EmbeddedResource Include="Images\boss3.png" />
+    <EmbeddedResource Include="Images\boss3attack.png" />
+    <EmbeddedResource Include="Images\boss4.png" />
+    <EmbeddedResource Include="Images\boss4attack.png" />
     <EmbeddedResource Include="Images\steveDefend.png" />
   </ItemGroup>
 

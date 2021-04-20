@@ -52,7 +52,7 @@ namespace StorageRepository
 
         }
 
-        public void SaveHighScore(GameModel.Models.GameModel gm)
+        public static void SaveHighScore(GameModel.Models.IGameModel gm)
         {
             if (File.Exists("highscores.txt"))
             {

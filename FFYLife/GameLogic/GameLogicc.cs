@@ -165,7 +165,17 @@ namespace GameLogic
             
                 monsters[0] = monsters[1];
                 ChestCreate();
-                monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5, model.GameDisplayHeight / 4 * 4 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10) + 1));
+                if (model.BlockNumber % 10 == 0    && model.BlockNumber != 0)
+                {
+
+                      monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5, model.GameDisplayHeight / 4 * 4 - 100, Convert.ToInt32((model.BlockNumber / 10) * 5));
+                }
+                else
+                {
+
+                      monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5, model.GameDisplayHeight / 4 * 4 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10) + 1));
+                }   
+             
                 model.IsInFight = false;
           
         }

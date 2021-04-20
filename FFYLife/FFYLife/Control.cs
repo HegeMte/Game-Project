@@ -385,6 +385,7 @@ namespace FFYLife
         private void GameOver()
         {
             MessageBox.Show("Game over dickhole!");
+            StorageRepo.SaveHighScore(gameModel);
             ReturnToMenu();
 
         }
