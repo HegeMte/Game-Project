@@ -1,20 +1,16 @@
-﻿
+﻿using GameModel.Models;
 using StorageRepository;
-using GameModel.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 
 namespace GameLogic
 {
     public class GameLogicc : IGameLogic
     {
-
-        IGameModel model;
-        IStorageRepository repo;
+        private IGameModel model;
+        private IStorageRepository repo;
         private Random r = new Random();
-
 
         public GameLogicc(IGameModel model, IStorageRepository repository)
         {
@@ -23,18 +19,13 @@ namespace GameLogic
             model.Chests = repo.ChestList;
         }
 
-
-
         public void MonsterAttack()
         {
-
-            if ( model.Monsters[0].CX <= 195)
+            if (model.Monsters[0].CX <= 195)
             {
-                
                 if (model.Hero.IsDefending == true && model.Hero.Armor > 0)
                 {
                     model.Hero.Armor -= model.Monsters[0].AttackDMG;
-                    
                 }
                 else
                 {
@@ -43,19 +34,14 @@ namespace GameLogic
                     {
                         model.GameOver = true;
                     }
-
                 }
             }
-              
-
         }
-
 
         public void HeroAttack()
         {
-            if ( model.Hero.CanAttack && !model.Hero.IsDefending && model.IsInFight)
+            if (model.Hero.CanAttack && !model.Hero.IsDefending && model.IsInFight)
             {
-
                 model.Monsters[0].Hp -= model.Hero.AttackDMG;
                 if (model.Monsters[0].Hp <= 0)
                 {
@@ -65,16 +51,12 @@ namespace GameLogic
                     model.BlockNumber++;
                 }
             }
-
         }
 
         public void HeroIsDefending()
         {
-
             this.model.Hero.IsDefending = true;
-
         }
-
 
         public bool ChestAhead()
         {
@@ -86,11 +68,8 @@ namespace GameLogic
             return false;
         }
 
-
-
         public bool BuyDmg()
         {
-
             if (this.model.Hero.Cash >= this.model.DmgPrice)
             {
                 this.model.Hero.AttackDMG += 1;
@@ -99,14 +78,10 @@ namespace GameLogic
                 return true;
             }
             return false;
-
         }
-
-
 
         public int BuyHP()
         {
-
             if (this.model.Hero.Cash >= this.model.HPPrice && this.model.Hero.Hp < 10)
             {
                 this.model.Hero.Hp += 1;
@@ -122,9 +97,6 @@ namespace GameLogic
             {
                 return 2;
             }
-
-
-
         }
 
         public int BuyArmor()
@@ -145,11 +117,7 @@ namespace GameLogic
             {
                 return 2;
             }
-
         }
-
-
-
 
         public void BlockTick(OneBlock block)
         {
@@ -162,33 +130,25 @@ namespace GameLogic
 
         public void MonsterDied(List<OneMonster> monsters)
         {
-            
-                monsters[0] = monsters[1];
-                ChestCreate();
-                if (model.BlockNumber % 10 == 0    && model.BlockNumber != 0)
-                {
+            monsters[0] = monsters[1];
+            ChestCreate();
+            if (model.BlockNumber % 10 == 0 && model.BlockNumber != 0)
+            {
+                monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5, model.GameDisplayHeight / 4 * 4 - 100, Convert.ToInt32((model.BlockNumber / 10) * 5));
+            }
+            else
+            {
+                monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5, model.GameDisplayHeight / 4 * 4 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10) + 1));
+            }
 
-                      monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5, model.GameDisplayHeight / 4 * 4 - 100, Convert.ToInt32((model.BlockNumber / 10) * 5));
-                }
-                else
-                {
-
-                      monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5, model.GameDisplayHeight / 4 * 4 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10) + 1));
-                }   
-             
-                model.IsInFight = false;
-          
+            model.IsInFight = false;
         }
-
-
 
         public void MonstersTick(List<OneMonster> monsters)//dead monster kereszt
         {
-
-                    monsters[0].CX -= 5;
-                    monsters[1].CX -= 5;
+            monsters[0].CX -= 5;
+            monsters[1].CX -= 5;
         }
-
 
         //public void ChestTick(Chest chest)
         //{
@@ -203,10 +163,8 @@ namespace GameLogic
         //    chest.CX -= 1;
         //}
 
-
         public void ChestCreate()
         {
-
             //if ((model.BlockNumber + 4) % 10 == 0)
 
             if ((model.BlockNumber + 4) % 10 == 0)
@@ -219,9 +177,7 @@ namespace GameLogic
                 model.Chest.CY = model.GameDisplayHeight / 2;
 
                 model.ChestIsOn = true;
-                
             }
-
         }
 
         public bool AnswerA()
@@ -236,7 +192,6 @@ namespace GameLogic
             model.ChestIsOn = false;
             model.Chest = null;
             return false;
-        
         }
 
         public bool AnswerB()
@@ -253,7 +208,6 @@ namespace GameLogic
             return false;
         }
 
-
         public bool AnswerC()
         {
             if (model.Chest.Right == 2)
@@ -266,7 +220,6 @@ namespace GameLogic
             model.ChestIsOn = false;
             model.Chest = null;
             return false;
-
         }
 
         public bool AnswerD()
@@ -281,13 +234,10 @@ namespace GameLogic
             model.ChestIsOn = false;
             model.Chest = null;
             return false;
-
         }
-
 
         public void ChestTick()
         {
-
             if (model.Chest != null)
             {
                 model.Chest.CX -= 1;
@@ -297,10 +247,7 @@ namespace GameLogic
                 model.ChestIsOn = false;
                 model.Chest = null;
             }
-        
         }
-
-
 
         public void StepTick()
         {
@@ -313,7 +260,6 @@ namespace GameLogic
 
         public GameItem StepCalculator()
         {
-
             Chest chestcx = new Chest();
             if (model.Chest != null)
             {
@@ -331,27 +277,23 @@ namespace GameLogic
             {
                 return monstersx;
             }
-            else {
-
+            else
+            {
                 return chestcx;
             }
         }
 
         public GameItem FindGameItem(GameItem item)
         {
-
             switch (item)
             {
                 case Chest: return model.Chest;
 
-                case OneMonster: return model.Monsters.Find(x => x == item as OneMonster) ;            
-                
+                case OneMonster: return model.Monsters.Find(x => x == item as OneMonster);
+
                 default:
                     return null;
             }
         }
-
-
-        
     }
 }

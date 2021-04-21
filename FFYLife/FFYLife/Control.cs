@@ -1,11 +1,7 @@
 ﻿using GameLogic;
-using StorageRepository;
 using GameModel.Models;
+using StorageRepository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -13,22 +9,21 @@ using System.Windows.Threading;
 
 namespace FFYLife
 {
-    class Control : FrameworkElement
+    internal class Control : FrameworkElement
     {
-        IStorageRepository repo;
-        Renderer renderer;
-        IGameModel gameModel;
-        IGameLogic logic;
+        private IStorageRepository repo;
+        private Renderer renderer;
+        private IGameModel gameModel;
+        private IGameLogic logic;
         private double mouseX;
         private double mouseY;
         private double Difference = 130;
-        DispatcherTimer OneStepTimer;
-        DispatcherTimer EnemyAttackTimer;
+        private DispatcherTimer OneStepTimer;
+        private DispatcherTimer EnemyAttackTimer;
 
-        
         static public string PlayerName = "teszt";
         static public string SaveFile;
-        
+        DispatcherTimer HitCooldown;
         public Control()
         {
             Loaded += Control_Loaded;
@@ -36,89 +31,68 @@ namespace FFYLife
 
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
-
-
             repo = new StorageRepo();
             ;
             if (SaveFile == null)
             {
                 gameModel = new GameModel.Models.GameModel(1300, 800, PlayerName);
-               
-
             }
             else
             {
-               gameModel =   repo.LoadGame(SaveFile);
+                gameModel = repo.LoadGame(SaveFile);
             }
-            
-            
+
             logic = new GameLogicc(gameModel, repo);
             renderer = new Renderer(gameModel);
 
-
             Window win = Window.GetWindow(this);
-
-            
 
             //MonsterstepTimer.Interval = TimeSpan.FromMilliseconds(30);
             //MonsterstepTimer.Tick += MonsterstepTimer_Tick;
             //MonsterstepTimer.Start();
 
-
-
             if (win != null)
             {
-               
                 win.MouseLeftButtonDown += Win_MouseLeftButtonDown;
                 win.KeyDown += Win_KeyDown;
-                
-                
             }
 
-
-            
-
-           
-                EnemyAttackTimer = new DispatcherTimer();
-                EnemyAttackTimer.Tick += delegate
+            EnemyAttackTimer = new DispatcherTimer();
+            EnemyAttackTimer.Tick += delegate
+            {
+                if (gameModel.GameOver)
                 {
-                    
-                    if (gameModel.GameOver)
+                    GameOver();
+                    EnemyAttackTimer.Stop();
+                }
+                else
+                {
+                    DispatcherTimer HitTime = new DispatcherTimer();
+                    gameModel.CanAttack = false;
+                    HitTime.Tick += delegate
                     {
-                        GameOver();
-                        EnemyAttackTimer.Stop();
-                    }
-                    else
-                    {
-                        DispatcherTimer HitTime = new DispatcherTimer();
-                        gameModel.CanAttack = false;
-                        HitTime.Tick += delegate
-                        {
-                            gameModel.CanAttack = true;
-                            HitTime.Stop();
-                            InvalidateVisual();
-
-                        };
-                        HitTime.Interval = TimeSpan.FromMilliseconds(400);
-                        HitTime.Start();
+                        gameModel.CanAttack = true;
+                        HitTime.Stop();
                         InvalidateVisual();
-                        logic.MonsterAttack();
-                    }
+                    };
+                    HitTime.Interval = TimeSpan.FromMilliseconds(400);
+                    HitTime.Start();
                     InvalidateVisual();
+                    logic.MonsterAttack();
+                }
+                InvalidateVisual();
+            };
+            EnemyAttackTimer.Interval = TimeSpan.FromMilliseconds(1500);
+            EnemyAttackTimer.Start();
+            gameModel.Hero.CanAttack = true;
 
-                };
-                EnemyAttackTimer.Interval = TimeSpan.FromMilliseconds(1500);
-                EnemyAttackTimer.Start();
-
-          
+            HitCooldown = new DispatcherTimer();
             InvalidateVisual();
-
-
         }
 
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            DispatcherTimer HitCooldown = new DispatcherTimer();
+            
             DispatcherTimer Move = new DispatcherTimer();
             switch (e.Key)
             {
@@ -128,36 +102,25 @@ namespace FFYLife
                         //Window win = Window.GetWindow(this);
                         //win.Close();
                         ReturnToMenu();
-
-
                     }
 
                     break;
 
                 case Key.D:
-                   
-                    
-                        gameModel.Hero.IsDefending = true;
-                    
-                    
-                    
-                    break;
 
+                    gameModel.Hero.IsDefending = true;
+
+                    break;
 
                 case Key.S:
 
-
                     gameModel.Hero.IsDefending = false;
 
-
-
                     break;
-
 
                 case Key.Space:
 
                     var entity = logic.StepCalculator();
-
 
                     //logic.StepTick();
 
@@ -168,65 +131,47 @@ namespace FFYLife
                     }
                     if (entity.CX >= 195 && !gameModel.ChestIsOn)
                     {
-                         
                         gameModel.Moving = true;
                         logic.StepTick();
                         Move.Tick += delegate
                         {
-
-                            
                             HitCooldown.Stop();
-                            
-                            InvalidateVisual();
 
+                            InvalidateVisual();
                         };
-                        
+
                         HitCooldown.Interval = TimeSpan.FromMilliseconds(50);
                         HitCooldown.Start();
                         gameModel.Moving = false;
                         InvalidateVisual();
-                        
-                       
-                    
-
                     }
-                   
 
-                    
                     InvalidateVisual();
-
                     break;
-                case Key.A:
-                    gameModel.Hero.CanAttack = true;
-                    logic.HeroAttack();
 
-                   
-                    HitCooldown.Tick += delegate
+                case Key.A:
+                    if (gameModel.Hero.CanAttack)
                     {
                        
+                        logic.HeroAttack();
                         gameModel.Hero.CanAttack = false;
-                        HitCooldown.Stop();
+
+                        HitCooldown.Tick += delegate
+                        {
+                            gameModel.Hero.CanAttack = true;
+                            HitCooldown.Stop();
+                            InvalidateVisual();
+                        };
+                        HitCooldown.Interval = TimeSpan.FromMilliseconds(1000);
+                        HitCooldown.Start();
                         InvalidateVisual();
-
-                    };
-                    HitCooldown.Interval = TimeSpan.FromMilliseconds(500);
-                    HitCooldown.Start();
-                    InvalidateVisual();
-                    
-
-
-
-                    
-
-
+                    }
 
                     break;
             }
             InvalidateVisual();
-
         }
 
-    
         //private void MonsterstepTimer_Tick(object sender, EventArgs e)
         //{
         //    if (gameModel.Monsters[0])
@@ -237,8 +182,6 @@ namespace FFYLife
 
         //   logic.MonstersTick(gameModel.Monsters)
         //   InvalidateVisual();
-
-
 
         //}
 
@@ -251,23 +194,19 @@ namespace FFYLife
             {
                 if (mouseX >= 1200 && mouseX <= 1230)
                 {
-
                     if (mouseY >= 615 && mouseY <= 645)
                     {
                         if (logic.AnswerB())
                         {
                             MessageBox.Show("Right Answer!");
                         }
-                        else {
+                        else
+                        {
                             MessageBox.Show("U are Stupid!");
                         }
-
-                        
                     }
                     else if (mouseY >= 700 && mouseY <= 730)
                     {
-                       
-
                         if (logic.AnswerD())
                         {
                             MessageBox.Show("Right Answer!");
@@ -276,10 +215,7 @@ namespace FFYLife
                         {
                             MessageBox.Show("U are Stupid!");
                         }
-
                     }
-
-
                 }
                 if (mouseX >= 890 && mouseX <= 920)
                 {
@@ -293,7 +229,6 @@ namespace FFYLife
                         {
                             MessageBox.Show("U are Stupid!");
                         }
-                        
                     }
                     else if (mouseY >= 700 && mouseY <= 730)
                     {
@@ -305,11 +240,8 @@ namespace FFYLife
                         {
                             MessageBox.Show("U are Stupid!");
                         }
-                        
                     }
-
                 }
-
             }
             else
             {
@@ -321,7 +253,6 @@ namespace FFYLife
                         {
                             MessageBox.Show("You don't have enough vbuck , ask mommy to buy some more!");
                         }
-                        
                     }
                     else if (mouseX >= 1150 && mouseX <= 1250)
                     {
@@ -333,7 +264,6 @@ namespace FFYLife
                         {
                             MessageBox.Show("You are already at full HP");
                         }
-
                     }
                 }
                 if (mouseY >= 730 && mouseY <= 780 && mouseX >= 825 && mouseX <= 925)
@@ -346,8 +276,6 @@ namespace FFYLife
                     {
                         MessageBox.Show("You are already at full Armor");
                     }
-                    
-
                 }
                 if (mouseY >= 650 && mouseY <= 750 && mouseX >= 1035 && mouseX <= 1235)
                 {
@@ -356,9 +284,7 @@ namespace FFYLife
                         repo.SaveGame(gameModel);
                         ReturnToMenu();
                     }
-
                 }
-
             }
 
             InvalidateVisual();
@@ -367,11 +293,7 @@ namespace FFYLife
         protected override void OnRender(DrawingContext drawingContext)
         {
             if (renderer != null) drawingContext.DrawDrawing(renderer.BuildDrawing());
-           
         }
-
-       
-
 
         private void ReturnToMenu()
         {
@@ -381,15 +303,12 @@ namespace FFYLife
             win.Close();
         }
 
-
         private void GameOver()
         {
             MessageBox.Show("Game over dickhole!");
             StorageRepo.SaveHighScore(gameModel);
             ReturnToMenu();
-
         }
-
 
         //private void GameOver()
         //{
@@ -397,9 +316,5 @@ namespace FFYLife
         //    MessageBox.Show("GAME OVER!");
         //    this.ReturnToMenu();
         //}
-
-
-
-
     }
 }

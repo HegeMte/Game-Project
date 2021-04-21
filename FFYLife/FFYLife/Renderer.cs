@@ -191,7 +191,7 @@ namespace FFYLife
                     hero = new ImageDrawing(GetImage("steveMove.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
                     ;
                 }
-                else if (!model.Hero.CanAttack)
+                else if (model.Hero.CanAttack)
                 {
                     hero = new ImageDrawing(GetImage("steve.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 100, 200));
                 }
