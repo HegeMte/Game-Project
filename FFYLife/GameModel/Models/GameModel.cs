@@ -46,7 +46,7 @@ namespace GameModel.Models
         public bool Moving { get; set; }
 
         
-        public GameModel(double w, double h , string Name )
+        public GameModel(double w, double h , string Name  , string type)
         {
             WindowHeight = h;
             WindowWidth = w;
@@ -80,8 +80,10 @@ namespace GameModel.Models
             {
                 Blocks.Add(new OneBlock(i * GameDisplayWidth / NumBlocks, h / 2));
             }
+
+            Hero = new OneHero(-50, 410, type); 
+
             
-            Hero = new OneHero(-50 ,410);
 
 
             Hero.Cash = 100;
@@ -107,7 +109,7 @@ namespace GameModel.Models
 
         }
 
-        public GameModel(double w, double h, string Name, int HeroHp, int DMG, int Armor,int ArmorPrice, int Cash, int blockNumber, int DmgPrice, int HpPrice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY) //For the reload without the chest
+        public GameModel(double w, double h, string Name, int HeroHp, int DMG, int AttackSpeed, int Armor,int ArmorPrice, int Cash, int blockNumber, int DmgPrice, int HpPrice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY) //For the reload without the chest
         {
 
             IsInFight = false;
@@ -125,7 +127,7 @@ namespace GameModel.Models
             }
 
             Hero = new OneHero(-50, 410, HeroHp, DMG, Armor, Cash);
-
+            Hero.AttackSpeed = AttackSpeed;
             this.BlockNumber = blockNumber;
             this.DmgPrice = DmgPrice;
             this.HPPrice = HpPrice;
@@ -138,8 +140,9 @@ namespace GameModel.Models
 
         }
 
-        public GameModel(double w, double h, string Name, int HeroHp, int DMG, int Armor, int ArmorPrice, int Cash, int blockNumber, int DmgPrice, int HpPrice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY, int chestCX, int chestCy, int chestNum) //For the reload with the chest
+        public GameModel(double w, double h, string Name, int HeroHp, int DMG, int AttackSpeed, int Armor, int ArmorPrice, int Cash, int blockNumber, int DmgPrice, int HpPrice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY, int chestCX, int chestCy, int chestNum) //For the reload with the chest
         {
+            Hero.AttackSpeed = AttackSpeed;
             GameDisplayHeight = h;
             GameDisplayWidth = w;
 

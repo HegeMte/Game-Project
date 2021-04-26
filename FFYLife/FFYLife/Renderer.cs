@@ -180,28 +180,59 @@ namespace FFYLife
         {
 
             ImageDrawing hero;
-            if (model.Hero.IsDefending)
+
+
+            if (model.Hero.Type == "Light")
             {
-                hero = new ImageDrawing(GetImage("steveDefend.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
-            }
-            else
-            {
-                if ( model.Moving)
+                if (model.Hero.IsDefending)
                 {
-                    hero = new ImageDrawing(GetImage("steveMove.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
-                    ;
-                }
-                else if (model.Hero.CanAttack)
-                {
-                    hero = new ImageDrawing(GetImage("steve.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 100, 200));
+                    hero = new ImageDrawing(GetImage("steveDefend.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
                 }
                 else
                 {
-                    hero = new ImageDrawing(GetImage("steveattack.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
+                    if (model.Moving)
+                    {
+                        hero = new ImageDrawing(GetImage("steveMove.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
+                        ;
+                    }
+                    else if (model.Hero.CanAttack)
+                    {
+                        hero = new ImageDrawing(GetImage("steve.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 100, 200));
+                    }
+                    else
+                    {
+                        hero = new ImageDrawing(GetImage("steveattack.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
+                    }
+                }
+
+            }
+            else
+            {
+                if (model.Hero.IsDefending)
+                {
+                    hero = new ImageDrawing(GetImage("steveDefend1.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
+                }
+                else
+                {
+                    if (model.Moving)
+                    {
+                        hero = new ImageDrawing(GetImage("steveMove1.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
+                        ;
+                    }
+                    else if (model.Hero.CanAttack)
+                    {
+                        hero = new ImageDrawing(GetImage("steve1.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 100, 200));
+                    }
+                    else
+                    {
+                        hero = new ImageDrawing(GetImage("steveattack1.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
+                    }
                 }
             }
-            
-            
+
+
+
+
 
             //Geometry g = new RectangleGeometry(new Rect(model.Hero.CX, model.Hero.CY, 40, 200));
             //oldHero = new GeometryDrawing(Brushes.Yellow, stroke, g);

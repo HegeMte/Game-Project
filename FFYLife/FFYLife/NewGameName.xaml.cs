@@ -31,6 +31,8 @@ namespace FFYLife
         private void StartGameClick(object sender, RoutedEventArgs e)
         {
             Control.PlayerName = this.NameTextBox.Text;
+            Control.PlayerType = this.Radio1.IsChecked == true ? this.Radio1.Content.ToString() : this.Radio2.Content.ToString();
+            
             this.DialogResult = true;
             this.Close();
             
