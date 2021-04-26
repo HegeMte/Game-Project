@@ -13,46 +13,14 @@ namespace StorageRepository
     public class StorageRepo : IStorageRepository
     {
         public List<Chest> ChestList { get; set; }
-        public GameModel.Models.GameModel gameModel { get; set; }
 
         public StorageRepo()
         {
-            // Chests = LoadChests();
-            ChestList = new List<Chest>();
-            ChestList.Add(new Chest() { Question = "Elérjük Péter Árpádot?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 1 });
-            //Chest c1 = new Chest();
-            //c1.Question = "Elérjük Péter Árpádot?";
-            ChestList.Add(new Chest() { Question = "Mennyi 5+5?", Answers = new List<string>() { "10", "15", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
-            //Chest c1 = new Chest();
-            ChestList.Add(new Chest() { Question = "Dua Lipa 10/?", Answers = new List<string>() { "10", "2", "11", "100" }, RewardCash = 10, Right = 3 });
-            ChestList.Add(new Chest() { Question = "Meglesz a prog4?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
-            ChestList.Add(new Chest() { Question = "Buta vagy?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
             
         }
 
-        private List<Chest> LoadChests()
-        {
-            List<Chest> Chests = new List<Chest>();
 
-            foreach (var chest in XDocument.Load("chests.xml").Descendants("Chest"))
-            {
-                Chest c = new Chest();
-                c.Question = chest.Element("Question")?.Value;
-                c.Answers.Add(chest.Element("Answer0")?.Value);
-                c.Answers.Add(chest.Element("Answer1")?.Value);
-                c.Answers.Add(chest.Element("Answer2")?.Value);
-                c.Answers.Add(chest.Element("Answer3")?.Value);
-                c.Right = int.Parse(chest.Element("Right")?.Value);
-
-            }
-
-            gameModel.Chests = Chests;
-            //Itt a chest Propertyt kene csak beallitani,a  logic metodusokban azt kernem le 
-            return Chests;
-
-        }
-
-        public static void SaveHighScore(GameModel.Models.IGameModel gm)
+        public /*static*/ void SaveHighScore(GameModel.Models.IGameModel gm)
         {
             if (File.Exists("highscores.txt"))
             {
@@ -97,11 +65,6 @@ namespace StorageRepository
             {
                 Directory.CreateDirectory("Saves");
             }
-
-
-
-
-
 
             XDocument saveGameXDoc = new XDocument(new XElement("Save"));
             saveGameXDoc.Root.Add(new XElement("Name", gameModel.Name));

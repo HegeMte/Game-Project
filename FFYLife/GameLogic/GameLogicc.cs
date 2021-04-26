@@ -16,9 +16,10 @@ namespace GameLogic
         {
             this.model = model;
             this.repo = repository;
-            model.Chests = repo.ChestList;
+            model.Chests = GenerateChestQuestions();
         }
 
+      
         public void MonsterAttack()
         {
             if (model.Monsters[0].CX <= 195)
@@ -163,7 +164,7 @@ namespace GameLogic
         //    chest.CX -= 1;
         //}
 
-        public void ChestCreate()
+        private void ChestCreate()
         {
             //if ((model.BlockNumber + 4) % 10 == 0)
 
@@ -171,7 +172,7 @@ namespace GameLogic
             {
                 //model.Chest = new Chest(model.GameDisplayWidth / 5, model.GameDisplayHeight / 2);
                 model.Chest = new Chest();
-                model.Chest = repo.ChestList[r.Next(0, repo.ChestList.Count)];
+                model.Chest = model.Chests[r.Next(0, model.Chests.Count)];
                 //model.Chest = model.Chests[r.Next(0, model.Chests.Count)];
                 model.Chest.CX = 195;
                 model.Chest.CY = model.GameDisplayHeight / 2;
@@ -295,5 +296,43 @@ namespace GameLogic
                     return null;
             }
         }
+
+
+
+        public GameModel.Models.GameModel LoadGame(string SaveFile)
+        {
+
+           return repo.LoadGame(SaveFile);
+        
+        
+        }
+
+
+        private List<Chest> GenerateChestQuestions()
+        {
+            //foreach (var chest in XDocument.Load("chests.xml").Descendants("Chest"))
+            //{
+            //    Chest c = new Chest();
+            //    c.Question = chest.Element("Question")?.Value;
+            //    c.Answers.Add(chest.Element("Answer0")?.Value);
+            //    c.Answers.Add(chest.Element("Answer1")?.Value);
+            //    c.Answers.Add(chest.Element("Answer2")?.Value);
+            //    c.Answers.Add(chest.Element("Answer3")?.Value);
+            //    c.RewardCash = int.Parse(chest.Element("RewardCash")?.Value);
+            //    c.Right = int.Parse(chest.Element("Right")?.Value);
+
+            //}
+            List<Chest> ChestList = new List<Chest>();
+            ChestList.Add(new Chest() { Question = "Elérjük Péter Árpádot?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 1 });
+            ChestList.Add(new Chest() { Question = "Mennyi 5+5?", Answers = new List<string>() { "10", "15", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
+            ChestList.Add(new Chest() { Question = "Dua Lipa 10/?", Answers = new List<string>() { "10", "2", "11", "100" }, RewardCash = 10, Right = 3 });
+            ChestList.Add(new Chest() { Question = "Meglesz a prog4?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
+            ChestList.Add(new Chest() { Question = "Buta vagy?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
+
+            return ChestList;
+
+        }
+
+
     }
 }

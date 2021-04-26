@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GameModel\GameModel.csproj" />
+    <ProjectReference Include="..\StorageRepository\StorageRepository.csproj" />
+  </ItemGroup>
+
+</Project>

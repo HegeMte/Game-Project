@@ -1,5 +1,6 @@
 ﻿using GameLogic;
 using GameModel.Models;
+using Logic;
 using StorageRepository;
 using System;
 using System.Windows;
@@ -15,6 +16,7 @@ namespace FFYLife
         private Renderer renderer;
         private IGameModel gameModel;
         private IGameLogic logic;
+        private ILogic resourcelogic;
         private double mouseX;
         private double mouseY;
         private double Difference = 130;
@@ -32,14 +34,14 @@ namespace FFYLife
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
             repo = new StorageRepo();
-            ;
+            resourcelogic = new ResourceLogic(repo as StorageRepo);
             if (SaveFile == null)
             {
                 gameModel = new GameModel.Models.GameModel(1300, 800, PlayerName);
             }
             else
             {
-                gameModel = repo.LoadGame(SaveFile);
+                gameModel = resourcelogic.LoadGame(SaveFile);
             }
 
             logic = new GameLogicc(gameModel, repo);
@@ -281,7 +283,7 @@ namespace FFYLife
                 {
                     if (MessageBox.Show("Are you sure you want to save and quit?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        repo.SaveGame(gameModel);
+                        resourcelogic.SaveGame(gameModel);
                         ReturnToMenu();
                     }
                 }
@@ -306,7 +308,7 @@ namespace FFYLife
         private void GameOver()
         {
             MessageBox.Show("Game over dickhole!");
-            StorageRepo.SaveHighScore(gameModel);
+            resourcelogic.SaveHighScore(gameModel);
             ReturnToMenu();
         }
 
