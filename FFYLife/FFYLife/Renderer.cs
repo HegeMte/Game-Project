@@ -235,7 +235,7 @@ namespace FFYLife
         private Drawing GetGamePlayBackground()
         {
 
-            ;
+            
             if (oldGameplayBackground == null)
             {
                 

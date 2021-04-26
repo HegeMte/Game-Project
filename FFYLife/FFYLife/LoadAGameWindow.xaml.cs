@@ -22,7 +22,7 @@ namespace FFYLife
         public LoadAGameWindow()
         {
             InitializeComponent();
-            Files = StorageRepository.StorageRepo.SavedGamesList();
+            Files = Logic.ResourceLogic.SavedGamesList();
             ShowFiles();
 
         }

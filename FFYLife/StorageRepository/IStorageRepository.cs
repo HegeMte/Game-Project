@@ -14,6 +14,11 @@ namespace StorageRepository
 
         GameModel.Models.GameModel LoadGame(string savefile);
         List<Chest> ChestList { get; set; }
-        GameModel.Models.GameModel gameModel { get; set; }
+        //string[] LoadHighScores();
+
+        //string[] SavedGamesList();
+        
+
+        void SaveHighScore(IGameModel gm);
     }
 }

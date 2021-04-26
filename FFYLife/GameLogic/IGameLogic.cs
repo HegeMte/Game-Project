@@ -31,9 +31,6 @@ namespace GameLogic
         GameItem FindGameItem(GameItem item);
 
         bool ChestAhead();
-        void ChestCreate();
-
-
         bool AnswerA();
 
         bool AnswerB();
@@ -42,5 +39,9 @@ namespace GameLogic
 
         bool AnswerD();
         void MonsterDied(List<OneMonster> monsters);
+
+        public GameModel.Models.GameModel LoadGame(string FileSave);
+
+
     }
 }

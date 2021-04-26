@@ -299,24 +299,6 @@ namespace LogicTests
 
         }
 
-
-        //[Test]
-        //public void ChestCreate()
-        //{
-        //    ModelMock.Object.Chest = null;
-        //    //ModelMock.Object.Chests = RepoMock.Object.ChestList;
-        //    ModelMock.Object.BlockNumber = 6;
-
-        //    // ACT
-        //    gameLogic.ChestCreate();
-
-
-
-        //    // ASSERT
-        //    Assert.That(ModelMock.Object.Chest, Is.Not.Null);
-
-        //}
-
         [Test]
         public void StepCalculator()
         {

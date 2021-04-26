@@ -23,7 +23,7 @@ namespace FFYLife
 
         public HighScoreWindow()
         {
-            HighScores = StorageRepository.StorageRepo.LoadHighScores();
+            HighScores = Logic.ResourceLogic.LoadHighScores();
             InitializeComponent();
 
             if (this.HighScores == null)
