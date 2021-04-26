@@ -10,16 +10,37 @@ namespace GameModel.Models
         public double DX { get; set; }
         public double DY { get; set; }
 
-        public OneHero(double cx, double cy)
+        public string Type { get; set;}
+        public OneHero(double cx, double cy , string type)
         {
             this.CX = cx;
             this.CY = cy;
             DX = 130;
 
-            Hp = 10;
-            AttackDMG = 1;
-            AttackSpeed = 1;
-            Armor = 4;
+            Type = type;
+
+            switch (type)
+            {
+                case "Light":
+                    Hp = 10;
+                    AttackDMG = 1;
+                    AttackSpeed = 300;
+                    Armor = 4;
+
+                    break;
+
+                case "Heavy":
+                    Hp = 10;
+                    AttackDMG = 1;
+                    AttackSpeed = 1500;
+                    Armor = 7;
+
+                    break;
+
+
+            }
+
+           
             Cash = 0;
             IsDefending = false;
         }

@@ -24,6 +24,7 @@ namespace FFYLife
         private DispatcherTimer EnemyAttackTimer;
 
         static public string PlayerName = "teszt";
+        static public string PlayerType = "light";
         static public string SaveFile;
         DispatcherTimer HitCooldown;
         public Control()
@@ -37,7 +38,7 @@ namespace FFYLife
             resourcelogic = new ResourceLogic(repo as StorageRepo);
             if (SaveFile == null)
             {
-                gameModel = new GameModel.Models.GameModel(1300, 800, PlayerName);
+                gameModel = new GameModel.Models.GameModel(1300, 800, PlayerName , PlayerType);
             }
             else
             {
@@ -84,7 +85,7 @@ namespace FFYLife
                 }
                 InvalidateVisual();
             };
-            EnemyAttackTimer.Interval = TimeSpan.FromMilliseconds(1500);
+            EnemyAttackTimer.Interval = TimeSpan.FromMilliseconds(gameModel.Hero.AttackSpeed);
             EnemyAttackTimer.Start();
             gameModel.Hero.CanAttack = true;
 

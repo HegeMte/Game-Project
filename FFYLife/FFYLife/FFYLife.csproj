@@ -38,8 +38,11 @@
     <None Remove="Images\shopBackground.jpg" />
     <None Remove="Images\shrek.png" />
     <None Remove="Images\steve.png" />
+    <None Remove="Images\steve1.png" />
     <None Remove="Images\steveattack.png" />
+    <None Remove="Images\steveattack1.png" />
     <None Remove="Images\steveDefend.png" />
+    <None Remove="Images\steveDefend1.png" />
     <None Remove="Images\steveMove.png" />
     <None Remove="Images\sword.png" />
     <None Remove="Images\sword1.png" />
@@ -60,6 +63,8 @@
     <EmbeddedResource Include="Images\boss3attack.png" />
     <EmbeddedResource Include="Images\boss4.png" />
     <EmbeddedResource Include="Images\boss4attack.png" />
+    <EmbeddedResource Include="Images\steve1.png" />
+    <EmbeddedResource Include="Images\steveattack1.png" />
     <EmbeddedResource Include="Images\steveDefend.png" />
   </ItemGroup>
 
@@ -76,6 +81,7 @@
     <EmbeddedResource Include="Images\shrek.png" />
     <EmbeddedResource Include="Images\steve.png" />
     <EmbeddedResource Include="Images\steveattack.png" />
+    <EmbeddedResource Include="Images\steveDefend1.png" />
     <EmbeddedResource Include="Images\steveMove.png" />
     <Resource Include="Images\terraria.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

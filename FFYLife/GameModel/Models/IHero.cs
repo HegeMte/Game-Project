@@ -11,7 +11,7 @@ namespace GameModel.Models
 
         bool CanAttack { get; set; }
         int Cash { get; set; }
-
+        string Type { get; set; }
 
     }
 }
