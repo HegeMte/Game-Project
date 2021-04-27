@@ -14,11 +14,24 @@ namespace FFYLife
     using Logic;
     using StorageRepository;
 
+    /// <summary>
+    /// Documentation of the public Control class.
+    /// </summary>
     internal class Control : FrameworkElement
     {
-
+        /// <summary>
+        /// PlayerName.
+        /// </summary>
         public static string PlayerName = "teszt";
+
+        /// <summary>
+        /// PlayerType.
+        /// </summary>
         public static string PlayerType = "light";
+
+        /// <summary>
+        /// SaveFile.
+        /// </summary>
         public static string SaveFile;
         private IStorageRepository repo;
         private Renderer renderer;
@@ -27,21 +40,34 @@ namespace FFYLife
         private ILogic resourcelogic;
         private double mouseX;
         private double mouseY;
-        private double Difference = 130;
-        private DispatcherTimer OneStepTimer;
-        private DispatcherTimer EnemyAttackTimer;
 
-        private DispatcherTimer HitCooldown;
+       // private double difference = 130;
+       //  private DispatcherTimer OneStepTimer;
+        private DispatcherTimer enemyAttackTimer;
 
+        private DispatcherTimer hitCooldown;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Control"/> class.
+        /// </summary>
         public Control()
         {
-            this.Loaded += Control_Loaded;
+            this.Loaded += this.Control_Loaded;
+        }
+
+        /// <inheritdoc/>
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            if (this.renderer != null)
+            {
+                drawingContext.DrawDrawing(this.renderer.BuildDrawing());
+            }
         }
 
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
             this.repo = new StorageRepo();
-            this.resourcelogic = new ResourceLogic(repo as StorageRepo);
+            this.resourcelogic = new ResourceLogic(this.repo as StorageRepo);
             if (SaveFile == null)
             {
                 this.gameModel = new GameModel(1300, 800, PlayerName, PlayerType);
@@ -50,6 +76,7 @@ namespace FFYLife
             {
                 this.gameModel = this.resourcelogic.LoadGame(SaveFile);
             }
+
             SaveFile = null;
 
             this.logic = new GameLogicc(this.gameModel, this.repo);
@@ -57,52 +84,52 @@ namespace FFYLife
 
             Window win = Window.GetWindow(this);
 
-            //MonsterstepTimer.Interval = TimeSpan.FromMilliseconds(30);
-            //MonsterstepTimer.Tick += MonsterstepTimer_Tick;
-            //MonsterstepTimer.Start();
-
+            // MonsterstepTimer.Interval = TimeSpan.FromMilliseconds(30);
+            // MonsterstepTimer.Tick += MonsterstepTimer_Tick;
+            // MonsterstepTimer.Start();
             if (win != null)
             {
                 win.MouseLeftButtonDown += this.Win_MouseLeftButtonDown;
                 win.KeyDown += this.Win_KeyDown;
             }
 
-            this.EnemyAttackTimer = new DispatcherTimer();
-            this.EnemyAttackTimer.Tick += delegate
+            this.enemyAttackTimer = new DispatcherTimer();
+            this.enemyAttackTimer.Tick += (sender1, e1) =>
             {
                 if (this.gameModel.GameOver)
                 {
                     this.GameOver();
-                    this.EnemyAttackTimer.Stop();
+                    this.enemyAttackTimer.Stop();
                 }
                 else
                 {
-                    DispatcherTimer HitTime = new DispatcherTimer();
+                    DispatcherTimer hitTime = new DispatcherTimer();
                     this.gameModel.CanAttack = false;
-                    HitTime.Tick += delegate
+                    hitTime.Tick += (sender2, e2) =>
                     {
                         this.gameModel.CanAttack = true;
-                        HitTime.Stop();
+                        hitTime.Stop();
                         this.InvalidateVisual();
                     };
-                    HitTime.Interval = TimeSpan.FromMilliseconds(400);
-                    HitTime.Start();
+                    hitTime.Interval = TimeSpan.FromMilliseconds(400);
+                    hitTime.Start();
                     this.InvalidateVisual();
                     this.logic.MonsterAttack();
                 }
+
                 this.InvalidateVisual();
             };
-            this.EnemyAttackTimer.Interval = TimeSpan.FromMilliseconds(1500);
-            this.EnemyAttackTimer.Start();
+            this.enemyAttackTimer.Interval = TimeSpan.FromMilliseconds(1500);
+            this.enemyAttackTimer.Start();
             this.gameModel.Hero.CanAttack = true;
 
-            this.HitCooldown = new DispatcherTimer();
+            this.hitCooldown = new DispatcherTimer();
             this.InvalidateVisual();
         }
 
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            DispatcherTimer Move = new DispatcherTimer();
+            DispatcherTimer move = new DispatcherTimer();
             switch (e.Key)
             {
                 case Key.Escape:
@@ -143,15 +170,15 @@ namespace FFYLife
                     {
                         this.gameModel.Moving = true;
                         this.logic.StepTick();
-                        Move.Tick += delegate
+                        move.Tick += (sender1, e1) =>
                         {
-                            this.HitCooldown.Stop();
+                            this.hitCooldown.Stop();
 
                             this.InvalidateVisual();
                         };
 
-                        this.HitCooldown.Interval = TimeSpan.FromMilliseconds(50);
-                        this.HitCooldown.Start();
+                        this.hitCooldown.Interval = TimeSpan.FromMilliseconds(50);
+                        this.hitCooldown.Start();
                         this.gameModel.Moving = false;
                         this.InvalidateVisual();
                     }
@@ -165,14 +192,14 @@ namespace FFYLife
                         this.logic.HeroAttack();
                         this.gameModel.Hero.CanAttack = false;
 
-                        this.HitCooldown.Tick += delegate
+                        this.hitCooldown.Tick += (sender1, e1) =>
                         {
                             this.gameModel.Hero.CanAttack = true;
-                            this.HitCooldown.Stop();
+                            this.hitCooldown.Stop();
                             this.InvalidateVisual();
                         };
-                        this.HitCooldown.Interval = TimeSpan.FromMilliseconds(this.gameModel.Hero.AttackSpeed);
-                        this.HitCooldown.Start();
+                        this.hitCooldown.Interval = TimeSpan.FromMilliseconds(this.gameModel.Hero.AttackSpeed);
+                        this.hitCooldown.Start();
                         this.InvalidateVisual();
                     }
 
@@ -194,7 +221,6 @@ namespace FFYLife
         //   InvalidateVisual();
 
         // }
-
         private void Win_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.mouseX = e.GetPosition(this).X;
@@ -303,11 +329,6 @@ namespace FFYLife
             }
 
             this.InvalidateVisual();
-        }
-
-        protected override void OnRender(DrawingContext drawingContext)
-        {
-            if (this.renderer != null) drawingContext.DrawDrawing(this.renderer.BuildDrawing());
         }
 
         private void ReturnToMenu()
