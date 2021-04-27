@@ -86,7 +86,7 @@ namespace GameModel.Models
             
 
 
-            Hero.Cash = 100;
+            Hero.Cash = 10;
 
             Monsters = new List<OneMonster>();
             Monsters.Add(new OneMonster(GameDisplayWidth / 5 * 3 - 86, h / 4 * 3 - 200,1));

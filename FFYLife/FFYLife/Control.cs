@@ -44,6 +44,7 @@ namespace FFYLife
             {
                 gameModel = resourcelogic.LoadGame(SaveFile);
             }
+            SaveFile = null;
 
             logic = new GameLogicc(gameModel, repo);
             renderer = new Renderer(gameModel);
