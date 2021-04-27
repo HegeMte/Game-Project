@@ -1,74 +1,105 @@
-﻿using GameModel.Models;
-using StorageRepository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿// <copyright file="GameLogicc.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+[assembly: System.CLSCompliant(false)]
 
 namespace GameLogic
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using GameModel.Models;
+    using StorageRepository;
+
+    /// <summary>
+    /// GameLogicc class wihch implements the IGameLogic inteface.
+    /// </summary>
     public class GameLogicc : IGameLogic
     {
         private IGameModel model;
         private IStorageRepository repo;
         private Random r = new Random();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameLogicc"/> class.
+        /// </summary>
+        /// <param name="model">The first ctor parameter.</param>
+        /// <param name="repository">The second ctor parameter.</param>
         public GameLogicc(IGameModel model, IStorageRepository repository)
         {
             this.model = model;
             this.repo = repository;
-            model.Chests = GenerateChestQuestions();
+            this.model.Chests = this.GenerateChestQuestions();
         }
 
-      
+        /// <summary>
+        /// MonsterAttack Method which is decrasing the hero hp if the hero is not defending, when he is defending, ten decreasing the heros armor.
+        /// </summary>
         public void MonsterAttack()
         {
-            if (model.Monsters[0].CX <= 195)
+            if (this.model.Monsters[0].CX <= 195)
             {
-                if (model.Hero.IsDefending == true && model.Hero.Armor > 0)
+                if (this.model.Hero.IsDefending == true && this.model.Hero.Armor > 0)
                 {
-                    model.Hero.Armor -= model.Monsters[0].AttackDMG;
+                    this.model.Hero.Armor -= this.model.Monsters[0].AttackDMG;
                 }
                 else
                 {
-                    model.Hero.Hp -= model.Monsters[0].AttackDMG;
-                    if (model.Hero.Hp <= 0)
+                    this.model.Hero.Hp -= this.model.Monsters[0].AttackDMG;
+                    if (this.model.Hero.Hp <= 0)
                     {
-                        model.GameOver = true;
+                        this.model.GameOver = true;
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// HeroAttack method, Decreasing the MonsterHp with the heros attack damage.
+        /// </summary>
         public void HeroAttack()
         {
-            if (model.Hero.CanAttack && !model.Hero.IsDefending && model.IsInFight)
+            if (this.model.Hero.CanAttack && !this.model.Hero.IsDefending && this.model.IsInFight)
             {
-                model.Monsters[0].Hp -= model.Hero.AttackDMG;
-                if (model.Monsters[0].Hp <= 0)
+                this.model.Monsters[0].Hp -= this.model.Hero.AttackDMG;
+                if (this.model.Monsters[0].Hp <= 0)
                 {
-                    model.Monsters[0].IsDead = true;
-                    model.Hero.Cash += model.Monsters[0].RewardCash;
-                    MonsterDied(model.Monsters);
-                    model.BlockNumber++;
+                    this.model.Monsters[0].IsDead = true;
+                    this.model.Hero.Cash += this.model.Monsters[0].RewardCash;
+                    this.MonsterDied(this.model.Monsters);
+                    this.model.BlockNumber++;
                 }
             }
         }
 
+        /// <summary>
+        /// HeroIsDefending method, sets the hero isdefending property to true.
+        /// </summary>
         public void HeroIsDefending()
         {
             this.model.Hero.IsDefending = true;
         }
 
+        /// <summary>
+        /// ChestAhead method.
+        /// </summary>
+        /// <returns>true or false.</returns>
         public bool ChestAhead()
         {
-            if (model.Chest != null && model.Chest.CX == 195)
+            if (this.model.Chest != null && this.model.Chest.CX == 195)
             {
                 this.model.ChestIsOn = true;
                 return true;
             }
+
             return false;
         }
 
+        /// <summary>
+        /// BuyDmg method which is a shop method, incresing the heros dmg.
+        /// </summary>
+        /// <returns>true when the hero can buy or false when he cant.</returns>
         public bool BuyDmg()
         {
             if (this.model.Hero.Cash >= this.model.DmgPrice)
@@ -78,9 +109,14 @@ namespace GameLogic
                 this.model.DmgPrice += 10;
                 return true;
             }
+
             return false;
         }
 
+        /// <summary>
+        /// BuyHP method which is a shop method, incresing the heros hp.
+        /// </summary>
+        /// <returns>returns a number.</returns>
         public int BuyHP()
         {
             if (this.model.Hero.Cash >= this.model.HPPrice && this.model.Hero.Hp < 10)
@@ -100,11 +136,15 @@ namespace GameLogic
             }
         }
 
+        /// <summary>
+        /// BuyArmor method which is a shop method, incresing the heros armor.
+        /// </summary>
+        /// <returns>returns a number.</returns>
         public int BuyArmor()
         {
             if (this.model.Hero.Cash >= this.model.HPPrice && this.model.Hero.Armor < this.model.Hero.MaxArmor)
             {
-                this.model.Hero.Armor +=1;
+                this.model.Hero.Armor += 1;
                 this.model.Hero.Cash -= this.model.ArmorPrice;
                 this.model.ArmorPrice += 10;
 
@@ -120,155 +160,163 @@ namespace GameLogic
             }
         }
 
+        /// <summary>
+        /// BlockTick method which is a decrasing the block cx.
+        /// </summary>
+        /// <param name="block">which is a OneBlock entity.</param>
         public void BlockTick(OneBlock block)
         {
-            block.CX -= model.Hero.DX;
+            block.CX -= this.model.Hero.DX;
             if (block.CX < 0)
             {
-                block.CX = model.GameDisplayWidth;
+                block.CX = this.model.GameDisplayWidth;
             }
         }
 
+        /// <summary>
+        /// MonsterDied method  which is 'shifting' the monsters in the list.
+        /// </summary>
+        /// <param name="monsters">The parameter is a list.</param>
         public void MonsterDied(List<OneMonster> monsters)
         {
             monsters[0] = monsters[1];
-            ChestCreate();
-            if (model.BlockNumber % 10 == 0 && model.BlockNumber != 0)
+            this.ChestCreate();
+            if (this.model.BlockNumber % 10 == 0 && this.model.BlockNumber != 0)
             {
-                monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5, model.GameDisplayHeight / 4 * 4 - 100, Convert.ToInt32((model.BlockNumber / 10) * 5));
+                monsters[1] = new OneMonster(this.model.GameDisplayWidth / 5 * 5, this.model.GameDisplayHeight / 4 * 4 - 100, Convert.ToInt32((this.model.BlockNumber / 10) * 5));
             }
             else
             {
-                monsters[1] = new OneMonster(model.GameDisplayWidth / 5 * 5, model.GameDisplayHeight / 4 * 4 - 200, Convert.ToInt32(Math.Ceiling(model.BlockNumber / 10) + 1));
+                monsters[1] = new OneMonster(this.model.GameDisplayWidth / 5 * 5, this.model.GameDisplayHeight / 4 * 4 - 200, Convert.ToInt32(Math.Ceiling(this.model.BlockNumber / 10) + 1));
             }
 
-            model.IsInFight = false;
+            this.model.IsInFight = false;
         }
 
-        public void MonstersTick(List<OneMonster> monsters)//dead monster kereszt
+        /// <summary>
+        /// MonstersTick method which is decraesing the monsters cx.
+        /// </summary>
+        /// <param name="monsters">The parameter which is a list.</param>
+        public void MonstersTick(List<OneMonster> monsters)
         {
             monsters[0].CX -= 5;
             monsters[1].CX -= 5;
         }
 
-        //public void ChestTick(Chest chest)
-        //{
-        //    if ((model.BlockNumber + 4) % 10 == 0)
-        //    {
-        //        //model.Chest = new Chest(model.GameDisplayWidth / 5, model.GameDisplayHeight / 2);
-        //        model.Chest = new Chest();
-        //        model.Chest = repo.Chests[r.Next(0, 10)];
-        //        model.Chest.CX = model.GameDisplayWidth / 5;
-        //        model.Chest.CY = model.GameDisplayHeight / 2;
-        //    }
-        //    chest.CX -= 1;
-        //}
-
-        private void ChestCreate()
-        {
-            //if ((model.BlockNumber + 4) % 10 == 0)
-
-            if ((model.BlockNumber + 4) % 10 == 0)
-            {
-                //model.Chest = new Chest(model.GameDisplayWidth / 5, model.GameDisplayHeight / 2);
-                model.Chest = new Chest();
-                model.Chest = model.Chests[r.Next(0, model.Chests.Count)];
-                //model.Chest = model.Chests[r.Next(0, model.Chests.Count)];
-                model.Chest.CX = 195;
-                model.Chest.CY = model.GameDisplayHeight / 2;
-
-                model.ChestIsOn = true;
-            }
-        }
-
+        /// <summary>
+        /// AnswerA method which returns a true or false, True when your answer is right.
+        /// </summary>
+        /// <returns>returns a true or false.</returns>
         public bool AnswerA()
         {
-            if (model.Chest.Right == 0)
+            if (this.model.Chest.Right == 0)
             {
-                model.Hero.Cash += model.Chest.RewardCash;
-                model.ChestIsOn = false;
-                model.Chest = null;
+                this.model.Hero.Cash += this.model.Chest.RewardCash;
+                this.model.ChestIsOn = false;
+                this.model.Chest = null;
                 return true;
             }
-            model.ChestIsOn = false;
-            model.Chest = null;
+
+            this.model.ChestIsOn = false;
+            this.model.Chest = null;
             return false;
         }
 
+        /// <summary>
+        /// AnswerB method which returns a true or false, True when your answer is right.
+        /// </summary>
+        /// <returns>returns a true or false.</returns>
         public bool AnswerB()
         {
-            if (model.Chest.Right == 1)
+            if (this.model.Chest.Right == 1)
             {
-                model.Hero.Cash += model.Chest.RewardCash;
-                model.ChestIsOn = false;
-                model.Chest = null;
+                this.model.Hero.Cash += this.model.Chest.RewardCash;
+                this.model.ChestIsOn = false;
+                this.model.Chest = null;
                 return true;
             }
-            model.ChestIsOn = false;
-            model.Chest = null;
+
+            this.model.ChestIsOn = false;
+            this.model.Chest = null;
             return false;
         }
 
+        /// <summary>
+        /// AnswerC method which returns a true or false, True when your answer is right.
+        /// </summary>
+        /// <returns>returns a true or false.</returns>
         public bool AnswerC()
         {
-            if (model.Chest.Right == 2)
+            if (this.model.Chest.Right == 2)
             {
-                model.Hero.Cash += model.Chest.RewardCash;
-                model.Chest = null;
-                model.ChestIsOn = false;
+                this.model.Hero.Cash += this.model.Chest.RewardCash;
+                this.model.Chest = null;
+                this.model.ChestIsOn = false;
                 return true;
             }
-            model.ChestIsOn = false;
-            model.Chest = null;
+
+            this.model.ChestIsOn = false;
+            this.model.Chest = null;
             return false;
         }
 
+        /// <summary>
+        /// AnswerD method which returns a true or false, True when your answer is right.
+        /// </summary>
+        /// <returns>returns a true or false.</returns>
         public bool AnswerD()
         {
-            if (model.Chest.Right == 3)
+            if (this.model.Chest.Right == 3)
             {
-                model.Hero.Cash += model.Chest.RewardCash;
-                model.ChestIsOn = false;
-                model.Chest = null;
+                this.model.Hero.Cash += this.model.Chest.RewardCash;
+                this.model.ChestIsOn = false;
+                this.model.Chest = null;
                 return true;
             }
-            model.ChestIsOn = false;
-            model.Chest = null;
+
+            this.model.ChestIsOn = false;
+            this.model.Chest = null;
             return false;
         }
 
+        /// <summary>
+        /// AnswerD method which returns a true or false, True when your answer is right.
+        /// </summary>
         public void ChestTick()
         {
-            if (model.Chest != null)
+            if (this.model.Chest != null)
             {
-                model.Chest.CX -= 1;
+                this.model.Chest.CX -= 1;
             }
-            if (model.Chest.CX < 195)
+
+            if (this.model.Chest.CX < 195)
             {
-                model.ChestIsOn = false;
-                model.Chest = null;
+                this.model.ChestIsOn = false;
+                this.model.Chest = null;
             }
         }
 
+        /// <summary>
+        /// StepTick method which calls the MonsterTick method.
+        /// </summary>
         public void StepTick()
         {
-            //foreach (var block in model.Blocks)
-            //{
-            //    BlockTick(block);
-            //}
-            MonstersTick(model.Monsters);
+            this.MonstersTick(this.model.Monsters);
         }
 
+        /// <summary>
+        /// StepCalculator method which decreasing the entites cx.
+        /// </summary>
+        /// <returns>GameItem entity.</returns>
         public GameItem StepCalculator()
         {
             Chest chestcx = new Chest();
-            if (model.Chest != null)
+            if (this.model.Chest != null)
             {
-                //chestcx = model.Chests.OrderBy(x => x.CX).FirstOrDefault();
-                chestcx = model.Chest;
+                chestcx = this.model.Chest;
             }
 
-            var monstersx = model.Monsters.OrderBy(x => x.CX).FirstOrDefault();
+            var monstersx = this.model.Monsters.OrderBy(x => x.CX).FirstOrDefault();
             if (chestcx.CX == 0)
             {
                 return monstersx;
@@ -284,55 +332,57 @@ namespace GameLogic
             }
         }
 
+        /// <summary>
+        /// FindGameItem method.
+        /// </summary>
+        /// <param name="item">Which is a GameItem entity.</param>
+        /// <returns>GameItem entity.</returns>
         public GameItem FindGameItem(GameItem item)
         {
             switch (item)
             {
-                case Chest: return model.Chest;
+                case Chest: return this.model.Chest;
 
-                case OneMonster: return model.Monsters.Find(x => x == item as OneMonster);
+                case OneMonster: return this.model.Monsters.Find(x => x == item as OneMonster);
 
                 default:
                     return null;
             }
         }
 
-
-
-        public GameModel.Models.GameModel LoadGame(string SaveFile)
+        /// <summary>
+        /// FindGameItem method.
+        /// </summary>
+        /// <param name="filesave">Is a string which is a FileName.</param>
+        /// <returns>GameModel entity.</returns>
+        public GameModel LoadGame(string filesave)
         {
-
-           return repo.LoadGame(SaveFile);
-        
-        
+            return this.repo.LoadGame(filesave);
         }
-
 
         private List<Chest> GenerateChestQuestions()
         {
-            //foreach (var chest in XDocument.Load("chests.xml").Descendants("Chest"))
-            //{
-            //    Chest c = new Chest();
-            //    c.Question = chest.Element("Question")?.Value;
-            //    c.Answers.Add(chest.Element("Answer0")?.Value);
-            //    c.Answers.Add(chest.Element("Answer1")?.Value);
-            //    c.Answers.Add(chest.Element("Answer2")?.Value);
-            //    c.Answers.Add(chest.Element("Answer3")?.Value);
-            //    c.RewardCash = int.Parse(chest.Element("RewardCash")?.Value);
-            //    c.Right = int.Parse(chest.Element("Right")?.Value);
+            List<Chest> chestlist = new List<Chest>();
+            chestlist.Add(new Chest() { Question = "Elérjük Péter Árpádot?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 1 });
+            chestlist.Add(new Chest() { Question = "Mennyi 5+5?", Answers = new List<string>() { "10", "15", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
+            chestlist.Add(new Chest() { Question = "Dua Lipa 10/?", Answers = new List<string>() { "10", "2", "11", "100" }, RewardCash = 10, Right = 3 });
+            chestlist.Add(new Chest() { Question = "Meglesz a prog4?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
+            chestlist.Add(new Chest() { Question = "Buta vagy?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
 
-            //}
-            List<Chest> ChestList = new List<Chest>();
-            ChestList.Add(new Chest() { Question = "Elérjük Péter Árpádot?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 1 });
-            ChestList.Add(new Chest() { Question = "Mennyi 5+5?", Answers = new List<string>() { "10", "15", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
-            ChestList.Add(new Chest() { Question = "Dua Lipa 10/?", Answers = new List<string>() { "10", "2", "11", "100" }, RewardCash = 10, Right = 3 });
-            ChestList.Add(new Chest() { Question = "Meglesz a prog4?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
-            ChestList.Add(new Chest() { Question = "Buta vagy?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
-
-            return ChestList;
-
+            return chestlist;
         }
 
+        private void ChestCreate()
+        {
+            if ((this.model.BlockNumber + 4) % 10 == 0)
+            {
+                this.model.Chest = new Chest();
+                this.model.Chest = this.model.Chests[this.r.Next(0, this.model.Chests.Count)];
+                this.model.Chest.CX = 195;
+                this.model.Chest.CY = this.model.GameDisplayHeight / 2;
 
+                this.model.ChestIsOn = true;
+            }
+        }
     }
 }
