@@ -85,7 +85,7 @@ namespace FFYLife
                 }
                 InvalidateVisual();
             };
-            EnemyAttackTimer.Interval = TimeSpan.FromMilliseconds(gameModel.Hero.AttackSpeed);
+            EnemyAttackTimer.Interval = TimeSpan.FromMilliseconds(1500);
             EnemyAttackTimer.Start();
             gameModel.Hero.CanAttack = true;
 
@@ -165,7 +165,7 @@ namespace FFYLife
                             HitCooldown.Stop();
                             InvalidateVisual();
                         };
-                        HitCooldown.Interval = TimeSpan.FromMilliseconds(1000);
+                        HitCooldown.Interval = TimeSpan.FromMilliseconds(gameModel.Hero.AttackSpeed);
                         HitCooldown.Start();
                         InvalidateVisual();
                     }
@@ -271,11 +271,13 @@ namespace FFYLife
                 }
                 if (mouseY >= 730 && mouseY <= 780 && mouseX >= 825 && mouseX <= 925)
                 {
-                    if (logic.BuyArmor() == 1)
+                    int number = logic.BuyArmor();
+
+                    if (number == 1)
                     {
                         MessageBox.Show("You don't have enough vbuck , ask mommy to buy some more!");
                     }
-                    else if (logic.BuyArmor() == 2)
+                    else if (number == 2)
                     {
                         MessageBox.Show("You are already at full Armor");
                     }

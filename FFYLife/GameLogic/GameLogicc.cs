@@ -102,9 +102,9 @@ namespace GameLogic
 
         public int BuyArmor()
         {
-            if (this.model.Hero.Cash >= this.model.HPPrice && this.model.Hero.Armor < 4)
+            if (this.model.Hero.Cash >= this.model.HPPrice && this.model.Hero.Armor < this.model.Hero.MaxArmor)
             {
-                this.model.Hero.Armor += 1;
+                this.model.Hero.Armor +=1;
                 this.model.Hero.Cash -= this.model.ArmorPrice;
                 this.model.ArmorPrice += 10;
 

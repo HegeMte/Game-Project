@@ -11,6 +11,8 @@ namespace GameModel.Models
         public double DY { get; set; }
 
         public string Type { get; set;}
+
+        public int MaxArmor { get; set; }
         public OneHero(double cx, double cy , string type)
         {
             this.CX = cx;
@@ -24,8 +26,9 @@ namespace GameModel.Models
                 case "Light":
                     Hp = 10;
                     AttackDMG = 1;
-                    AttackSpeed = 300;
+                    AttackSpeed = 750;
                     Armor = 4;
+                    MaxArmor = 4;
 
                     break;
 
@@ -34,6 +37,7 @@ namespace GameModel.Models
                     AttackDMG = 1;
                     AttackSpeed = 1500;
                     Armor = 7;
+                    MaxArmor = 7;
 
                     break;
 

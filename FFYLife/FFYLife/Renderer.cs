@@ -210,7 +210,7 @@ namespace FFYLife
             {
                 if (model.Hero.IsDefending)
                 {
-                    hero = new ImageDrawing(GetImage("steveDefend1.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
+                    hero = new ImageDrawing(GetImage("steveDefend1.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 150, 200));
                 }
                 else
                 {
@@ -221,11 +221,11 @@ namespace FFYLife
                     }
                     else if (model.Hero.CanAttack)
                     {
-                        hero = new ImageDrawing(GetImage("steve1.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 100, 200));
+                        hero = new ImageDrawing(GetImage("steve1.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 150, 200));
                     }
                     else
                     {
-                        hero = new ImageDrawing(GetImage("steveattack1.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 200, 200));
+                        hero = new ImageDrawing(GetImage("steveattack1.png"), new Rect(model.Hero.CX + 50, model.Hero.CY, 160, 210));
                     }
                 }
             }

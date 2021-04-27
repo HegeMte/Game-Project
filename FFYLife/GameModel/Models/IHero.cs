@@ -13,5 +13,7 @@ namespace GameModel.Models
         int Cash { get; set; }
         string Type { get; set; }
 
+        int MaxArmor { get; set; }
+
     }
 }
