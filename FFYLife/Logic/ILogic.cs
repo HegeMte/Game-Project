@@ -1,24 +1,33 @@
-﻿using GameModel.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="ILogic.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Logic
 {
+    using GameModel.Models;
+
+    /// <summary>
+    /// ILogic inteface which requires the save/load methods.
+    /// </summary>
     public interface ILogic
     {
-        void SaveHighScore(GameModel.Models.IGameModel gm);
+        /// <summary>
+        /// Requires the SaveHighscore method.
+        /// </summary>
+        /// <param name="gm">its a GameModel entity.</param>
+        void SaveHighScore(IGameModel gm);
 
-        //string[] LoadHighScores();
-
-        //string[] SavedGamesList();
-
+        /// <summary>
+        /// Requires the SaveHighscore method.
+        /// </summary>
+        /// <param name="gameModel">its a GameModel entity.</param>
         void SaveGame(IGameModel gameModel);
 
-        GameModel.Models.GameModel LoadGame(string savefile);
-
-
+        /// <summary>
+        /// Requires the LoadGame method.
+        /// </summary>
+        /// <param name="savefile">Its a string which is a file name.</param>
+        /// /// <returns>Returns the game Model entity.</returns>
+        GameModel LoadGame(string savefile);
     }
 }
