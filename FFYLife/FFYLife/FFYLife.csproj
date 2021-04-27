@@ -118,7 +118,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GameLogic\GameLogic.csproj" />
-    <ProjectReference Include="..\Logic\Logic.csproj" />
     <ProjectReference Include="..\StorageRepository\StorageRepository.csproj" />
   </ItemGroup>
 
