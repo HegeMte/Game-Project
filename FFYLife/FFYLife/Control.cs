@@ -1,17 +1,25 @@
-﻿using GameLogic;
-using GameModel.Models;
-using Logic;
-using StorageRepository;
-using System;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Threading;
+﻿// <copyright file="Control.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace FFYLife
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Threading;
+    using GameLogic;
+    using GameModel.Models;
+    using Logic;
+    using StorageRepository;
+
     internal class Control : FrameworkElement
     {
+
+        public static string PlayerName = "teszt";
+        public static string PlayerType = "light";
+        public static string SaveFile;
         private IStorageRepository repo;
         private Renderer renderer;
         private IGameModel gameModel;
@@ -23,31 +31,29 @@ namespace FFYLife
         private DispatcherTimer OneStepTimer;
         private DispatcherTimer EnemyAttackTimer;
 
-        static public string PlayerName = "teszt";
-        static public string PlayerType = "light";
-        static public string SaveFile;
-        DispatcherTimer HitCooldown;
+        private DispatcherTimer HitCooldown;
+
         public Control()
         {
-            Loaded += Control_Loaded;
+            this.Loaded += Control_Loaded;
         }
 
         private void Control_Loaded(object sender, RoutedEventArgs e)
         {
-            repo = new StorageRepo();
-            resourcelogic = new ResourceLogic(repo as StorageRepo);
+            this.repo = new StorageRepo();
+            this.resourcelogic = new ResourceLogic(repo as StorageRepo);
             if (SaveFile == null)
             {
-                gameModel = new GameModel.Models.GameModel(1300, 800, PlayerName , PlayerType);
+                this.gameModel = new GameModel(1300, 800, PlayerName, PlayerType);
             }
             else
             {
-                gameModel = resourcelogic.LoadGame(SaveFile);
+                this.gameModel = this.resourcelogic.LoadGame(SaveFile);
             }
             SaveFile = null;
 
-            logic = new GameLogicc(gameModel, repo);
-            renderer = new Renderer(gameModel);
+            this.logic = new GameLogicc(this.gameModel, this.repo);
+            this.renderer = new Renderer(this.gameModel);
 
             Window win = Window.GetWindow(this);
 
@@ -57,150 +63,150 @@ namespace FFYLife
 
             if (win != null)
             {
-                win.MouseLeftButtonDown += Win_MouseLeftButtonDown;
-                win.KeyDown += Win_KeyDown;
+                win.MouseLeftButtonDown += this.Win_MouseLeftButtonDown;
+                win.KeyDown += this.Win_KeyDown;
             }
 
-            EnemyAttackTimer = new DispatcherTimer();
-            EnemyAttackTimer.Tick += delegate
+            this.EnemyAttackTimer = new DispatcherTimer();
+            this.EnemyAttackTimer.Tick += delegate
             {
-                if (gameModel.GameOver)
+                if (this.gameModel.GameOver)
                 {
-                    GameOver();
-                    EnemyAttackTimer.Stop();
+                    this.GameOver();
+                    this.EnemyAttackTimer.Stop();
                 }
                 else
                 {
                     DispatcherTimer HitTime = new DispatcherTimer();
-                    gameModel.CanAttack = false;
+                    this.gameModel.CanAttack = false;
                     HitTime.Tick += delegate
                     {
-                        gameModel.CanAttack = true;
+                        this.gameModel.CanAttack = true;
                         HitTime.Stop();
-                        InvalidateVisual();
+                        this.InvalidateVisual();
                     };
                     HitTime.Interval = TimeSpan.FromMilliseconds(400);
                     HitTime.Start();
-                    InvalidateVisual();
-                    logic.MonsterAttack();
+                    this.InvalidateVisual();
+                    this.logic.MonsterAttack();
                 }
-                InvalidateVisual();
+                this.InvalidateVisual();
             };
-            EnemyAttackTimer.Interval = TimeSpan.FromMilliseconds(1500);
-            EnemyAttackTimer.Start();
-            gameModel.Hero.CanAttack = true;
+            this.EnemyAttackTimer.Interval = TimeSpan.FromMilliseconds(1500);
+            this.EnemyAttackTimer.Start();
+            this.gameModel.Hero.CanAttack = true;
 
-            HitCooldown = new DispatcherTimer();
-            InvalidateVisual();
+            this.HitCooldown = new DispatcherTimer();
+            this.InvalidateVisual();
         }
 
         private void Win_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            
             DispatcherTimer Move = new DispatcherTimer();
             switch (e.Key)
             {
                 case Key.Escape:
                     if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        //Window win = Window.GetWindow(this);
-                        //win.Close();
-                        ReturnToMenu();
+                        // Window win = Window.GetWindow(this);
+                        // win.Close();
+                        this.ReturnToMenu();
                     }
 
                     break;
 
                 case Key.D:
 
-                    gameModel.Hero.IsDefending = true;
+                    this.gameModel.Hero.IsDefending = true;
 
                     break;
 
                 case Key.S:
 
-                    gameModel.Hero.IsDefending = false;
+                    this.gameModel.Hero.IsDefending = false;
 
                     break;
 
                 case Key.Space:
 
-                    var entity = logic.StepCalculator();
+                    var entity = this.logic.StepCalculator();
 
-                    //logic.StepTick();
+                    // logic.StepTick();
 
-                    //logic.FindGameItem(entity);
-                    if (gameModel.Monsters[0].CX <= 195)
+                    // logic.FindGameItem(entity);
+                    if (this.gameModel.Monsters[0].CX <= 195)
                     {
-                        gameModel.IsInFight = true;
+                        this.gameModel.IsInFight = true;
                     }
-                    if (entity.CX >= 195 && !gameModel.ChestIsOn)
+
+                    if (entity.CX >= 195 && !this.gameModel.ChestIsOn)
                     {
-                        gameModel.Moving = true;
-                        logic.StepTick();
+                        this.gameModel.Moving = true;
+                        this.logic.StepTick();
                         Move.Tick += delegate
                         {
-                            HitCooldown.Stop();
+                            this.HitCooldown.Stop();
 
-                            InvalidateVisual();
+                            this.InvalidateVisual();
                         };
 
-                        HitCooldown.Interval = TimeSpan.FromMilliseconds(50);
-                        HitCooldown.Start();
-                        gameModel.Moving = false;
-                        InvalidateVisual();
+                        this.HitCooldown.Interval = TimeSpan.FromMilliseconds(50);
+                        this.HitCooldown.Start();
+                        this.gameModel.Moving = false;
+                        this.InvalidateVisual();
                     }
 
-                    InvalidateVisual();
+                    this.InvalidateVisual();
                     break;
 
                 case Key.A:
-                    if (gameModel.Hero.CanAttack)
+                    if (this.gameModel.Hero.CanAttack)
                     {
-                       
-                        logic.HeroAttack();
-                        gameModel.Hero.CanAttack = false;
+                        this.logic.HeroAttack();
+                        this.gameModel.Hero.CanAttack = false;
 
-                        HitCooldown.Tick += delegate
+                        this.HitCooldown.Tick += delegate
                         {
-                            gameModel.Hero.CanAttack = true;
-                            HitCooldown.Stop();
-                            InvalidateVisual();
+                            this.gameModel.Hero.CanAttack = true;
+                            this.HitCooldown.Stop();
+                            this.InvalidateVisual();
                         };
-                        HitCooldown.Interval = TimeSpan.FromMilliseconds(gameModel.Hero.AttackSpeed);
-                        HitCooldown.Start();
-                        InvalidateVisual();
+                        this.HitCooldown.Interval = TimeSpan.FromMilliseconds(this.gameModel.Hero.AttackSpeed);
+                        this.HitCooldown.Start();
+                        this.InvalidateVisual();
                     }
 
                     break;
             }
-            InvalidateVisual();
+
+            this.InvalidateVisual();
         }
 
-        //private void MonsterstepTimer_Tick(object sender, EventArgs e)
-        //{
+        // private void MonsterstepTimer_Tick(object sender, EventArgs e)
+        // {
         //    if (gameModel.Monsters[0])
         //    {
         //        MonsterstepTimer.Stop();
         //        return;
         //    }
 
-        //   logic.MonstersTick(gameModel.Monsters)
+        // logic.MonstersTick(gameModel.Monsters)
         //   InvalidateVisual();
 
-        //}
+        // }
 
         private void Win_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            mouseX = e.GetPosition(this).X;
-            mouseY = e.GetPosition(this).Y;
+            this.mouseX = e.GetPosition(this).X;
+            this.mouseY = e.GetPosition(this).Y;
 
-            if (gameModel.ChestIsOn)
+            if (this.gameModel.ChestIsOn)
             {
-                if (mouseX >= 1200 && mouseX <= 1230)
+                if (this.mouseX >= 1200 && this.mouseX <= 1230)
                 {
-                    if (mouseY >= 615 && mouseY <= 645)
+                    if (this.mouseY >= 615 && this.mouseY <= 645)
                     {
-                        if (logic.AnswerB())
+                        if (this.logic.AnswerB())
                         {
                             MessageBox.Show("Right Answer!");
                         }
@@ -209,9 +215,9 @@ namespace FFYLife
                             MessageBox.Show("U are Stupid!");
                         }
                     }
-                    else if (mouseY >= 700 && mouseY <= 730)
+                    else if (this.mouseY >= 700 && this.mouseY <= 730)
                     {
-                        if (logic.AnswerD())
+                        if (this.logic.AnswerD())
                         {
                             MessageBox.Show("Right Answer!");
                         }
@@ -221,11 +227,12 @@ namespace FFYLife
                         }
                     }
                 }
-                if (mouseX >= 890 && mouseX <= 920)
+
+                if (this.mouseX >= 890 && this.mouseX <= 920)
                 {
-                    if (mouseY >= 615 && mouseY <= 645)
+                    if (this.mouseY >= 615 && this.mouseY <= 645)
                     {
-                        if (logic.AnswerA())
+                        if (this.logic.AnswerA())
                         {
                             MessageBox.Show("Right Answer!");
                         }
@@ -234,9 +241,9 @@ namespace FFYLife
                             MessageBox.Show("U are Stupid!");
                         }
                     }
-                    else if (mouseY >= 700 && mouseY <= 730)
+                    else if (this.mouseY >= 700 && this.mouseY <= 730)
                     {
-                        if (logic.AnswerC())
+                        if (this.logic.AnswerC())
                         {
                             MessageBox.Show("Right Answer!");
                         }
@@ -249,30 +256,31 @@ namespace FFYLife
             }
             else
             {
-                if (mouseY >= 530 && mouseY <= 580)
+                if (this.mouseY >= 530 && this.mouseY <= 580)
                 {
-                    if (mouseX >= 825 && mouseX <= 925)
+                    if (this.mouseX >= 825 && this.mouseX <= 925)
                     {
-                        if (!logic.BuyDmg())
+                        if (!this.logic.BuyDmg())
                         {
                             MessageBox.Show("You don't have enough vbuck , ask mommy to buy some more!");
                         }
                     }
-                    else if (mouseX >= 1150 && mouseX <= 1250)
+                    else if (this.mouseX >= 1150 && this.mouseX <= 1250)
                     {
-                        if (logic.BuyHP() == 1)
+                        if (this.logic.BuyHP() == 1)
                         {
                             MessageBox.Show("You don't have enough vbuck , ask mommy to buy some more!");
                         }
-                        else if (logic.BuyHP() == 2)
+                        else if (this.logic.BuyHP() == 2)
                         {
                             MessageBox.Show("You are already at full HP");
                         }
                     }
                 }
-                if (mouseY >= 730 && mouseY <= 780 && mouseX >= 825 && mouseX <= 925)
+
+                if (this.mouseY >= 730 && this.mouseY <= 780 && this.mouseX >= 825 && this.mouseX <= 925)
                 {
-                    int number = logic.BuyArmor();
+                    int number = this.logic.BuyArmor();
 
                     if (number == 1)
                     {
@@ -283,22 +291,23 @@ namespace FFYLife
                         MessageBox.Show("You are already at full Armor");
                     }
                 }
-                if (mouseY >= 650 && mouseY <= 750 && mouseX >= 1035 && mouseX <= 1235)
+
+                if (this.mouseY >= 650 && this.mouseY <= 750 && this.mouseX >= 1035 && this.mouseX <= 1235)
                 {
                     if (MessageBox.Show("Are you sure you want to save and quit?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        resourcelogic.SaveGame(gameModel);
-                        ReturnToMenu();
+                        this.resourcelogic.SaveGame(this.gameModel);
+                        this.ReturnToMenu();
                     }
                 }
             }
 
-            InvalidateVisual();
+            this.InvalidateVisual();
         }
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            if (renderer != null) drawingContext.DrawDrawing(renderer.BuildDrawing());
+            if (this.renderer != null) drawingContext.DrawDrawing(this.renderer.BuildDrawing());
         }
 
         private void ReturnToMenu()
@@ -312,15 +321,15 @@ namespace FFYLife
         private void GameOver()
         {
             MessageBox.Show("Game over dickhole!");
-            resourcelogic.SaveHighScore(gameModel);
-            ReturnToMenu();
+            this.resourcelogic.SaveHighScore(this.gameModel);
+            this.ReturnToMenu();
         }
 
-        //private void GameOver()
-        //{
+        // private void GameOver()
+        // {
         //    GameLogic.LostEncounter();
         //    MessageBox.Show("GAME OVER!");
         //    this.ReturnToMenu();
-        //}
+        // }
     }
 }
