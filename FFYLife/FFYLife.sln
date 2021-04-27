@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicTests", "LogicTests\Lo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameModel", "GameModel\GameModel.csproj", "{5256C26D-D88E-49FE-A4FE-4CC25EDE8B6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{AA20B103-C6A0-4684-9D84-9DEEB4DF4B10}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{5256C26D-D88E-49FE-A4FE-4CC25EDE8B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5256C26D-D88E-49FE-A4FE-4CC25EDE8B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5256C26D-D88E-49FE-A4FE-4CC25EDE8B6A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA20B103-C6A0-4684-9D84-9DEEB4DF4B10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA20B103-C6A0-4684-9D84-9DEEB4DF4B10}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA20B103-C6A0-4684-9D84-9DEEB4DF4B10}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA20B103-C6A0-4684-9D84-9DEEB4DF4B10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
