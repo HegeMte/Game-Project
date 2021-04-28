@@ -34,6 +34,6 @@ namespace StorageRepository
         /// </summary>
         /// <param name="savefile">The first name to join.</param>
         /// <returns>the loaded gamemodel.</returns>
-        GameModel LoadGame(string savefile);
+        GameModell LoadGame(string savefile);
     }
 }

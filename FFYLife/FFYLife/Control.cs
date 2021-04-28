@@ -70,7 +70,7 @@ namespace FFYLife
             this.resourcelogic = new ResourceLogic(this.repo as StorageRepo);
             if (SaveFile == null)
             {
-                this.gameModel = new GameModel(1300, 800, PlayerName, PlayerType);
+                this.gameModel = new GameModell(1300, 800, PlayerName, PlayerType);
             }
             else
             {

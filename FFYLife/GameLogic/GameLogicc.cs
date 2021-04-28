@@ -355,7 +355,7 @@ namespace GameLogic
         /// </summary>
         /// <param name="filesave">Is a string which is a FileName.</param>
         /// <returns>GameModel entity.</returns>
-        public GameModel LoadGame(string filesave)
+        public GameModell LoadGame(string filesave)
         {
             return this.repo.LoadGame(filesave);
         }

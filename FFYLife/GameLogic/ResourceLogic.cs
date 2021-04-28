@@ -58,7 +58,7 @@ namespace Logic
         /// </summary>
         /// <param name="savefile">Its a string parameter which is a filename.</param>
         /// <returns>A GameModel entity.</returns>
-        public GameModel LoadGame(string savefile)
+        public GameModell LoadGame(string savefile)
         {
             return this.repo.LoadGame(savefile);
         }

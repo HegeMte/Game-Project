@@ -121,6 +121,6 @@ namespace GameLogic
         /// </summary>
         /// <param name="filesave">The parameter is a string.</param>
         /// <returns>A GameModel entity.</returns>
-        GameModel LoadGame(string filesave);
+        GameModell LoadGame(string filesave);
     }
 }

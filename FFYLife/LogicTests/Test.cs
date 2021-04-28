@@ -15,7 +15,7 @@ namespace LogicTests
     {
         private static IGameLogic gameLogic;
         private static Mock<IStorageRepository> RepoMock;
-        private static Mock<GameModel.Models.GameModel> ModelMock;
+        private static Mock<GameModel.Models.GameModell> ModelMock;
 
         [SetUp]
         public void Init()
@@ -36,7 +36,7 @@ namespace LogicTests
 
             //Model
 
-            ModelMock = new Mock<GameModel.Models.GameModel>();
+            ModelMock = new Mock<GameModel.Models.GameModell>();
 
             
             //x = -50 y 410
