@@ -184,7 +184,7 @@ namespace FFYLife
         {
             ImageDrawing hero;
 
-            if (this.model.Hero.Type == "Light")
+            if (this.model.Hero.Type == "Light" || this.model.Hero.Type == null)
             {
                 if (this.model.Hero.IsDefending)
                 {
