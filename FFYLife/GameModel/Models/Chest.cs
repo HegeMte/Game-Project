@@ -2,6 +2,8 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+[assembly: System.CLSCompliant(false)]
+
 namespace GameModel.Models
 {
     using System;
