@@ -1,26 +1,37 @@
-﻿using GameModel.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Text;
-using System.Xml.Linq;
-
-
+﻿// <copyright file="StorageRepo.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace StorageRepository
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Xml.Linq;
+    using GameModel.Models;
+
+    /// <summary>
+    /// StorageRepo class which contains the methods that are needed to load/save data for the game.
+    /// </summary>
     public class StorageRepo : IStorageRepository
     {
-        public List<Chest> ChestList { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageRepo"/> class.
+        /// </summary>
         public StorageRepo()
         {
-            
         }
 
+        /// <summary>
+        /// Gets or sets documentation for the ChestList.
+        /// </summary>
+        public List<Chest> ChestList { get; set; }
 
-        public /*static*/ void SaveHighScore(GameModel.Models.IGameModel gm)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameLogic"/> class.
+        /// </summary>
+        /// <param name="gm">the first parameter of the constuctor.</param>
+        public /*static*/ void SaveHighScore(IGameModel gm)
         {
             if (File.Exists("highscores.txt"))
             {
@@ -36,7 +47,10 @@ namespace StorageRepository
             }
         }
 
-
+        /// <summary>
+        /// returns the highscores as a string array.
+        /// </summary>
+        /// <returns>The highscores as a string array.</returns>
         public static string[] LoadHighScores()
         {
             if (File.Exists("highscores.txt"))
@@ -47,6 +61,10 @@ namespace StorageRepository
             return null;
         }
 
+        /// <summary>
+        /// Returns the saved games' file names as a string array.
+        /// </summary>
+        /// <returns>The saved games' file names as a string array.</returns>
         public static string[] SavedGamesList()
         {
             if (!Directory.Exists("Saves/"))
@@ -54,11 +72,13 @@ namespace StorageRepository
                 Directory.CreateDirectory("Saves");
             }
 
-
             return Directory.GetFiles("Saves");
         }
 
-
+        /// <summary>
+        /// saves the current gamemodel.
+        /// </summary>
+        /// <param name="gameModel">The first name to join.</param>
         public void SaveGame(IGameModel gameModel)
         {
             if (!Directory.Exists("Saves/"))
@@ -91,57 +111,47 @@ namespace StorageRepository
                 saveGameXDoc.Root.Add(new XElement("ChestCX", gameModel.Chest.CX));
                 saveGameXDoc.Root.Add(new XElement("ChestCY", gameModel.Chest.CY));
                 saveGameXDoc.Root.Add(new XElement("ChestNum", gameModel.ChestNum));
-
             }
             else
             {
                 saveGameXDoc.Root.Add(new XElement("ChestCX", -1));
                 saveGameXDoc.Root.Add(new XElement("ChestCY", -1));
                 saveGameXDoc.Root.Add(new XElement("ChestNum", -1));
-
             }
 
-            saveGameXDoc.Save("Saves/"+ gameModel.Name  + DateTime.Now.ToString("yyyy.MM.dd_HH.mm") + ".xml");
-
+            saveGameXDoc.Save("Saves/" + gameModel.Name + DateTime.Now.ToString("yyyy.MM.dd_HH.mm") + ".xml");
         }
 
-
-        public GameModel.Models.GameModel LoadGame(string savefile)
+        /// <summary>
+        /// loads the chosen savefile into a gamemodel.
+        /// </summary>
+        /// <param name="savefile">The first name to join.</param>
+        /// <returns>The loaded gamemodel.</returns>
+        public GameModel LoadGame(string savefile)
         {
-
             savefile = savefile.Substring(6);
             savefile = "Saves\\" + savefile;
             XDocument save = XDocument.Load(savefile);
 
             int s = int.Parse(save.Root.Element("ChestCX").Value);
 
-
-
-
-
-                if (int.Parse(save.Root.Element("ChestCX").Value) == -1)
-                {
-                GameModel.Models.GameModel  gm = new GameModel.Models.GameModel(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value), int.Parse(save.Root.Element("AttackSpeed").Value),
+            if (int.Parse(save.Root.Element("ChestCX").Value) == -1)
+            {
+                GameModel gm = new GameModel(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value), int.Parse(save.Root.Element("AttackSpeed").Value),
                    int.Parse(save.Root.Element("Armor").Value), int.Parse(save.Root.Element("ArmorPrice").Value), int.Parse(save.Root.Element("Cash").Value), int.Parse(save.Root.Element("BlockNumber").Value), int.Parse(save.Root.Element("DmgPrice").Value), int.Parse(save.Root.Element("HPPrice").Value),
                    int.Parse(save.Root.Element("Monster1LVL").Value), int.Parse(save.Root.Element("Monster1CX").Value), int.Parse(save.Root.Element("Monster1CY").Value), int.Parse(save.Root.Element("Monster2LVL").Value), int.Parse(save.Root.Element("Monster2CX").Value),
-                   int.Parse(save.Root.Element("Monster2CY").Value)) ;
-                   return gm;
-            
-                }
-                else
-                {
-                GameModel.Models.GameModel gm = new GameModel.Models.GameModel(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value), int.Parse(save.Root.Element("AttackSpeed").Value),
+                   int.Parse(save.Root.Element("Monster2CY").Value));
+                return gm;
+            }
+            else
+            {
+                GameModel gm = new GameModel(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value), int.Parse(save.Root.Element("AttackSpeed").Value),
                       int.Parse(save.Root.Element("Armor").Value), int.Parse(save.Root.Element("ArmorPrice").Value), int.Parse(save.Root.Element("Cash").Value), int.Parse(save.Root.Element("BlockNumber").Value), int.Parse(save.Root.Element("DmgPrice").Value), int.Parse(save.Root.Element("HPPrice").Value),
-                           int.Parse(save.Root.Element("Monster1LVL").Value), int.Parse(save.Root.Element("Monster1CX").Value), int.Parse(save.Root.Element("Monster1CY").Value), int.Parse(save.Root.Element("Monster2LVL").Value), int.Parse(save.Root.Element("Monster2CX").Value),
-                        int.Parse(save.Root.Element("Monster2CY").Value), int.Parse(save.Root.Element("ChestCX").Value), int.Parse(save.Root.Element("ChestCY").Value), int.Parse(save.Root.Element("ChestNum").Value));
+                      int.Parse(save.Root.Element("Monster1LVL").Value), int.Parse(save.Root.Element("Monster1CX").Value), int.Parse(save.Root.Element("Monster1CY").Value), int.Parse(save.Root.Element("Monster2LVL").Value), int.Parse(save.Root.Element("Monster2CX").Value),
+                      int.Parse(save.Root.Element("Monster2CY").Value), int.Parse(save.Root.Element("ChestCX").Value), int.Parse(save.Root.Element("ChestCY").Value), int.Parse(save.Root.Element("ChestNum").Value));
 
-                   return gm;
-
-                }
-
-
-
+                return gm;
+            }
         }
-
     }
 }
