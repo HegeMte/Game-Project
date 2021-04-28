@@ -43,6 +43,10 @@ namespace GameLogic
                 if (this.model.Hero.IsDefending == true && this.model.Hero.Armor > 0)
                 {
                     this.model.Hero.Armor -= this.model.Monsters[0].AttackDMG;
+                    if (this.model.Hero.Armor < 0)
+                    {
+                        this.model.Hero.Armor = 0;
+                    }
                 }
                 else
                 {
