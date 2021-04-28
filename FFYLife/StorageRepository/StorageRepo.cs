@@ -135,23 +135,12 @@ namespace StorageRepository
 
             int s = int.Parse(save.Root.Element("ChestCX").Value);
 
-            if (int.Parse(save.Root.Element("ChestCX").Value) == -1)
-            {
-                GameModell gm = new GameModell(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value), int.Parse(save.Root.Element("AttackSpeed").Value),
+            GameModell gm = new GameModell(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value), int.Parse(save.Root.Element("AttackSpeed").Value),
                    int.Parse(save.Root.Element("Armor").Value), int.Parse(save.Root.Element("ArmorPrice").Value), int.Parse(save.Root.Element("Cash").Value), int.Parse(save.Root.Element("BlockNumber").Value), int.Parse(save.Root.Element("DmgPrice").Value), int.Parse(save.Root.Element("HPPrice").Value),
                    int.Parse(save.Root.Element("Monster1LVL").Value), int.Parse(save.Root.Element("Monster1CX").Value), int.Parse(save.Root.Element("Monster1CY").Value), int.Parse(save.Root.Element("Monster2LVL").Value), int.Parse(save.Root.Element("Monster2CX").Value),
                    int.Parse(save.Root.Element("Monster2CY").Value));
-                return gm;
-            }
-            else
-            {
-                GameModell gm = new GameModell(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value), int.Parse(save.Root.Element("AttackSpeed").Value),
-                      int.Parse(save.Root.Element("Armor").Value), int.Parse(save.Root.Element("ArmorPrice").Value), int.Parse(save.Root.Element("Cash").Value), int.Parse(save.Root.Element("BlockNumber").Value), int.Parse(save.Root.Element("DmgPrice").Value), int.Parse(save.Root.Element("HPPrice").Value),
-                      int.Parse(save.Root.Element("Monster1LVL").Value), int.Parse(save.Root.Element("Monster1CX").Value), int.Parse(save.Root.Element("Monster1CY").Value), int.Parse(save.Root.Element("Monster2LVL").Value), int.Parse(save.Root.Element("Monster2CX").Value),
-                      int.Parse(save.Root.Element("Monster2CY").Value), int.Parse(save.Root.Element("ChestCX").Value), int.Parse(save.Root.Element("ChestCY").Value), int.Parse(save.Root.Element("ChestNum").Value));
 
-                return gm;
-            }
+            return gm;
         }
     }
 }

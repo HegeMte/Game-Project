@@ -139,30 +139,30 @@ namespace GameModel.Models
         /// <param name="chestCX">chestcx.</param>
         /// <param name="chestCy">chestcy.</param>
         /// <param name="chestNum">chestnum.</param>
-        public GameModell(double w, double h, string name, int herohp, int dmg, int attackspeed, int armor, int armorprice, int cash, int blockNumber, int dmgprice, int hpprice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY, int chestCX, int chestCy, int chestNum)
-        {
-            this.Hero.AttackSpeed = attackspeed;
-            this.GameDisplayHeight = h;
-            this.GameDisplayWidth = w;
+        //public GameModell(double w, double h, string name, int herohp, int dmg, int attackspeed, int armor, int armorprice, int cash, int blockNumber, int dmgprice, int hpprice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY)
+        //{
+        //    this.Hero.AttackSpeed = attackspeed;
+        //    this.GameDisplayHeight = h;
+        //    this.GameDisplayWidth = w;
 
-            this.Name = name;
+        //    this.Name = name;
 
-            this.Blocks = new List<OneBlock>();
-            for (int i = 0; i < NumBlocks; i++)
-            {
-                this.Blocks.Add(new OneBlock(i * GameDisplayWidth / NumBlocks, h / 2));
-            }
+        //    this.Blocks = new List<OneBlock>();
+        //    for (int i = 0; i < NumBlocks; i++)
+        //    {
+        //        this.Blocks.Add(new OneBlock(i * GameDisplayWidth / NumBlocks, h / 2));
+        //    }
 
-            Hero = new OneHero(-50, 410, herohp, dmg, armor, cash);
-            this.BlockNumber = blockNumber;
-            this.DmgPrice = dmgprice;
-            this.HPPrice = hpprice;
-            this.ArmorPrice = armorprice;
+        //    Hero = new OneHero(-50, 410, herohp, dmg, armor, cash);
+        //    this.BlockNumber = blockNumber;
+        //    this.DmgPrice = dmgprice;
+        //    this.HPPrice = hpprice;
+        //    this.ArmorPrice = armorprice;
 
-            Monsters = new List<OneMonster>();
-            Monsters.Add(new OneMonster(monster1CX, monster1CY, monster1Lvl));
-            Monsters.Add(new OneMonster(monster2CX, monster2CY, monster2Lvl));
-        }
+        //    Monsters = new List<OneMonster>();
+        //    Monsters.Add(new OneMonster(monster1CX, monster1CY, monster1Lvl));
+        //    Monsters.Add(new OneMonster(monster2CX, monster2CY, monster2Lvl));
+        //}
 
         /// <summary>
         /// Gets or sets the BlockNumber.
