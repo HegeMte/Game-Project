@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GameModel.Models.Chest" Collapsed="true">
+    <Position X="9" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUQACAAAAAAAA=</HashCode>
+      <FileName>Models\Chest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameModel.Models.GameItem" Collapsed="true">
+    <Position X="5.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAgAAAAAAAAAAAAAAQAAABAAAAAAACAE=</HashCode>
+      <FileName>Models\GameItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameModel.Models.GameModell" Collapsed="true">
+    <Position X="11" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABEgRAAKAAKQABAIAAAAAQAECAAAAAAAAAEFCAAIAI=</HashCode>
+      <FileName>Models\GameModell.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameModel.Models.OneMonster" Collapsed="true">
+    <Position X="7.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAEAAAABAAEAIQAAAAAAAAQAA=</HashCode>
+      <FileName>Models\OneMonster.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameModel.Models.OneBlock" Collapsed="true">
+    <Position X="5.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\OneBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameModel.Models.OneHero" Collapsed="true">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAQAABIAAAAAAAABAAAAoEEQAAAAAAQAA=</HashCode>
+      <FileName>Models\OneHero.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="GameModel.Models.IGameModel" Collapsed="true">
+    <Position X="11" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABEgRAAKAAKQABAIAAAAAQAEAAAAAAAAAAEFCAAIAI=</HashCode>
+      <FileName>Models\IGameModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameModel.Models.IHero" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAIAAAAAAAAAAAAAAEEQAAAAAAAAA=</HashCode>
+      <FileName>Models\IHero.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameModel.Models.IMonster" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IMonster.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameModel.Models.IUnit" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAIAAAAAAAAAQAA=</HashCode>
+      <FileName>Models\IUnit.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

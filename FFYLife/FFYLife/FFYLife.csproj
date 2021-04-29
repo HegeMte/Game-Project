@@ -1,0 +1,124 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
+	  <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+	  <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <NetAnalyzer>true</NetAnalyzer>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\anvil.png" />
+    <None Remove="Images\armor.png" />
+    <None Remove="Images\armor1.png" />
+    <None Remove="Images\armor4.png" />
+    <None Remove="Images\armorPotion.png" />
+    <None Remove="Images\block.png" />
+    <None Remove="Images\boss1.png" />
+    <None Remove="Images\boss1attack.png" />
+    <None Remove="Images\boss2.png" />
+    <None Remove="Images\boss2attack.png" />
+    <None Remove="Images\boss3.png" />
+    <None Remove="Images\boss3attack.png" />
+    <None Remove="Images\boss4.png" />
+    <None Remove="Images\boss4attack.png" />
+    <None Remove="Images\chest.png" />
+    <None Remove="Images\hearth.png" />
+    <None Remove="Images\hero1.png" />
+    <None Remove="Images\monster1.png" />
+    <None Remove="Images\monster1attack.png" />
+    <None Remove="Images\monster2.png" />
+    <None Remove="Images\monster2attack.png" />
+    <None Remove="Images\monster3.png" />
+    <None Remove="Images\monster3attack.png" />
+    <None Remove="Images\monster4.png" />
+    <None Remove="Images\monster4attack.png" />
+    <None Remove="Images\potion.png" />
+    <None Remove="Images\questions.png" />
+    <None Remove="Images\ringBackground.gif" />
+    <None Remove="Images\shopBackground.jpg" />
+    <None Remove="Images\shrek.png" />
+    <None Remove="Images\steve.png" />
+    <None Remove="Images\steve1.png" />
+    <None Remove="Images\steveattack.png" />
+    <None Remove="Images\steveattack1.png" />
+    <None Remove="Images\steveDefend.png" />
+    <None Remove="Images\steveDefend1.png" />
+    <None Remove="Images\steveMove.png" />
+    <None Remove="Images\sword.png" />
+    <None Remove="Images\sword1.png" />
+    <None Remove="Images\sword2.png" />
+    <None Remove="Images\sword3.png" />
+    <None Remove="Images\sword4.png" />
+    <None Remove="Images\sword5.png" />
+    <None Remove="Images\terraria.png" />
+    <None Remove="Images\vbuck.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\boss1.png" />
+    <EmbeddedResource Include="Images\boss1attack.png" />
+    <EmbeddedResource Include="Images\boss2.png" />
+    <EmbeddedResource Include="Images\boss2attack.png" />
+    <EmbeddedResource Include="Images\boss3.png" />
+    <EmbeddedResource Include="Images\boss3attack.png" />
+    <EmbeddedResource Include="Images\boss4.png" />
+    <EmbeddedResource Include="Images\boss4attack.png" />
+    <EmbeddedResource Include="Images\steve1.png" />
+    <EmbeddedResource Include="Images\steveattack1.png" />
+    <EmbeddedResource Include="Images\steveDefend.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\anvil.png" />
+    <EmbeddedResource Include="Images\armor4.png" />
+    <EmbeddedResource Include="Images\armorPotion.png" />
+    <EmbeddedResource Include="Images\chest.png" />
+    <EmbeddedResource Include="Images\monster1attack.png" />
+    <EmbeddedResource Include="Images\monster2attack.png" />
+    <EmbeddedResource Include="Images\monster3attack.png" />
+    <EmbeddedResource Include="Images\monster4attack.png" />
+    <EmbeddedResource Include="Images\shopBackground.jpg" />
+    <EmbeddedResource Include="Images\shrek.png" />
+    <EmbeddedResource Include="Images\steve.png" />
+    <EmbeddedResource Include="Images\steveattack.png" />
+    <EmbeddedResource Include="Images\steveDefend1.png" />
+    <EmbeddedResource Include="Images\steveMove.png" />
+    <Resource Include="Images\terraria.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <EmbeddedResource Include="Images\block.png" />
+    <EmbeddedResource Include="Images\hearth.png" />
+    <EmbeddedResource Include="Images\monster1.png" />
+    <EmbeddedResource Include="Images\monster2.png" />
+    <EmbeddedResource Include="Images\monster3.png" />
+    <EmbeddedResource Include="Images\monster4.png" />
+    <EmbeddedResource Include="Images\potion.png" />
+    <EmbeddedResource Include="Images\questions.png" />
+    <EmbeddedResource Include="Images\ringBackground.gif" />
+    <EmbeddedResource Include="Images\sword1.png" />
+    <EmbeddedResource Include="Images\sword2.png" />
+    <EmbeddedResource Include="Images\sword3.png" />
+    <EmbeddedResource Include="Images\sword4.png" />
+    <EmbeddedResource Include="Images\sword5.png" />
+    <EmbeddedResource Include="Images\vbuck.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GameLogic\GameLogic.csproj" />
+    <ProjectReference Include="..\StorageRepository\StorageRepository.csproj" />
+  </ItemGroup>
+
+</Project>
