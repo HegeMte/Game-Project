@@ -7,7 +7,7 @@
 	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
 	  <AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	  <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <NetAnalyzer>true</NetAnalyzer>
   </PropertyGroup>
 
