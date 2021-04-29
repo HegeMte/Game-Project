@@ -1,7 +1,6 @@
-﻿// This file is used by Code Analysis to maintain SuppressMessage
-// attributes that are applied to this project.
-// Project-level suppressions either have no target or are given
-// a specific target and scoped to a namespace, type, member, etc.
+﻿// <copyright file="GlobalSuppressions.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 using System.Diagnostics.CodeAnalysis;
 
@@ -11,3 +10,5 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Style", "IDE0017:Simplify object initialization", Justification = "<dasd", Scope = "member", Target = "~M:FFYLife.Renderer.GetButtons~System.Windows.Media.Drawing")]
 [assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "hgh", Scope = "member", Target = "~M:FFYLife.Renderer.GetButtons~System.Windows.Media.Drawing")]
 [assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "fdf", Scope = "member", Target = "~M:FFYLife.Renderer.GetUIBackground~System.Windows.Media.Drawing")]
+[assembly: SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "sdasd", Scope = "member", Target = "~P:FFYLife.HighScoreWindow.HighScores")]
+[assembly: SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1624:Property summary documentation should omit accessor with restricted access", Justification = "xyx", Scope = "member", Target = "~P:FFYLife.HighScoreWindow.HighScores")]

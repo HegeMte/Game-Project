@@ -1,64 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿// <copyright file="LoadAGameWindow.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace FFYLife
 {
-    
+    using System.Windows;
+
+    /// <summary>
+    /// Interaction logic for LoadAGameWindow.xaml.
+    /// </summary>
     public partial class LoadAGameWindow : Window
     {
-        string[] Files { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoadAGameWindow"/> class.
+        /// </summary>
         public LoadAGameWindow()
         {
-            InitializeComponent();
-            Files = Logic.ResourceLogic.SavedGamesList();
-            ShowFiles();
-
+            this.InitializeComponent();
+            this.Files = Logic.ResourceLogic.SavedGamesList();
+            this.ShowFiles();
         }
 
-
+        private string[] Files { get; set; }
 
         private void ShowFiles()
         {
-            
-            if (Files != null)
+            if (this.Files != null)
             {
-                for (int i = 0; i < Files.Length; i++)
+                for (int i = 0; i < this.Files.Length; i++)
                 {
-                    this.Listbox.Items.Add(Files[i]);
+                    this.Listbox.Items.Add(this.Files[i]);
                 }
             }
         }
 
         private void LoadGameClick(object sender, RoutedEventArgs e)
         {
-
-            if (Listbox.SelectedItem != null)
+            if (this.Listbox.SelectedItem != null)
             {
-                ;
-                Control.SaveFile = Listbox.SelectedItem.ToString();
+                Control.SaveFile = this.Listbox.SelectedItem.ToString();
                 MainWindow mw = new MainWindow();
                 mw.Show();
                 this.Close();
-                
-
             }
             else
             {
                 MessageBox.Show("Choose a savefile first");
             }
-            
         }
 
         private void CancelClick(object sender, RoutedEventArgs e)
