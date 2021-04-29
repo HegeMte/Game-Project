@@ -1,4 +1,4 @@
-﻿// <copyright file="GameModel.cs" company="PlaceholderCompany">
+﻿// <copyright file="GameModell.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -88,7 +88,8 @@ namespace GameModel.Models
         /// <param name="monster2Lvl">monster2lvl.</param>
         /// <param name="monster2CX">monster2cx.</param>
         /// <param name="monster2CY">monster2cy.</param>
-        public GameModell(double w, double h, string name, int heroHp, int dmg, int attackspeed, int armor, int armorprice, int cash, int blockNumber, int dmgprice, int hpprice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY)
+        /// /// <param name="type">type.</param>
+        public GameModell(double w, double h, string name, int heroHp, int dmg, int attackspeed, int armor, int armorprice, int cash, int blockNumber, int dmgprice, int hpprice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY, string type)
         {
             this.IsInFight = false;
 
@@ -105,6 +106,7 @@ namespace GameModel.Models
 
             this.Hero = new OneHero(-50, 410, heroHp, dmg, armor, cash);
             this.Hero.AttackSpeed = attackspeed;
+            this.Hero.Type = type;
             this.BlockNumber = blockNumber;
             this.DmgPrice = dmgprice;
             this.HPPrice = hpprice;
@@ -114,55 +116,6 @@ namespace GameModel.Models
             this.Monsters.Add(new OneMonster(monster1CX, monster1CY, monster1Lvl));
             this.Monsters.Add(new OneMonster(monster2CX, monster2CY, monster2Lvl));
         }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GameModell"/> class.
-        /// </summary>
-        /// <param name="w">width.</param>
-        /// <param name="h">height.</param>
-        /// <param name="name">name.</param>
-        /// <param name="herohp">herohp.</param>
-        /// <param name="dmg">dmg.</param>
-        /// <param name="attackspeed">attackspeed.</param>
-        /// <param name="armor">armor.</param>
-        /// <param name="armorprice">armorprice.</param>
-        /// <param name="cash">cash.</param>
-        /// <param name="blockNumber">blocknumber.</param>
-        /// <param name="dmgprice">dmgprice.</param>
-        /// <param name="hpprice">hpprice.</param>
-        /// <param name="monster1Lvl">moster1lvl.</param>
-        /// <param name="monster1CX">monster1cx.</param>
-        /// <param name="monster1CY">monster1cy.</param>
-        /// <param name="monster2Lvl">monster2lvl.</param>
-        /// <param name="monster2CX">monster2cx.</param>
-        /// <param name="monster2CY">monster2cy.</param>
-        /// <param name="chestCX">chestcx.</param>
-        /// <param name="chestCy">chestcy.</param>
-        /// <param name="chestNum">chestnum.</param>
-        //public GameModell(double w, double h, string name, int herohp, int dmg, int attackspeed, int armor, int armorprice, int cash, int blockNumber, int dmgprice, int hpprice, int monster1Lvl, int monster1CX, int monster1CY, int monster2Lvl, int monster2CX, int monster2CY)
-        //{
-        //    this.Hero.AttackSpeed = attackspeed;
-        //    this.GameDisplayHeight = h;
-        //    this.GameDisplayWidth = w;
-
-        //    this.Name = name;
-
-        //    this.Blocks = new List<OneBlock>();
-        //    for (int i = 0; i < NumBlocks; i++)
-        //    {
-        //        this.Blocks.Add(new OneBlock(i * GameDisplayWidth / NumBlocks, h / 2));
-        //    }
-
-        //    Hero = new OneHero(-50, 410, herohp, dmg, armor, cash);
-        //    this.BlockNumber = blockNumber;
-        //    this.DmgPrice = dmgprice;
-        //    this.HPPrice = hpprice;
-        //    this.ArmorPrice = armorprice;
-
-        //    Monsters = new List<OneMonster>();
-        //    Monsters.Add(new OneMonster(monster1CX, monster1CY, monster1Lvl));
-        //    Monsters.Add(new OneMonster(monster2CX, monster2CY, monster2Lvl));
-        //}
 
         /// <summary>
         /// Gets or sets the BlockNumber.

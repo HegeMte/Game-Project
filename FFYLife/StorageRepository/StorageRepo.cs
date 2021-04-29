@@ -2,6 +2,8 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+[assembly: System.CLSCompliant(false)]
+
 namespace StorageRepository
 {
     using System;
@@ -95,6 +97,7 @@ namespace StorageRepository
             saveGameXDoc.Root.Add(new XElement("Cash", gameModel.Hero.Cash));
             saveGameXDoc.Root.Add(new XElement("Damage", gameModel.Hero.AttackDMG));
             saveGameXDoc.Root.Add(new XElement("AttackSpeed", gameModel.Hero.AttackSpeed));
+            saveGameXDoc.Root.Add(new XElement("Type", gameModel.Hero.Type));
             saveGameXDoc.Root.Add(new XElement("DmgPrice", gameModel.DmgPrice));
             saveGameXDoc.Root.Add(new XElement("HPPrice", gameModel.HPPrice));
             saveGameXDoc.Root.Add(new XElement("h", gameModel.GameDisplayHeight));
@@ -138,7 +141,7 @@ namespace StorageRepository
             GameModell gm = new GameModell(int.Parse(save.Root.Element("w").Value), int.Parse(save.Root.Element("h").Value), save.Root.Element("Name").Value, int.Parse(save.Root.Element("HeroHP").Value), int.Parse(save.Root.Element("Damage").Value), int.Parse(save.Root.Element("AttackSpeed").Value),
                    int.Parse(save.Root.Element("Armor").Value), int.Parse(save.Root.Element("ArmorPrice").Value), int.Parse(save.Root.Element("Cash").Value), int.Parse(save.Root.Element("BlockNumber").Value), int.Parse(save.Root.Element("DmgPrice").Value), int.Parse(save.Root.Element("HPPrice").Value),
                    int.Parse(save.Root.Element("Monster1LVL").Value), int.Parse(save.Root.Element("Monster1CX").Value), int.Parse(save.Root.Element("Monster1CY").Value), int.Parse(save.Root.Element("Monster2LVL").Value), int.Parse(save.Root.Element("Monster2CX").Value),
-                   int.Parse(save.Root.Element("Monster2CY").Value));
+                   int.Parse(save.Root.Element("Monster2CY").Value), save.Root.Element("Type").Value);
 
             return gm;
         }
