@@ -146,7 +146,7 @@ namespace GameLogic
         /// <returns>returns a number.</returns>
         public int BuyArmor()
         {
-            if (this.model.Hero.Cash >= this.model.HPPrice && this.model.Hero.Armor < this.model.Hero.MaxArmor)
+            if (this.model.Hero.Cash >= this.model.ArmorPrice && this.model.Hero.Armor < this.model.Hero.MaxArmor)
             {
                 this.model.Hero.Armor += 1;
                 this.model.Hero.Cash -= this.model.ArmorPrice;
