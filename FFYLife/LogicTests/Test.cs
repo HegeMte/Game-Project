@@ -1,176 +1,165 @@
-﻿using GameLogic;
-using Moq;
-using NUnit.Framework;
-using StorageRepository;
-using GameModel.Models;
-using System;
-using System.Collections.Generic;
+﻿// <copyright file="Test.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+[assembly: System.CLSCompliant(false)]
 
 namespace LogicTests
 {
+    using System.Collections.Generic;
+    using GameLogic;
+    using GameModel.Models;
+    using Moq;
+    using NUnit.Framework;
+    using StorageRepository;
 
-
+    /// <summary>
+    /// Test class.
+    /// </summary>
     [TestFixture]
     public class Test
     {
         private static IGameLogic gameLogic;
-        private static Mock<IStorageRepository> RepoMock;
-        private static Mock<GameModel.Models.GameModel> ModelMock;
+        private static Mock<IStorageRepository> repomock;
+        private static Mock<GameModel.Models.GameModell> modelmock;
 
+        /// <summary>
+        /// Tests the logic Init method.
+        /// </summary>
         [SetUp]
         public void Init()
         {
-            List<Chest> ChestList = new List<Chest>();
-            ChestList.Add(new Chest() { Question = "Elérjük Péter Árpádot?", Answers = new List<string>() { "Igen","Nem","Talán","Attila"},RewardCash = 10,Right = 1 });
-            //Chest c1 = new Chest();
-            //c1.Question = "Elérjük Péter Árpádot?";
-            ChestList.Add(new Chest() { Question = "Mennyi 5+5?", Answers = new List<string>() { "10", "15", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
-            //Chest c1 = new Chest();
-            ChestList.Add(new Chest() { Question = "Dua Lipa 10/?", Answers = new List<string>() { "10", "2", "11", "100" }, RewardCash = 10, Right = 3 });
-            ChestList.Add(new Chest() { Question = "Meglesz a prog4?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
-            ChestList.Add(new Chest() { Question = "Buta vagy?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
+            List<Chest> chestlist = new List<Chest>();
+            chestlist.Add(new Chest() { Question = "Elérjük Péter Árpádot?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 1 });
+            chestlist.Add(new Chest() { Question = "Mennyi 5+5?", Answers = new List<string>() { "10", "15", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
+            chestlist.Add(new Chest() { Question = "Dua Lipa 10/?", Answers = new List<string>() { "10", "2", "11", "100" }, RewardCash = 10, Right = 3 });
+            chestlist.Add(new Chest() { Question = "Meglesz a prog4?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
+            chestlist.Add(new Chest() { Question = "Buta vagy?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
 
-            RepoMock = new Mock<IStorageRepository>();
-            RepoMock.Object.ChestList = ChestList;
-            
+            repomock = new Mock<IStorageRepository>();
+            repomock.Object.ChestList = chestlist;
+            modelmock = new Mock<GameModel.Models.GameModell>();
+            modelmock.Object.Name = "Máté";
+            modelmock.Object.Hero = new OneHero(-50, 410, 10, 1, 4, 100);
 
-            //Model
-
-            ModelMock = new Mock<GameModel.Models.GameModel>();
-
-            
-            //x = -50 y 410
-            ModelMock.Object.Name = "Máté";
-            ModelMock.Object.Hero = new OneHero(-50, 410, 10, 1, 4, 100);
-            
             List<OneMonster> monsters = new List<OneMonster>();
             monsters.Add(new OneMonster(325, 600, 1));
             monsters.Add(new OneMonster(585, 600, 1));
-            ModelMock.Object.Monsters = monsters;
-            
-            ModelMock.Object.BlockNumber = 5;
-            
-            ModelMock.Object.ArmorPrice = 5;
-            ModelMock.Object.DmgPrice = 5;
-            ModelMock.Object.HPPrice = 5;
+            modelmock.Object.Monsters = monsters;
 
-            ModelMock.Object.Chests = ChestList;
-            ModelMock.Object.Chest = ChestList[2];
+            modelmock.Object.BlockNumber = 5;
 
-            //LEVI
-            //ModelMock.Object.GameDisplayHeight = 
-            //ModelMock.Object.GameDisplayWidth = 
+            modelmock.Object.ArmorPrice = 5;
+            modelmock.Object.DmgPrice = 5;
+            modelmock.Object.HPPrice = 5;
 
-            //ModelMock.Object.UIHeight = 
-            //ModelMock.Object.UIWidth=
+            modelmock.Object.Chests = chestlist;
+            modelmock.Object.Chest = chestlist[2];
 
-
-            //Logic
-            gameLogic = new GameLogicc(ModelMock.Object,RepoMock.Object);
-        
+            gameLogic = new GameLogicc(modelmock.Object, repomock.Object);
         }
 
-
-
+        /// <summary>
+        /// Tests the logic buydmg method.
+        /// </summary>
         [Test]
         public void BuyDmg()
         {
             // Arrange
-            int ExpectedHeroDmg = ModelMock.Object.Hero.AttackDMG + 1;
-            int ExpectedHeroCash = ModelMock.Object.Hero.Cash - ModelMock.Object.DmgPrice;
-
+            int expectedherodmg = modelmock.Object.Hero.AttackDMG + 1;
+            int expectedherocash = modelmock.Object.Hero.Cash - modelmock.Object.DmgPrice;
 
             // ACT
             gameLogic.BuyDmg();
-            // ASSERT
-            Assert.That(ModelMock.Object.Hero.AttackDMG, Is.EqualTo(ExpectedHeroDmg));
-            Assert.That(ModelMock.Object.Hero.Cash, Is.EqualTo(ExpectedHeroCash));
 
+            // ASSERT
+            Assert.That(modelmock.Object.Hero.AttackDMG, Is.EqualTo(expectedherodmg));
+            Assert.That(modelmock.Object.Hero.Cash, Is.EqualTo(expectedherocash));
         }
 
-
+        /// <summary>
+        /// Tests the logic CanBuyHP method.
+        /// </summary>
         [Test]
         public void CanBuyHP()
         {
-            ModelMock.Object.Hero.Hp--;
+            modelmock.Object.Hero.Hp--;
 
             // Arrange
-            int ExpectedHeroHp = ModelMock.Object.Hero.Hp + 1;
-            int ExpectedHeroCash = ModelMock.Object.Hero.Cash - ModelMock.Object.HPPrice;
-
+            int expectedherohp = modelmock.Object.Hero.Hp + 1;
+            int expectedherocash = modelmock.Object.Hero.Cash - modelmock.Object.HPPrice;
 
             // ACT
             gameLogic.BuyHP();
 
-
             // ASSERT
-            Assert.That(ModelMock.Object.Hero.Hp, Is.EqualTo(ExpectedHeroHp));
-            Assert.That(ModelMock.Object.Hero.Cash, Is.EqualTo(ExpectedHeroCash));
-
+            Assert.That(modelmock.Object.Hero.Hp, Is.EqualTo(expectedherohp));
+            Assert.That(modelmock.Object.Hero.Cash, Is.EqualTo(expectedherocash));
         }
 
-
+        /// <summary>
+        /// Tests the logic CantBuyHp method.
+        /// </summary>
         [Test]
         public void CantBuyHp()
         {
+            modelmock.Object.Hero.Hp = 10;
 
-            ModelMock.Object.Hero.Hp = 10;
-            //ASSERT
-            int ExpectedHeroHp = ModelMock.Object.Hero.Hp ;
-            int ExpectedHeroCash = ModelMock.Object.Hero.Cash;
+            // ASSERT
+            int expectedherohp = modelmock.Object.Hero.Hp;
+            int expectedherocash = modelmock.Object.Hero.Cash;
 
-            //ACT
+            // ACT
             gameLogic.BuyHP();
 
-            //ASSERT
-            Assert.That(ModelMock.Object.Hero.Hp, Is.EqualTo(ExpectedHeroHp));
-            Assert.That(ModelMock.Object.Hero.Cash, Is.EqualTo(ExpectedHeroCash));
-
-
+            // ASSERT
+            Assert.That(modelmock.Object.Hero.Hp, Is.EqualTo(expectedherohp));
+            Assert.That(modelmock.Object.Hero.Cash, Is.EqualTo(expectedherocash));
         }
 
-
-
+        /// <summary>
+        /// Tests the logic CanBuyArmor method.
+        /// </summary>
         [Test]
         public void CanBuyArmor()
         {
-            ModelMock.Object.Hero.Armor--;
+            modelmock.Object.Hero.Armor--;
 
             // Arrange
-            int ExpectedHeroArmor = ModelMock.Object.Hero.Armor + 1;
-            int ExpectedHeroCash = ModelMock.Object.Hero.Cash - ModelMock.Object.ArmorPrice;
-
+            int expectedheroarmor = modelmock.Object.Hero.Armor + 1;
+            int expectedherocash = modelmock.Object.Hero.Cash - modelmock.Object.ArmorPrice;
 
             // ACT
             gameLogic.BuyArmor();
 
-
             // ASSERT
-            Assert.That(ModelMock.Object.Hero.Armor, Is.EqualTo(ExpectedHeroArmor));
-            Assert.That(ModelMock.Object.Hero.Cash, Is.EqualTo(ExpectedHeroCash));
-
+            Assert.That(modelmock.Object.Hero.Armor, Is.EqualTo(expectedheroarmor));
+            Assert.That(modelmock.Object.Hero.Cash, Is.EqualTo(expectedherocash));
         }
 
-
+        /// <summary>
+        /// Tests the logic CantBuyArmor method.
+        /// </summary>
         [Test]
         public void CantBuyArmor()
         {
+            modelmock.Object.Hero.Armor = 4;
 
-            ModelMock.Object.Hero.Armor = 4;
             // ASSERT
-            int ExpectedHeroArmor = ModelMock.Object.Hero.Armor;
-            int ExpectedHeroCash = ModelMock.Object.Hero.Cash;
+            int expectedheroarmor = modelmock.Object.Hero.Armor;
+            int expectedherocash = modelmock.Object.Hero.Cash;
 
             // ACT
             gameLogic.BuyArmor();
 
             // ASSERT
-            Assert.That(ModelMock.Object.Hero.Armor, Is.EqualTo(ExpectedHeroArmor));
-            Assert.That(ModelMock.Object.Hero.Cash, Is.EqualTo(ExpectedHeroCash));
-
-
+            Assert.That(modelmock.Object.Hero.Armor, Is.EqualTo(expectedheroarmor));
+            Assert.That(modelmock.Object.Hero.Cash, Is.EqualTo(expectedherocash));
         }
 
+        /// <summary>
+        /// Tests the logic HeroIsDefending method.
+        /// </summary>
         [Test]
         public void HeroIsDefending()
         {
@@ -178,246 +167,233 @@ namespace LogicTests
             gameLogic.HeroIsDefending();
 
             // ASSERT
-
-            Assert.That(ModelMock.Object.Hero.IsDefending, Is.True);
+            Assert.That(modelmock.Object.Hero.IsDefending, Is.True);
         }
 
-
+        /// <summary>
+        /// Tests the logic ChestAhead method.
+        /// </summary>
         [Test]
         public void ChestAhead()
         {
-            ModelMock.Object.Chest.CX = 195;
+            modelmock.Object.Chest.CX = 195;
 
             // ACT
             gameLogic.ChestAhead();
 
             // ASSERT
-
-            Assert.That(ModelMock.Object.ChestIsOn, Is.True);
-        
-        
+            Assert.That(modelmock.Object.ChestIsOn, Is.True);
         }
 
-
-
+        /// <summary>
+        /// Tests the logic HeroAttack method.
+        /// </summary>
         [Test]
         public void HeroAttack()
         {
-            ModelMock.Object.IsInFight = true;
-            ModelMock.Object.Hero.IsDefending = false;
-            ModelMock.Object.Hero.CanAttack = true;
-            ModelMock.Object.Monsters[0].CX = 195;
-            //ModelMock.Object.Monsters[0].IsDead = false;
-            int ExpectedMonsterHp = ModelMock.Object.Monsters[0].Hp - ModelMock.Object.Hero.AttackDMG;
-            // ACT
+            modelmock.Object.IsInFight = true;
+            modelmock.Object.Hero.IsDefending = false;
+            modelmock.Object.Hero.CanAttack = true;
+            modelmock.Object.Monsters[0].CX = 195;
+            int expectedmonsterhp = modelmock.Object.Monsters[0].Hp - modelmock.Object.Hero.AttackDMG;
 
+            // ACT
             gameLogic.HeroAttack();
 
             // ASSERT
-            Assert.That(ModelMock.Object.Monsters[0].Hp, Is.EqualTo(ExpectedMonsterHp));
+            Assert.That(modelmock.Object.Monsters[0].Hp, Is.EqualTo(expectedmonsterhp));
         }
 
+        /// <summary>
+        /// Tests the logic MonsterAttack method.
+        /// </summary>
         [Test]
         public void MonsterAttackWhenHeroNotDefending()
         {
-            ModelMock.Object.Monsters[0].CX = 195;
-            int ExpectedHeroHp = ModelMock.Object.Hero.Hp - ModelMock.Object.Monsters[0].AttackDMG;
-
+            modelmock.Object.Monsters[0].CX = 195;
+            int expectedherohp = modelmock.Object.Hero.Hp - modelmock.Object.Monsters[0].AttackDMG;
 
             // ACT
             gameLogic.MonsterAttack();
 
             // ASSERT
-            Assert.That(ModelMock.Object.Hero.Hp, Is.EqualTo(ExpectedHeroHp));
-
+            Assert.That(modelmock.Object.Hero.Hp, Is.EqualTo(expectedherohp));
         }
 
+        /// <summary>
+        /// Tests the logic MonsterAttack method.
+        /// </summary>
         [Test]
         public void MonsterAttackWhenHeroDefending()
         {
-            ModelMock.Object.Monsters[0].CX = 195;
-            ModelMock.Object.Hero.IsDefending = true;
+            modelmock.Object.Monsters[0].CX = 195;
+            modelmock.Object.Hero.IsDefending = true;
 
-            //model.Hero.Armor -= model.Monsters[0].AttackDMG;
-            int ExpectedHeroArmor = ModelMock.Object.Hero.Armor - ModelMock.Object.Monsters[0].AttackDMG;
+            int expectedheroarmor = modelmock.Object.Hero.Armor - modelmock.Object.Monsters[0].AttackDMG;
 
             // ACT
             gameLogic.MonsterAttack();
 
             // ASSERT
-            Assert.That(ModelMock.Object.Hero.Armor, Is.EqualTo(ExpectedHeroArmor));
+            Assert.That(modelmock.Object.Hero.Armor, Is.EqualTo(expectedheroarmor));
         }
 
-
+        /// <summary>
+        /// Tests the logic MonsterTick method.
+        /// </summary>
         [Test]
-
         public void MonsterTick()
         {
-
-            
-            double expectedMonster1Cx = ModelMock.Object.Monsters[0].CX - 5;
-            double expectedMonster2Cx = ModelMock.Object.Monsters[1].CX - 5;
+            double expectedMonster1Cx = modelmock.Object.Monsters[0].CX - 5;
+            double expectedMonster2Cx = modelmock.Object.Monsters[1].CX - 5;
 
             // ACT
-            gameLogic.MonstersTick(ModelMock.Object.Monsters);
+            gameLogic.MonstersTick(modelmock.Object.Monsters);
 
             // ASSERT
-            Assert.That(ModelMock.Object.Monsters[0].CX, Is.EqualTo(expectedMonster1Cx));
-            Assert.That(ModelMock.Object.Monsters[1].CX, Is.EqualTo(expectedMonster2Cx));
+            Assert.That(modelmock.Object.Monsters[0].CX, Is.EqualTo(expectedMonster1Cx));
+            Assert.That(modelmock.Object.Monsters[1].CX, Is.EqualTo(expectedMonster2Cx));
         }
 
-
-
+        /// <summary>
+        /// Tests the logic MonsterDied method.
+        /// </summary>
         [Test]
         public void MonsterTickWithSwaps()
         {
-            ModelMock.Object.Monsters[0].CX = 194;
-            OneMonster monster = ModelMock.Object.Monsters[1];
-            OneMonster removedmonster = ModelMock.Object.Monsters[0];
-            // ACT
-            gameLogic.MonsterDied(ModelMock.Object.Monsters);
+            modelmock.Object.Monsters[0].CX = 194;
+            OneMonster monster = modelmock.Object.Monsters[1];
+            OneMonster removedmonster = modelmock.Object.Monsters[0];
 
+            // ACT
+            gameLogic.MonsterDied(modelmock.Object.Monsters);
 
             // ASSERT
-            Assert.That(ModelMock.Object.Monsters[0], Is.EqualTo(monster));
-            Assert.That(ModelMock.Object.Monsters[1], Is.Not.EqualTo(monster));
-            Assert.That(ModelMock.Object.Monsters, Does.Not.Contain(removedmonster));
+            Assert.That(modelmock.Object.Monsters[0], Is.EqualTo(monster));
+            Assert.That(modelmock.Object.Monsters[1], Is.Not.EqualTo(monster));
+            Assert.That(modelmock.Object.Monsters, Does.Not.Contain(removedmonster));
         }
 
-
+        /// <summary>
+        /// Tests the logic ChestTick method.
+        /// </summary>
         [Test]
         public void ChestTick()
         {
-            ModelMock.Object.Chest.CX = 325;
-            double ExpectedChestCX = ModelMock.Object.Chest.CX - 1;
+            modelmock.Object.Chest.CX = 325;
+            double expectedchestcx = modelmock.Object.Chest.CX - 1;
 
             // ACT
             gameLogic.ChestTick();
 
             // ASSERT
-            Assert.That(ModelMock.Object.Chest.CX,Is.EqualTo(ExpectedChestCX));
-
+            Assert.That(modelmock.Object.Chest.CX, Is.EqualTo(expectedchestcx));
         }
 
+        /// <summary>
+        /// Tests the logic StepCalculator method.
+        /// </summary>
         [Test]
         public void StepCalculator()
         {
+            modelmock.Object.Chest.CX = 455;
+            modelmock.Object.Monsters[0].CX = 325;
 
-            ModelMock.Object.Chest.CX = 455;
-            ModelMock.Object.Monsters[0].CX = 325;
+            var expected = modelmock.Object.Monsters[0];
 
-            var expected = ModelMock.Object.Monsters[0];
-
-            // ACT 
+            // ACT
             gameLogic.StepCalculator();
 
             // ASSERT
-            Assert.That(ModelMock.Object.Monsters[0],Is.EqualTo(expected));
-
-
+            Assert.That(modelmock.Object.Monsters[0], Is.EqualTo(expected));
         }
 
-
-
+        /// <summary>
+        /// Tests the logic FindGameItem method.
+        /// </summary>
         [Test]
         public void FindGameItemWhenItemIsChest()
         {
-
             // ACT
-            gameLogic.FindGameItem(ModelMock.Object.Chest);
-
+            gameLogic.FindGameItem(modelmock.Object.Chest);
 
             // ASSERT
-            Assert.That(ModelMock.Object.Chest, Is.InstanceOf<Chest>());
-            Assert.That(ModelMock.Object.Chest, Is.TypeOf<Chest>());
-            
-        
+            Assert.That(modelmock.Object.Chest, Is.InstanceOf<Chest>());
+            Assert.That(modelmock.Object.Chest, Is.TypeOf<Chest>());
         }
 
-
-
+        /// <summary>
+        /// Tests the logic FindGameItem method.
+        /// </summary>
         [Test]
         public void FindGameItemWhenItemIsMonster()
         {
-
             // ACT
-            gameLogic.FindGameItem(ModelMock.Object.Monsters[0]);
-
+            gameLogic.FindGameItem(modelmock.Object.Monsters[0]);
 
             // ASSERT
-            Assert.That(ModelMock.Object.Monsters[0], Is.InstanceOf<OneMonster>());
-            Assert.That(ModelMock.Object.Monsters[0], Is.TypeOf<OneMonster>());
-
-
+            Assert.That(modelmock.Object.Monsters[0], Is.InstanceOf<OneMonster>());
+            Assert.That(modelmock.Object.Monsters[0], Is.TypeOf<OneMonster>());
         }
 
+        /// <summary>
+        /// Tests the logic AnswerA method.
+        /// </summary>
         [Test]
         public void AnswerA()
         {
-            ModelMock.Object.Chest.Right = 0;
-            int expectedcash = ModelMock.Object.Hero.Cash + ModelMock.Object.Chest.RewardCash;
-
+            modelmock.Object.Chest.Right = 0;
+            int expectedcash = modelmock.Object.Hero.Cash + modelmock.Object.Chest.RewardCash;
 
             gameLogic.AnswerA();
 
-
-            Assert.That(ModelMock.Object.Hero.Cash, Is.EqualTo(expectedcash));
-            Assert.That(ModelMock.Object.Chest, Is.Null);
-            
-        
+            Assert.That(modelmock.Object.Hero.Cash, Is.EqualTo(expectedcash));
+            Assert.That(modelmock.Object.Chest, Is.Null);
         }
 
-
+        /// <summary>
+        /// Tests the logic AnswerB method.
+        /// </summary>
         [Test]
         public void AnswerB()
         {
-            ModelMock.Object.Chest.Right = 1;
-            int expectedcash = ModelMock.Object.Hero.Cash + ModelMock.Object.Chest.RewardCash;
-
+            modelmock.Object.Chest.Right = 1;
+            int expectedcash = modelmock.Object.Hero.Cash + modelmock.Object.Chest.RewardCash;
 
             gameLogic.AnswerB();
 
-
-            Assert.That(ModelMock.Object.Hero.Cash, Is.EqualTo(expectedcash));
-            Assert.That(ModelMock.Object.Chest, Is.Null);
-
-
+            Assert.That(modelmock.Object.Hero.Cash, Is.EqualTo(expectedcash));
+            Assert.That(modelmock.Object.Chest, Is.Null);
         }
 
-
+        /// <summary>
+        /// Tests the logic AnswerC method.
+        /// </summary>
         [Test]
         public void AnswerC()
         {
-            ModelMock.Object.Chest.Right = 2;
-            int expectedcash = ModelMock.Object.Hero.Cash + ModelMock.Object.Chest.RewardCash;
-
+            modelmock.Object.Chest.Right = 2;
+            int expectedcash = modelmock.Object.Hero.Cash + modelmock.Object.Chest.RewardCash;
 
             gameLogic.AnswerC();
 
-
-            Assert.That(ModelMock.Object.Hero.Cash, Is.EqualTo(expectedcash));
-            Assert.That(ModelMock.Object.Chest, Is.Null);
-
-
+            Assert.That(modelmock.Object.Hero.Cash, Is.EqualTo(expectedcash));
+            Assert.That(modelmock.Object.Chest, Is.Null);
         }
 
+        /// <summary>
+        /// Tests the logic AnswerD method.
+        /// </summary>
         [Test]
         public void AnswerD()
         {
-            ModelMock.Object.Chest.Right = 3;
-            int expectedcash = ModelMock.Object.Hero.Cash + ModelMock.Object.Chest.RewardCash;
-
+            modelmock.Object.Chest.Right = 3;
+            int expectedcash = modelmock.Object.Hero.Cash + modelmock.Object.Chest.RewardCash;
 
             gameLogic.AnswerD();
 
-
-            Assert.That(ModelMock.Object.Hero.Cash, Is.EqualTo(expectedcash));
-            Assert.That(ModelMock.Object.Chest, Is.Null);
-
-
+            Assert.That(modelmock.Object.Hero.Cash, Is.EqualTo(expectedcash));
+            Assert.That(modelmock.Object.Chest, Is.Null);
         }
-
-
-
     }
 }

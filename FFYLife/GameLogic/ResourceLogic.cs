@@ -15,7 +15,6 @@ namespace Logic
         private IGameModel model;
         private StorageRepo repo;
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ResourceLogic"/> class.
         /// </summary>
@@ -36,29 +35,50 @@ namespace Logic
             this.repo = repo;
         }
 
-        public GameModel LoadGame(string savefile)
-        {
-            return repo.LoadGame(savefile);
-        }
-
+        /// <summary>
+        /// LoadHighScores method which is calles the repos LoadHighScores method.
+        /// </summary>
+        /// <returns>A a string array which includes the highscores.</returns>
         public static string[] LoadHighScores()
         {
             return StorageRepository.StorageRepo.LoadHighScores();
         }
 
+        /// <summary>
+        /// SavedGamesList method which is calles the repos SavedGamesList method.
+        /// </summary>
+        /// <returns>A a string array which includes the Saves.</returns>
         public static string[] SavedGamesList()
         {
             return StorageRepository.StorageRepo.SavedGamesList();
         }
 
-        public void SaveGame(IGameModel gameModel)
+        /// <summary>
+        /// LoadGame method which is calles the repos LoadGame method.
+        /// </summary>
+        /// <param name="savefile">Its a string parameter which is a filename.</param>
+        /// <returns>A GameModel entity.</returns>
+        public GameModell LoadGame(string savefile)
         {
-            repo.SaveGame(gameModel);
+            return this.repo.LoadGame(savefile);
         }
 
+        /// <summary>
+        /// SaveGame method which is calles the repos SaveGame method.
+        /// </summary>
+        /// <param name="gameModel">Its a IGameModel parameter which is a gamemodel.</param>
+        public void SaveGame(IGameModel gameModel)
+        {
+            this.repo.SaveGame(gameModel);
+        }
+
+        /// <summary>
+        /// SaveHighScore method which is calles the repos SaveHighScore method.
+        /// </summary>
+        /// <param name="gm">Its a IGameModel parameter which is a gamemodel.</param>
         public void SaveHighScore(IGameModel gm)
         {
-            repo.SaveHighScore(gm);
+            this.repo.SaveHighScore(gm);
         }
     }
 }

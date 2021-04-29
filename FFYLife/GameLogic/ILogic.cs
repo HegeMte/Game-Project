@@ -28,6 +28,6 @@ namespace Logic
         /// </summary>
         /// <param name="savefile">Its a string which is a file name.</param>
         /// /// <returns>Returns the game Model entity.</returns>
-        GameModel LoadGame(string savefile);
+        GameModell LoadGame(string savefile);
     }
 }

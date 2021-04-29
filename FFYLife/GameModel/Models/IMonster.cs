@@ -1,14 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// <copyright file="IMonster.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace GameModel.Models
 {
-    public interface IMonster :IUnit
+    /// <summary>
+    /// IMonster interface.
+    /// </summary>
+    public interface IMonster : IUnit
     {
+        /// <summary>
+        /// Gets or sets the RewardCash.
+        /// </summary>
         int RewardCash { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether.
+        /// </summary>
         bool IsStopped { get; set; }
-
     }
 }
