@@ -1,0 +1,17 @@
+var searchData=
+[
+  ['igamelogic_63',['IGameLogic',['../interface_game_logic_1_1_i_game_logic.html',1,'GameLogic']]],
+  ['igamemodel_64',['IGameModel',['../interface_game_model_1_1_models_1_1_i_game_model.html',1,'GameModel::Models']]],
+  ['ihero_65',['IHero',['../interface_game_model_1_1_models_1_1_i_hero.html',1,'GameModel::Models']]],
+  ['ilogic_66',['ILogic',['../interface_logic_1_1_i_logic.html',1,'Logic']]],
+  ['imonster_67',['IMonster',['../interface_game_model_1_1_models_1_1_i_monster.html',1,'GameModel::Models']]],
+  ['init_68',['Init',['../class_logic_tests_1_1_test.html#adeddd5dd5679b71819af635acd8859f4',1,'LogicTests::Test']]],
+  ['initializecomponent_69',['InitializeComponent',['../class_f_f_y_life_1_1_app.html#ace485199eb92c9adb0de75962dc0e3f8',1,'FFYLife.App.InitializeComponent()'],['../class_f_f_y_life_1_1_app.html#ace485199eb92c9adb0de75962dc0e3f8',1,'FFYLife.App.InitializeComponent()'],['../class_f_f_y_life_1_1_high_score_window.html#aeb20a17c382980cbbde5820572584b33',1,'FFYLife.HighScoreWindow.InitializeComponent()'],['../class_f_f_y_life_1_1_high_score_window.html#aeb20a17c382980cbbde5820572584b33',1,'FFYLife.HighScoreWindow.InitializeComponent()'],['../class_f_f_y_life_1_1_load_a_game_window.html#ac719604a8cf083b800c5d19d07772d84',1,'FFYLife.LoadAGameWindow.InitializeComponent()'],['../class_f_f_y_life_1_1_load_a_game_window.html#ac719604a8cf083b800c5d19d07772d84',1,'FFYLife.LoadAGameWindow.InitializeComponent()'],['../class_f_f_y_life_1_1_main_menu.html#af4ff2097da28c036919cde659cd32f5e',1,'FFYLife.MainMenu.InitializeComponent()'],['../class_f_f_y_life_1_1_main_menu.html#af4ff2097da28c036919cde659cd32f5e',1,'FFYLife.MainMenu.InitializeComponent()'],['../class_f_f_y_life_1_1_main_window.html#a4dd8c62364af100a0763c6c5b56f88d4',1,'FFYLife.MainWindow.InitializeComponent()'],['../class_f_f_y_life_1_1_main_window.html#a4dd8c62364af100a0763c6c5b56f88d4',1,'FFYLife.MainWindow.InitializeComponent()'],['../class_f_f_y_life_1_1_new_game_name_window.html#a77a03f8f4f62ab20e9b5ef74eff0773e',1,'FFYLife.NewGameNameWindow.InitializeComponent()'],['../class_f_f_y_life_1_1_new_game_name_window.html#a77a03f8f4f62ab20e9b5ef74eff0773e',1,'FFYLife.NewGameNameWindow.InitializeComponent()']]],
+  ['iscollision_70',['IsCollision',['../class_game_model_1_1_models_1_1_game_item.html#a78201195dda0098c5186edb0bbb20da6',1,'GameModel::Models::GameItem']]],
+  ['isdead_71',['IsDead',['../class_game_model_1_1_models_1_1_one_monster.html#adfdb09da3f2ee4d6cd5d8e7b6831b13a',1,'GameModel::Models::OneMonster']]],
+  ['isdefending_72',['IsDefending',['../class_game_model_1_1_models_1_1_one_hero.html#aa6a397562b35584093ae2bea6374e1c9',1,'GameModel::Models::OneHero']]],
+  ['isinfight_73',['IsInFight',['../class_game_model_1_1_models_1_1_game_modell.html#a17589aa47ec7efa6764f77aa6cd5d0ed',1,'GameModel.Models.GameModell.IsInFight()'],['../interface_game_model_1_1_models_1_1_i_game_model.html#a187cf47c6f43698c4be8a3a640af7c0b',1,'GameModel.Models.IGameModel.IsInFight()']]],
+  ['isstopped_74',['IsStopped',['../interface_game_model_1_1_models_1_1_i_monster.html#ac11523946103d65fdf6024a3bac1c7aa',1,'GameModel.Models.IMonster.IsStopped()'],['../class_game_model_1_1_models_1_1_one_monster.html#ace1248a24f320b1344108d1f1bcdebb1',1,'GameModel.Models.OneMonster.IsStopped()']]],
+  ['istoragerepository_75',['IStorageRepository',['../interface_storage_repository_1_1_i_storage_repository.html',1,'StorageRepository']]],
+  ['iunit_76',['IUnit',['../interface_game_model_1_1_models_1_1_i_unit.html',1,'GameModel::Models']]]
+];

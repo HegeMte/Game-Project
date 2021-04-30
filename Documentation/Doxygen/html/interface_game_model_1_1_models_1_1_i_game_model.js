@@ -1,0 +1,25 @@
+var interface_game_model_1_1_models_1_1_i_game_model =
+[
+    [ "ArmorPrice", "interface_game_model_1_1_models_1_1_i_game_model.html#a434095af598ef8f71c1939038d2b5d03", null ],
+    [ "BlockNumber", "interface_game_model_1_1_models_1_1_i_game_model.html#a92dc06de36bcaea7c1faf47a27ce251c", null ],
+    [ "Blocks", "interface_game_model_1_1_models_1_1_i_game_model.html#adf634c5f52f6b1e4dbf50353faa13b6b", null ],
+    [ "CanAttack", "interface_game_model_1_1_models_1_1_i_game_model.html#a5f43a4e3809d0edaf1e6502373b02cf7", null ],
+    [ "Chest", "interface_game_model_1_1_models_1_1_i_game_model.html#a41ad66a8d30874f407846f7bf27f8eab", null ],
+    [ "ChestIsOn", "interface_game_model_1_1_models_1_1_i_game_model.html#ac7e5acf314f21bf5f853ad2de5210e7a", null ],
+    [ "ChestNum", "interface_game_model_1_1_models_1_1_i_game_model.html#a10896ccc0c96a0f0990e62b02e655623", null ],
+    [ "Chests", "interface_game_model_1_1_models_1_1_i_game_model.html#a4f0007954cdbae00cf8c2e8ad3081b80", null ],
+    [ "DmgPrice", "interface_game_model_1_1_models_1_1_i_game_model.html#a7276a0048e605380091935a72cc02d34", null ],
+    [ "GameDisplayHeight", "interface_game_model_1_1_models_1_1_i_game_model.html#aafc6feb9bc057561960229879bbd0040", null ],
+    [ "GameDisplayWidth", "interface_game_model_1_1_models_1_1_i_game_model.html#a22726a7cd9cc76740820ff64ef204341", null ],
+    [ "GameOver", "interface_game_model_1_1_models_1_1_i_game_model.html#a6969e8498fb1a95c42bae5718b744783", null ],
+    [ "Hero", "interface_game_model_1_1_models_1_1_i_game_model.html#adceb6cf90ea75ad20cdb1161606efd51", null ],
+    [ "HPPrice", "interface_game_model_1_1_models_1_1_i_game_model.html#a88ca6e1598ef9aee86e0d9aef83e3028", null ],
+    [ "IsInFight", "interface_game_model_1_1_models_1_1_i_game_model.html#a187cf47c6f43698c4be8a3a640af7c0b", null ],
+    [ "Monsters", "interface_game_model_1_1_models_1_1_i_game_model.html#a91ffa1008fd2dadcd9d9ce3d28711509", null ],
+    [ "Moving", "interface_game_model_1_1_models_1_1_i_game_model.html#aec1d4f0ffda91f0694b86a9e031e1d58", null ],
+    [ "Name", "interface_game_model_1_1_models_1_1_i_game_model.html#a2b5feade880baea44cc827d77c0c4deb", null ],
+    [ "UIHeight", "interface_game_model_1_1_models_1_1_i_game_model.html#a110ae641d882b72ab5f9bce3d1d46384", null ],
+    [ "UIWidth", "interface_game_model_1_1_models_1_1_i_game_model.html#a5eb5c098b56b100e6266c2c74ceb08b4", null ],
+    [ "WindowHeight", "interface_game_model_1_1_models_1_1_i_game_model.html#a5acf352688661deff5a28fdba252b5b7", null ],
+    [ "WindowWidth", "interface_game_model_1_1_models_1_1_i_game_model.html#a8a7cdcd3fa546b2ddc5e7e4608418f20", null ]
+];

@@ -343,7 +343,7 @@ namespace FFYLife
 
         private void GameOver()
         {
-            MessageBox.Show("Game over dickhole!");
+            MessageBox.Show("Game over!");
             this.resourcelogic.SaveHighScore(this.gameModel);
             this.ReturnToMenu();
         }
