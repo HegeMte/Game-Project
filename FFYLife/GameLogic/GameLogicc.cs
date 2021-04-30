@@ -369,7 +369,7 @@ namespace GameLogic
             List<Chest> chestlist = new List<Chest>();
             chestlist.Add(new Chest() { Question = "Elérjük Péter Árpádot?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 1 });
             chestlist.Add(new Chest() { Question = "Mennyi 5+5?", Answers = new List<string>() { "10", "15", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
-            chestlist.Add(new Chest() { Question = "Dua Lipa 10/?", Answers = new List<string>() { "10", "2", "11", "100" }, RewardCash = 10, Right = 3 });
+            chestlist.Add(new Chest() { Question = "egyszerű cserés alg. futási ideje?", Answers = new List<string>() { "n", "n-1", "n^n", "n^2" }, RewardCash = 10, Right = 3 });
             chestlist.Add(new Chest() { Question = "Meglesz a prog4?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
             chestlist.Add(new Chest() { Question = "Buta vagy?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
 
