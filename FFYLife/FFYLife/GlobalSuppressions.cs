@@ -12,3 +12,8 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "fdf", Scope = "member", Target = "~M:FFYLife.Renderer.GetUIBackground~System.Windows.Media.Drawing")]
 [assembly: SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "sdasd", Scope = "member", Target = "~P:FFYLife.HighScoreWindow.HighScores")]
 [assembly: SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1624:Property summary documentation should omit accessor with restricted access", Justification = "xyx", Scope = "member", Target = "~P:FFYLife.HighScoreWindow.HighScores")]
+[assembly: SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1633:File should have header", Justification = "<Pending>")]
+[assembly: SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1515:Single-line comment should be preceded by blank line", Justification = "<Pending>")]
+[assembly: SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:Code analysis suppression should have justification", Justification = "<Pending>")]
+#pragma warning disable CA1812
+[assembly: SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Late bound")]
