@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StorageRepository</name>
+    </assembly>
+    <members>
+        <member name="T:StorageRepository.IStorageRepository">
+            <summary>
+            IStorageRepository which requires 'storagerepository' methods.
+            </summary>
+        </member>
+        <member name="P:StorageRepository.IStorageRepository.ChestList">
+            <summary>
+            Gets or sets documentation for the ChestList.
+            </summary>
+        </member>
+        <member name="M:StorageRepository.IStorageRepository.SaveGame(GameModel.Models.IGameModel)">
+            <summary>
+            Requires the MonsterAttack method.
+            </summary>
+            <param name="gameModel">The first name to join.</param>
+        </member>
+        <member name="M:StorageRepository.IStorageRepository.SaveHighScore(GameModel.Models.IGameModel)">
+            <summary>
+            Requires the SaveHighScore method.
+            </summary>
+            <param name="gm">The first name to join.</param>
+        </member>
+        <member name="M:StorageRepository.IStorageRepository.LoadGame(System.String)">
+            <summary>
+            Requires the MonsterAttack method.
+            </summary>
+            <param name="savefile">The first name to join.</param>
+            <returns>the loaded gamemodel.</returns>
+        </member>
+        <member name="T:StorageRepository.StorageRepo">
+            <summary>
+            StorageRepo class which contains the methods that are needed to load/save data for the game.
+            </summary>
+        </member>
+        <member name="M:StorageRepository.StorageRepo.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StorageRepository.StorageRepo"/> class.
+            </summary>
+        </member>
+        <member name="P:StorageRepository.StorageRepo.ChestList">
+            <summary>
+            Gets or sets documentation for the ChestList.
+            </summary>
+        </member>
+        <member name="M:StorageRepository.StorageRepo.SaveHighScore(GameModel.Models.IGameModel)">
+            <summary>
+            Initializes a new instance of the <see cref="!:GameLogic"/> class.
+            </summary>
+            <param name="gm">the first parameter of the constuctor.</param>
+        </member>
+        <member name="M:StorageRepository.StorageRepo.LoadHighScores">
+            <summary>
+            returns the highscores as a string array.
+            </summary>
+            <returns>The highscores as a string array.</returns>
+        </member>
+        <member name="M:StorageRepository.StorageRepo.SavedGamesList">
+            <summary>
+            Returns the saved games' file names as a string array.
+            </summary>
+            <returns>The saved games' file names as a string array.</returns>
+        </member>
+        <member name="M:StorageRepository.StorageRepo.SaveGame(GameModel.Models.IGameModel)">
+            <summary>
+            saves the current gamemodel.
+            </summary>
+            <param name="gameModel">The first name to join.</param>
+        </member>
+        <member name="M:StorageRepository.StorageRepo.LoadGame(System.String)">
+            <summary>
+            loads the chosen savefile into a gamemodel.
+            </summary>
+            <param name="savefile">The first name to join.</param>
+            <returns>The loaded gamemodel.</returns>
+        </member>
+    </members>
+</doc>

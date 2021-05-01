@@ -1,0 +1,554 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GameModel</name>
+    </assembly>
+    <members>
+        <member name="T:GameModel.Models.Chest">
+            <summary>
+            Chest class which contains the properties that are needed to represent the quiz section.
+            </summary>
+        </member>
+        <member name="M:GameModel.Models.Chest.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GameModel.Models.Chest"/> class.
+            </summary>
+        </member>
+        <member name="M:GameModel.Models.Chest.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GameModel.Models.Chest"/> class.
+            </summary>
+            <param name="cx">the first parameter.</param>
+            <param name="cy">the second parameter.</param>
+        </member>
+        <member name="P:GameModel.Models.Chest.RewardCash">
+            <summary>
+            Gets or sets documentation for the RewardCash.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.Chest.Question">
+            <summary>
+            Gets or sets documentation for the Question.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.Chest.Answers">
+            <summary>
+            Gets or sets documentation for the Answers.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.Chest.Right">
+            <summary>
+            Gets or sets documentation for the Right.
+            </summary>
+        </member>
+        <member name="T:GameModel.Models.GameItem">
+            <summary>
+            GameItem abstract class.
+            </summary>
+        </member>
+        <member name="F:GameModel.Models.GameItem.Rotdegree">
+            <summary>
+            Gets or sets  the Rotdegree.
+            </summary>
+        </member>
+        <member name="F:GameModel.Models.GameItem.area">
+            <summary>
+            Joins a first name and a last name together into a single string.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameItem.CX">
+            <summary>
+            Gets or sets  the CX.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameItem.CY">
+            <summary>
+            Gets or sets  the CY.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameItem.RealArea">
+            <summary>
+            Gets or sets  the RealArea.
+            </summary>
+        </member>
+        <member name="M:GameModel.Models.GameItem.IsCollision(GameModel.Models.GameItem)">
+            <summary>
+            IsCollision method.
+            </summary>
+            <param name="other">the parameter is a GameItem entity.</param>
+            <returns>a bool.</returns>
+        </member>
+        <member name="T:GameModel.Models.GameModell">
+            <summary>
+            GameModel class.
+            </summary>
+        </member>
+        <member name="M:GameModel.Models.GameModell.#ctor(System.Double,System.Double,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GameModel.Models.GameModell"/> class.
+            </summary>
+            <param name="w">width.</param>
+            <param name="h">height.</param>
+            <param name="name">Name.</param>
+            <param name="type">type.</param>
+        </member>
+        <member name="M:GameModel.Models.GameModell.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GameModel.Models.GameModell"/> class.
+            </summary>
+        </member>
+        <member name="M:GameModel.Models.GameModell.#ctor(System.Double,System.Double,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GameModel.Models.GameModell"/> class.
+            </summary>
+            <param name="w">width.</param>
+            <param name="h">height.</param>
+            <param name="name">Name.</param>
+            <param name="heroHp">HeroHp.</param>
+            <param name="dmg">HeroDmg.</param>
+            <param name="attackspeed">Hero Attackspeed.</param>
+            <param name="armor">Hero armor.</param>
+            <param name="armorprice">ArmorPrice.</param>
+            <param name="cash">Hero Cash.</param>
+            <param name="blockNumber">Blocknumber.</param>
+            <param name="dmgprice">Dmg Price.</param>
+            <param name="hpprice">Hp Price.</param>
+            <param name="monster1Lvl">monster1lvl.</param>
+            <param name="monster1CX">monster1CX.</param>
+            <param name="monster1CY">monster1Cy.</param>
+            <param name="monster2Lvl">monster2lvl.</param>
+            <param name="monster2CX">monster2cx.</param>
+            <param name="monster2CY">monster2cy.</param>
+            /// <param name="type">type.</param>
+        </member>
+        <member name="P:GameModel.Models.GameModell.BlockNumber">
+            <summary>
+            Gets or sets the BlockNumber.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.HPPrice">
+            <summary>
+            Gets or sets the HPPrice.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.IsInFight">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.DmgPrice">
+            <summary>
+            Gets or sets the DmgPrice.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.ArmorPrice">
+            <summary>
+            Gets or sets the ArmorPrice.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.Name">
+            <summary>
+            Gets or sets the Name.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.Chests">
+            <summary>
+            Gets or sets the Chests.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.ChestIsOn">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.Hero">
+            <summary>
+            Gets or sets the Hero.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.Monsters">
+            <summary>
+            Gets or sets the Monsters.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.Blocks">
+            <summary>
+            Gets or sets the Blocks.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.Chest">
+            <summary>
+            Gets or sets the Chest.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.ChestNum">
+            <summary>
+            Gets or sets the ChestNum.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.WindowHeight">
+            <summary>
+            Gets or sets the WindowHeight.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.WindowWidth">
+            <summary>
+            Gets or sets the WindowWidth.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.GameDisplayHeight">
+            <summary>
+            Gets or sets the GameDisplayHeight.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.GameDisplayWidth">
+            <summary>
+            Gets or sets the GameDisplayWidth.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.UIHeight">
+            <summary>
+            Gets or sets the UIHeight.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.UIWidth">
+            <summary>
+            Gets or sets the UIWidth.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.GameOver">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.CanAttack">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.GameModell.Moving">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="T:GameModel.Models.IGameModel">
+            <summary>
+            IGameModel interface.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.BlockNumber">
+            <summary>
+            Gets or sets the BlockNumber.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.GameOver">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.IsInFight">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.CanAttack">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.Moving">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.HPPrice">
+            <summary>
+            Gets or sets the HPPrice.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.ArmorPrice">
+            <summary>
+            Gets or sets the ArmorPrice.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.DmgPrice">
+            <summary>
+            Gets or sets the DmgPrice.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.Name">
+            <summary>
+            Gets or sets the Name.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.Chests">
+            <summary>
+            Gets or sets the Chests.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.Hero">
+            <summary>
+            Gets or sets the Hero.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.Monsters">
+            <summary>
+            Gets or sets the Monsters.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.Blocks">
+            <summary>
+            Gets or sets the Blocks.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.Chest">
+            <summary>
+            Gets or sets the Chest.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.ChestNum">
+            <summary>
+            Gets or sets the ChestNum.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.ChestIsOn">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.WindowHeight">
+            <summary>
+            Gets or sets the WindowHeight.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.WindowWidth">
+            <summary>
+            Gets or sets the WindowWidth.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.GameDisplayHeight">
+            <summary>
+            Gets or sets the GameDisplayHeight.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.GameDisplayWidth">
+            <summary>
+            Gets or sets the GameDisplayWidth.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.UIHeight">
+            <summary>
+            Gets or sets the UIHeight.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IGameModel.UIWidth">
+            <summary>
+            Gets or sets the UIWidth.
+            </summary>
+        </member>
+        <member name="T:GameModel.Models.IHero">
+            <summary>
+            IHero interface.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IHero.Armor">
+            <summary>
+            Gets or sets the Armor.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IHero.CanAttack">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IHero.Cash">
+            <summary>
+            Gets or sets the Cash.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IHero.Type">
+            <summary>
+            Gets or sets the Type.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IHero.MaxArmor">
+            <summary>
+            Gets or sets the MaxArmor.
+            </summary>
+        </member>
+        <member name="T:GameModel.Models.IMonster">
+            <summary>
+            IMonster interface.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IMonster.RewardCash">
+            <summary>
+            Gets or sets the RewardCash.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IMonster.IsStopped">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="T:GameModel.Models.IUnit">
+            <summary>
+            IUnit interface.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IUnit.Hp">
+            <summary>
+            Gets or sets the Hp.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IUnit.AttackDMG">
+            <summary>
+            Gets or sets the AttackDMG.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.IUnit.AttackSpeed">
+            <summary>
+            Gets or sets the AttackSpeed.
+            </summary>
+        </member>
+        <member name="T:GameModel.Models.OneBlock">
+            <summary>
+            OneBlock class.
+            </summary>
+        </member>
+        <member name="M:GameModel.Models.OneBlock.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GameModel.Models.OneBlock"/> class.
+            </summary>
+            <param name="cx">cx.</param>
+            <param name="cy">cy.</param>
+        </member>
+        <member name="T:GameModel.Models.OneHero">
+            <summary>
+            OneHero class.
+            </summary>
+        </member>
+        <member name="M:GameModel.Models.OneHero.#ctor(System.Double,System.Double,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GameModel.Models.OneHero"/> class.
+            </summary>
+            <param name="cx">cx.</param>
+            <param name="cy">cy.</param>
+            <param name="type">type.</param>
+        </member>
+        <member name="M:GameModel.Models.OneHero.#ctor(System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GameModel.Models.OneHero"/> class.
+            </summary>
+            <param name="cx">cx.</param>
+            <param name="cy">cy.</param>
+            <param name="hp">hp.</param>
+            <param name="dmg">dmg.</param>
+            <param name="armor">armor.</param>
+            <param name="cash">cash.</param>
+        </member>
+        <member name="P:GameModel.Models.OneHero.DX">
+            <summary>
+            Gets or sets the DX.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneHero.DY">
+            <summary>
+            Gets or sets the DY.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneHero.Type">
+            <summary>
+            Gets or sets the Type.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneHero.MaxArmor">
+            <summary>
+            Gets or sets the MaxArmor.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneHero.Hp">
+            <summary>
+            Gets or sets the Hp.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneHero.AttackDMG">
+            <summary>
+            Gets or sets the AttackDMG.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneHero.AttackSpeed">
+            <summary>
+            Gets or sets the AttackSpeed.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneHero.Armor">
+            <summary>
+            Gets or sets the Armor.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneHero.Cash">
+            <summary>
+            Gets or sets the Cash.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneHero.IsDefending">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneHero.CanAttack">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="T:GameModel.Models.OneMonster">
+            <summary>
+            OneMonster class.
+            </summary>
+        </member>
+        <member name="M:GameModel.Models.OneMonster.#ctor(System.Double,System.Double,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GameModel.Models.OneMonster"/> class.
+            </summary>
+            <param name="cx">cx.</param>
+            <param name="cy">cy.</param>
+            <param name="monsterLvl">monsterlvl.</param>
+        </member>
+        <member name="P:GameModel.Models.OneMonster.MonsterLVL">
+            <summary>
+            Gets or sets the MonsterLVL.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneMonster.RewardCash">
+            <summary>
+            Gets or sets the RewardCash.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneMonster.Hp">
+            <summary>
+            Gets or sets the Hp.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneMonster.AttackDMG">
+            <summary>
+            Gets or sets the AttackDMG.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneMonster.AttackSpeed">
+            <summary>
+            Gets or sets the AttackSpeed.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneMonster.IsDead">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+        <member name="P:GameModel.Models.OneMonster.IsStopped">
+            <summary>
+            Gets or sets a value indicating whether.
+            </summary>
+        </member>
+    </members>
+</doc>

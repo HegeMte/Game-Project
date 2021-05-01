@@ -123,7 +123,8 @@ namespace LogicTests
         [Test]
         public void CanBuyArmor()
         {
-            modelmock.Object.Hero.Armor--;
+            modelmock.Object.Hero.MaxArmor = 4;
+            modelmock.Object.Hero.Armor = 2;
 
             // Arrange
             int expectedheroarmor = modelmock.Object.Hero.Armor + 1;
