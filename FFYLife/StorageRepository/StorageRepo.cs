@@ -29,13 +29,11 @@ namespace StorageRepository
         /// </summary>
         public List<Chest> ChestList { get; set; }
 
-#pragma warning disable CS1574 // XML comment has cref attribute that could not be resolved
         /// <summary>
-        /// Initializes a new instance of the <see cref="GameLogic"/> class.
+        /// SaveHighScore method.
         /// </summary>
         /// <param name="gm">the first parameter of the constuctor.</param>
         public /*static*/ void SaveHighScore(IGameModel gm)
-#pragma warning restore CS1574 // XML comment has cref attribute that could not be resolved
         {
             if (File.Exists("highscores.txt"))
             {
