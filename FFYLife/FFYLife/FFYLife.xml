@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FFYLife</name>
+    </assembly>
+    <members>
+        <member name="T:FFYLife.App">
+            <summary>
+            Interaction logic for App.xaml.
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:FFYLife.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:FFYLife.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:FFYLife.Control">
+            <summary>
+            Documentation of the public Control class.
+            </summary>
+        </member>
+        <member name="F:FFYLife.Control.PlayerName">
+            <summary>
+            PlayerName.
+            </summary>
+        </member>
+        <member name="F:FFYLife.Control.PlayerType">
+            <summary>
+            PlayerType.
+            </summary>
+        </member>
+        <member name="F:FFYLife.Control.SaveFile">
+            <summary>
+            SaveFile.
+            </summary>
+        </member>
+        <member name="M:FFYLife.Control.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFYLife.Control"/> class.
+            </summary>
+        </member>
+        <member name="M:FFYLife.Control.OnRender(System.Windows.Media.DrawingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:FFYLife.HighScoreWindow">
+            <summary>
+            Interaction logic for HighScoreWindow.xaml.
+            </summary>
+            <summary>
+            HighScoreWindow
+            </summary>
+        </member>
+        <member name="M:FFYLife.HighScoreWindow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFYLife.HighScoreWindow"/> class.
+            </summary>
+        </member>
+        <member name="P:FFYLife.HighScoreWindow.HighScores">
+            <summary>
+            Gets or sets the HighScores.
+            </summary>
+        </member>
+        <member name="M:FFYLife.HighScoreWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:FFYLife.LoadAGameWindow">
+            <summary>
+            Interaction logic for LoadAGameWindow.xaml.
+            </summary>
+            <summary>
+            LoadAGameWindow
+            </summary>
+        </member>
+        <member name="M:FFYLife.LoadAGameWindow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFYLife.LoadAGameWindow"/> class.
+            </summary>
+        </member>
+        <member name="M:FFYLife.LoadAGameWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:FFYLife.MainMenu">
+            <summary>
+            Interaction logic for MainMenu.xaml.
+            </summary>
+            <summary>
+            MainMenu
+            </summary>
+        </member>
+        <member name="M:FFYLife.MainMenu.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFYLife.MainMenu"/> class.
+            </summary>
+        </member>
+        <member name="M:FFYLife.MainMenu.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:FFYLife.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml.
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:FFYLife.MainWindow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFYLife.MainWindow"/> class.
+            </summary>
+        </member>
+        <member name="M:FFYLife.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:FFYLife.NewGameNameWindow">
+            <summary>
+            Interaction logic for NewGameName.xaml.
+            </summary>
+            <summary>
+            NewGameNameWindow
+            </summary>
+        </member>
+        <member name="M:FFYLife.NewGameNameWindow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFYLife.NewGameNameWindow"/> class.
+            </summary>
+        </member>
+        <member name="M:FFYLife.NewGameNameWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:FFYLife.Renderer">
+            <summary>
+            Documentation of the public Renderer class.
+            </summary>
+        </member>
+        <member name="M:FFYLife.Renderer.#ctor(GameModel.Models.IGameModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FFYLife.Renderer"/> class.
+            </summary>
+            <param name="gmd">asd.</param>
+        </member>
+        <member name="M:FFYLife.Renderer.BuildDrawing">
+            <summary>
+            builds one frame of the game.
+            </summary>
+            <returns> Drawing .</returns>
+        </member>
+        <member name="M:FFYLife.Renderer.GetImage(System.String)">
+            <summary>
+            returns a picture.
+            </summary>
+            <param name="fileName">asd.</param>
+            <returns> BitmapImage .</returns>
+        </member>
+    </members>
+</doc>

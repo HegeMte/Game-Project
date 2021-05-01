@@ -141,33 +141,24 @@ namespace FFYLife
             DrawingGroup dg = new DrawingGroup();
             ImageDrawing background = new ImageDrawing(GetImage("questions.png"), new Rect(650, 400, 650, 400));
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText question = new FormattedText(this.model.Chest.Question.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
+            FormattedText question = new FormattedText(this.model.Chest.Question.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black, 1);
+
             Geometry geo = question.BuildGeometry(new Point(760, 500));
             GeometryDrawing gd = new GeometryDrawing(Brushes.White, null, geo);
+            FormattedText answer0 = new FormattedText(this.model.Chest.Answers[0].ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText answer0 = new FormattedText(this.model.Chest.Answers[0].ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
             Geometry geo1 = answer0.BuildGeometry(new Point(730, 600));
             GeometryDrawing gd1 = new GeometryDrawing(Brushes.White, null, geo1);
+            FormattedText answer1 = new FormattedText(this.model.Chest.Answers[1].ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText answer1 = new FormattedText(this.model.Chest.Answers[1].ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
             Geometry geo2 = answer1.BuildGeometry(new Point(1000, 600));
             GeometryDrawing gd2 = new GeometryDrawing(Brushes.White, null, geo2);
+            FormattedText answer2 = new FormattedText(this.model.Chest.Answers[2].ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText answer2 = new FormattedText(this.model.Chest.Answers[2].ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
             Geometry geo3 = answer2.BuildGeometry(new Point(720, 685));
             GeometryDrawing gd3 = new GeometryDrawing(Brushes.White, null, geo3);
+            FormattedText answer3 = new FormattedText(this.model.Chest.Answers[3].ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText answer3 = new FormattedText(this.model.Chest.Answers[3].ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 40, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
             Geometry geo4 = answer3.BuildGeometry(new Point(1010, 685));
             GeometryDrawing gd4 = new GeometryDrawing(Brushes.White, null, geo4);
 
@@ -272,36 +263,30 @@ namespace FFYLife
             DrawingGroup dg = new DrawingGroup();
 
             GeometryDrawing hPButn = new GeometryDrawing(Brushes.LightGray, this.stroke, new RectangleGeometry(new Rect(1150, 530, 100, 50)));
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText hPText = new FormattedText(this.model.HPPrice.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 50, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
+
+            FormattedText hPText = new FormattedText(this.model.HPPrice.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 50, Brushes.Black, 1);
+
             hPText.TextAlignment = TextAlignment.Center;
             Geometry hpGeo = hPText.BuildGeometry(new Point(1200, 525));
             GeometryDrawing hpTextGeo = new GeometryDrawing(Brushes.Black, null, hpGeo);
 
             GeometryDrawing dMGButn = new GeometryDrawing(Brushes.LightGray, this.stroke, new RectangleGeometry(new Rect(825, 530, 100, 50)));
+            FormattedText dmgText = new FormattedText(this.model.DmgPrice.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 50, Brushes.Black, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText dmgText = new FormattedText(this.model.DmgPrice.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 50, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
             dmgText.TextAlignment = TextAlignment.Center;
             Geometry dmgGeo = dmgText.BuildGeometry(new Point(875, 525));
             GeometryDrawing dmgTextGeo = new GeometryDrawing(Brushes.Black, null, dmgGeo);
 
             GeometryDrawing armorButn = new GeometryDrawing(Brushes.LightGray, this.stroke, new RectangleGeometry(new Rect(825, 730, 100, 50)));
+            FormattedText armorText = new FormattedText(this.model.ArmorPrice.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 50, Brushes.Black, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText armorText = new FormattedText(this.model.ArmorPrice.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 50, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
             armorText.TextAlignment = TextAlignment.Center;
             Geometry armorGeo = armorText.BuildGeometry(new Point(875, 725));
             GeometryDrawing armorTextGeo = new GeometryDrawing(Brushes.Black, null, armorGeo);
 
             GeometryDrawing menubtn = new GeometryDrawing(Brushes.LightGray, this.stroke, new RectangleGeometry(new Rect(1035, 650, 200, 100)));
+            FormattedText menuText = new FormattedText("MENU", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 50, Brushes.Black, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText menuText = new FormattedText("MENU", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 50, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
             menuText.TextAlignment = TextAlignment.Center;
             Geometry menuGeo = menuText.BuildGeometry(new Point(1135, 670));
             GeometryDrawing menuTextGeo = new GeometryDrawing(Brushes.Black, null, menuGeo);
@@ -323,36 +308,30 @@ namespace FFYLife
             DrawingGroup dg = new DrawingGroup();
 
             GeometryDrawing aButn = new GeometryDrawing(Brushes.LightGray, this.stroke, new RectangleGeometry(new Rect(1200, 615, 30, 30)));
+            FormattedText aText = new FormattedText("B", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 25, Brushes.Black, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText aText = new FormattedText("B", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 25, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
             aText.TextAlignment = TextAlignment.Center;
             Geometry aGeo = aText.BuildGeometry(new Point(1215, 615));
             GeometryDrawing aTextGeo = new GeometryDrawing(Brushes.Black, null, aGeo);
 
             GeometryDrawing bButn = new GeometryDrawing(Brushes.LightGray, this.stroke, new RectangleGeometry(new Rect(890, 615, 30, 30)));
+            FormattedText bText = new FormattedText("A", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 25, Brushes.Black, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText bText = new FormattedText("A", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 25, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
             bText.TextAlignment = TextAlignment.Center;
             Geometry bGeo = bText.BuildGeometry(new Point(905, 615));
             GeometryDrawing bTextGeo = new GeometryDrawing(Brushes.Black, null, bGeo);
 
             GeometryDrawing cButn = new GeometryDrawing(Brushes.LightGray, this.stroke, new RectangleGeometry(new Rect(890, 700, 30, 30)));
+            FormattedText cText = new FormattedText("C", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 25, Brushes.Black, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText cText = new FormattedText("C", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 25, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
             cText.TextAlignment = TextAlignment.Center;
             Geometry cGeo = cText.BuildGeometry(new Point(905, 700));
             GeometryDrawing cTextGeo = new GeometryDrawing(Brushes.Black, null, cGeo);
 
             GeometryDrawing dButn = new GeometryDrawing(Brushes.LightGray, this.stroke, new RectangleGeometry(new Rect(1200, 700, 30, 30)));
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText dText = new FormattedText("D", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 25, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
+
+            FormattedText dText = new FormattedText("D", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 25, Brushes.Black, 1);
+
             dText.TextAlignment = TextAlignment.Center;
             Geometry dGeo = dText.BuildGeometry(new Point(1215, 700));
             GeometryDrawing dTextGeo = new GeometryDrawing(Brushes.Black, null, dGeo);
@@ -375,7 +354,7 @@ namespace FFYLife
             // {
             DrawingGroup dg = new DrawingGroup();
 
-            ////GeometryDrawing Background = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(650, 400, model.GameDisplayWidth, model.GameDisplayHeight / 2)));
+            // GeometryDrawing Background = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(650, 400, model.GameDisplayWidth, model.GameDisplayHeight / 2)));
             // GeometryDrawing LeftRec = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(650, 400, model.GameDisplayWidth / 2, model.GameDisplayHeight / 4)));
             // GeometryDrawing RightRec = new GeometryDrawing(Brushes.HotPink, stroke, new RectangleGeometry(new Rect(975, 600, model.GameDisplayWidth / 2, model.GameDisplayHeight / 4)));
             ImageDrawing background = new ImageDrawing(GetImage("shopBackground.jpg"), new Rect(650, 400, 650, 400));
@@ -407,19 +386,15 @@ namespace FFYLife
 
             // VBuck
             ImageDrawing vBuckPic = new ImageDrawing(GetImage("vbuck.png"), new Rect(1197, 50, 100, 100));
+            FormattedText vbuckCount = new FormattedText(this.model.Hero.Cash.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText vbuckCount = new FormattedText(this.model.Hero.Cash.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
             Geometry geo = vbuckCount.BuildGeometry(new Point(985, 20));
             GeometryDrawing gd = new GeometryDrawing(Brushes.Black, this.stroke, geo);
 
             // HP
             ImageDrawing hPPic = new ImageDrawing(GetImage("hearth.png"), new Rect(800, 20, 130, 130));
+            FormattedText hPCount = new FormattedText(this.model.Hero.Hp.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText hPCount = new FormattedText(this.model.Hero.Hp.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
             Geometry geo2 = hPCount.BuildGeometry(new Point(660, 20));
             GeometryDrawing gd2 = new GeometryDrawing(Brushes.Black, this.stroke, geo2);
 
@@ -434,30 +409,23 @@ namespace FFYLife
                 dMGPic = new ImageDrawing(GetImage($"sword5.png"), new Rect(800, 220, 130, 130));
             }
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText dMGCount = new FormattedText(this.model.Hero.AttackDMG.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
+            FormattedText dMGCount = new FormattedText(this.model.Hero.AttackDMG.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black, 1);
+
             Geometry geo3 = dMGCount.BuildGeometry(new Point(660, 220));
             GeometryDrawing gd3 = new GeometryDrawing(Brushes.Black, this.stroke, geo3);
 
             // Armor
             ImageDrawing armmorPic = new ImageDrawing(GetImage("armor4.png"), new Rect(1125, 220, 130, 130));
+            FormattedText armorCount = new FormattedText(this.model.Hero.Armor.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText armorCount = new FormattedText(this.model.Hero.Armor.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Black);
-#pragma warning restore CS0618 // Type or member is obsolete
             Geometry geo4 = armorCount.BuildGeometry(new Point(985, 220));
             GeometryDrawing gd4 = new GeometryDrawing(Brushes.Black, this.stroke, geo4);
+            FormattedText blockCount = new FormattedText(this.model.BlockNumber.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Wheat, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText blockCount = new FormattedText(this.model.BlockNumber.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 130, Brushes.Wheat);
-#pragma warning restore CS0618 // Type or member is obsolete
             Geometry geo5 = blockCount.BuildGeometry(new Point(450, 50));
             GeometryDrawing gd5 = new GeometryDrawing(Brushes.Black, this.iss, geo5);
+            FormattedText name = new FormattedText(this.model.Name.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 80, Brushes.Wheat, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            FormattedText name = new FormattedText(this.model.Name.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 80, Brushes.Wheat);
-#pragma warning restore CS0618 // Type or member is obsolete
             Geometry geo6 = name.BuildGeometry(new Point(50, 50));
             GeometryDrawing gd6 = new GeometryDrawing(Brushes.Black, this.iss, geo6);
 
@@ -465,10 +433,8 @@ namespace FFYLife
             if (this.model.IsInFight)
             {
                 GeometryDrawing enemyHp = new GeometryDrawing(Brushes.LightGray, this.stroke, new RectangleGeometry(new Rect(220, 650, 70, 60)));
+                FormattedText eHP = new FormattedText(this.model.Monsters[0].Hp.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 50, Brushes.Wheat, 1);
 
-#pragma warning disable CS0618 // Type or member is obsolete
-                FormattedText eHP = new FormattedText(this.model.Monsters[0].Hp.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 50, Brushes.Wheat);
-#pragma warning restore CS0618 // Type or member is obsolete
                 Geometry geo7 = eHP.BuildGeometry(new Point(240, 650));
                 GeometryDrawing gd7 = new GeometryDrawing(Brushes.Black, this.stroke, geo7);
                 dg.Children.Add(enemyHp);

@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GameLogic</name>
+    </assembly>
+    <members>
+        <member name="T:GameLogic.GameLogicc">
+            <summary>
+            GameLogicc class wihch implements the IGameLogic inteface.
+            </summary>
+        </member>
+        <member name="M:GameLogic.GameLogicc.#ctor(GameModel.Models.IGameModel,StorageRepository.IStorageRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GameLogic.GameLogicc"/> class.
+            </summary>
+            <param name="model">The first ctor parameter.</param>
+            <param name="repository">The second ctor parameter.</param>
+        </member>
+        <member name="M:GameLogic.GameLogicc.MonsterAttack">
+            <summary>
+            MonsterAttack Method which is decrasing the hero hp if the hero is not defending, when he is defending, ten decreasing the heros armor.
+            </summary>
+        </member>
+        <member name="M:GameLogic.GameLogicc.HeroAttack">
+            <summary>
+            HeroAttack method, Decreasing the MonsterHp with the heros attack damage.
+            </summary>
+        </member>
+        <member name="M:GameLogic.GameLogicc.HeroIsDefending">
+            <summary>
+            HeroIsDefending method, sets the hero isdefending property to true.
+            </summary>
+        </member>
+        <member name="M:GameLogic.GameLogicc.ChestAhead">
+            <summary>
+            ChestAhead method.
+            </summary>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:GameLogic.GameLogicc.BuyDmg">
+            <summary>
+            BuyDmg method which is a shop method, incresing the heros dmg.
+            </summary>
+            <returns>true when the hero can buy or false when he cant.</returns>
+        </member>
+        <member name="M:GameLogic.GameLogicc.BuyHP">
+            <summary>
+            BuyHP method which is a shop method, incresing the heros hp.
+            </summary>
+            <returns>returns a number.</returns>
+        </member>
+        <member name="M:GameLogic.GameLogicc.BuyArmor">
+            <summary>
+            BuyArmor method which is a shop method, incresing the heros armor.
+            </summary>
+            <returns>returns a number.</returns>
+        </member>
+        <member name="M:GameLogic.GameLogicc.BlockTick(GameModel.Models.OneBlock)">
+            <summary>
+            BlockTick method which is a decrasing the block cx.
+            </summary>
+            <param name="block">which is a OneBlock entity.</param>
+        </member>
+        <member name="M:GameLogic.GameLogicc.MonsterDied(System.Collections.Generic.List{GameModel.Models.OneMonster})">
+            <summary>
+            MonsterDied method  which is 'shifting' the monsters in the list.
+            </summary>
+            <param name="monsters">The parameter is a list.</param>
+        </member>
+        <member name="M:GameLogic.GameLogicc.MonstersTick(System.Collections.Generic.List{GameModel.Models.OneMonster})">
+            <summary>
+            MonstersTick method which is decraesing the monsters cx.
+            </summary>
+            <param name="monsters">The parameter which is a list.</param>
+        </member>
+        <member name="M:GameLogic.GameLogicc.AnswerA">
+            <summary>
+            AnswerA method which returns a true or false, True when your answer is right.
+            </summary>
+            <returns>returns a true or false.</returns>
+        </member>
+        <member name="M:GameLogic.GameLogicc.AnswerB">
+            <summary>
+            AnswerB method which returns a true or false, True when your answer is right.
+            </summary>
+            <returns>returns a true or false.</returns>
+        </member>
+        <member name="M:GameLogic.GameLogicc.AnswerC">
+            <summary>
+            AnswerC method which returns a true or false, True when your answer is right.
+            </summary>
+            <returns>returns a true or false.</returns>
+        </member>
+        <member name="M:GameLogic.GameLogicc.AnswerD">
+            <summary>
+            AnswerD method which returns a true or false, True when your answer is right.
+            </summary>
+            <returns>returns a true or false.</returns>
+        </member>
+        <member name="M:GameLogic.GameLogicc.ChestTick">
+            <summary>
+            AnswerD method which returns a true or false, True when your answer is right.
+            </summary>
+        </member>
+        <member name="M:GameLogic.GameLogicc.StepTick">
+            <summary>
+            StepTick method which calls the MonsterTick method.
+            </summary>
+        </member>
+        <member name="M:GameLogic.GameLogicc.StepCalculator">
+            <summary>
+            StepCalculator method which decreasing the entites cx.
+            </summary>
+            <returns>GameItem entity.</returns>
+        </member>
+        <member name="M:GameLogic.GameLogicc.FindGameItem(GameModel.Models.GameItem)">
+            <summary>
+            FindGameItem method.
+            </summary>
+            <param name="item">Which is a GameItem entity.</param>
+            <returns>GameItem entity.</returns>
+        </member>
+        <member name="M:GameLogic.GameLogicc.LoadGame(System.String)">
+            <summary>
+            FindGameItem method.
+            </summary>
+            <param name="filesave">Is a string which is a FileName.</param>
+            <returns>GameModel entity.</returns>
+        </member>
+        <member name="T:GameLogic.IGameLogic">
+            <summary>
+            IGameLogic which requires 'gamelogic' methods.
+            </summary>
+        </member>
+        <member name="M:GameLogic.IGameLogic.MonsterAttack">
+            <summary>
+            Requires the MonsterAttack method.
+            </summary>
+        </member>
+        <member name="M:GameLogic.IGameLogic.HeroAttack">
+            <summary>
+            Requires the HeroAttack method.
+            </summary>
+        </member>
+        <member name="M:GameLogic.IGameLogic.BlockTick(GameModel.Models.OneBlock)">
+            <summary>
+            Requires the BlockTick method.
+            </summary>
+            <param name="block">the parameter which is a OneBlock entity.</param>
+        </member>
+        <member name="M:GameLogic.IGameLogic.MonstersTick(System.Collections.Generic.List{GameModel.Models.OneMonster})">
+            <summary>
+            Requires the BlockTick method.
+            </summary>
+            <param name="monsters">the parameter which is a ListOneMonster.</param>
+        </member>
+        <member name="M:GameLogic.IGameLogic.ChestTick">
+            <summary>
+            Requires the ChestTick method.
+            </summary>
+        </member>
+        <member name="M:GameLogic.IGameLogic.StepTick">
+            <summary>
+            Requires the StepTick method.
+            </summary>
+        </member>
+        <member name="M:GameLogic.IGameLogic.BuyDmg">
+            <summary>
+            Requires the BuyDmg method.
+            </summary>
+            <returns>a bool.</returns>
+        </member>
+        <member name="M:GameLogic.IGameLogic.BuyHP">
+            <summary>
+            Requires the BuyHP method.
+            </summary>
+            <returns>returns an int.</returns>
+        </member>
+        <member name="M:GameLogic.IGameLogic.BuyArmor">
+            <summary>
+            Requires the BuyArmor method.
+            </summary>
+            <returns>returns an int.</returns>
+        </member>
+        <member name="M:GameLogic.IGameLogic.HeroIsDefending">
+            <summary>
+            Requires the HeroIsDefending method.
+            </summary>
+        </member>
+        <member name="M:GameLogic.IGameLogic.StepCalculator">
+            <summary>
+            Requires the StepCalculator method.
+            </summary>
+            <returns>a GameItem entity.</returns>
+        </member>
+        <member name="M:GameLogic.IGameLogic.FindGameItem(GameModel.Models.GameItem)">
+            <summary>
+            Requires the StepCalculator method.
+            </summary>
+            <param name="item">The parameter is a GameItem entity.</param>
+            <returns>a GameItem entity.</returns>
+        </member>
+        <member name="M:GameLogic.IGameLogic.ChestAhead">
+            <summary>
+            Requires the ChestAhead method.
+            </summary>
+            <returns>returns true or false.</returns>
+        </member>
+        <member name="M:GameLogic.IGameLogic.AnswerA">
+            <summary>
+            Requires the AnswerA method.
+            </summary>
+            <returns>returns true or false.</returns>
+        </member>
+        <member name="M:GameLogic.IGameLogic.AnswerB">
+            <summary>
+            Requires the AnswerB method.
+            </summary>
+            <returns>returns true or false.</returns>
+        </member>
+        <member name="M:GameLogic.IGameLogic.AnswerC">
+            <summary>
+            Requires the AnswerC method.
+            </summary>
+            <returns>returns true or false.</returns>
+        </member>
+        <member name="M:GameLogic.IGameLogic.AnswerD">
+            <summary>
+            Requires the AnswerD method.
+            </summary>
+            <returns>returns true or false.</returns>
+        </member>
+        <member name="M:GameLogic.IGameLogic.MonsterDied(System.Collections.Generic.List{GameModel.Models.OneMonster})">
+            <summary>
+            Requires the MonsterDied method.
+            </summary>
+            <param name="monsters">the parameter is a ListOneMonster.</param>
+        </member>
+        <member name="M:GameLogic.IGameLogic.LoadGame(System.String)">
+            <summary>
+            Requires the LoadGame method.
+            </summary>
+            <param name="filesave">The parameter is a string.</param>
+            <returns>A GameModel entity.</returns>
+        </member>
+        <member name="T:Logic.ILogic">
+            <summary>
+            ILogic inteface which requires the save/load methods.
+            </summary>
+        </member>
+        <member name="M:Logic.ILogic.SaveHighScore(GameModel.Models.IGameModel)">
+            <summary>
+            Requires the SaveHighscore method.
+            </summary>
+            <param name="gm">its a GameModel entity.</param>
+        </member>
+        <member name="M:Logic.ILogic.SaveGame(GameModel.Models.IGameModel)">
+            <summary>
+            Requires the SaveHighscore method.
+            </summary>
+            <param name="gameModel">its a GameModel entity.</param>
+        </member>
+        <member name="M:Logic.ILogic.LoadGame(System.String)">
+            <summary>
+            Requires the LoadGame method.
+            </summary>
+            <param name="savefile">Its a string which is a file name.</param>
+            /// <returns>Returns the game Model entity.</returns>
+        </member>
+        <member name="T:Logic.ResourceLogic">
+            <summary>
+            ResourceLogic class which implements the Save,Load methods.
+            </summary>
+        </member>
+        <member name="M:Logic.ResourceLogic.#ctor(GameModel.Models.IGameModel,StorageRepository.StorageRepo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Logic.ResourceLogic"/> class.
+            </summary>
+            <param name="model">The first parameter which is an IGameModel.</param>
+            <param name="repo">Second parameter which is a StorageRepo entity.</param>
+        </member>
+        <member name="M:Logic.ResourceLogic.#ctor(StorageRepository.StorageRepo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Logic.ResourceLogic"/> class.
+            </summary>
+            <param name="repo">parameter which is a StorageRepo entity.</param>
+        </member>
+        <member name="M:Logic.ResourceLogic.LoadHighScores">
+            <summary>
+            LoadHighScores method which is calles the repos LoadHighScores method.
+            </summary>
+            <returns>A a string array which includes the highscores.</returns>
+        </member>
+        <member name="M:Logic.ResourceLogic.SavedGamesList">
+            <summary>
+            SavedGamesList method which is calles the repos SavedGamesList method.
+            </summary>
+            <returns>A a string array which includes the Saves.</returns>
+        </member>
+        <member name="M:Logic.ResourceLogic.LoadGame(System.String)">
+            <summary>
+            LoadGame method which is calles the repos LoadGame method.
+            </summary>
+            <param name="savefile">Its a string parameter which is a filename.</param>
+            <returns>A GameModel entity.</returns>
+        </member>
+        <member name="M:Logic.ResourceLogic.SaveGame(GameModel.Models.IGameModel)">
+            <summary>
+            SaveGame method which is calles the repos SaveGame method.
+            </summary>
+            <param name="gameModel">Its a IGameModel parameter which is a gamemodel.</param>
+        </member>
+        <member name="M:Logic.ResourceLogic.SaveHighScore(GameModel.Models.IGameModel)">
+            <summary>
+            SaveHighScore method which is calles the repos SaveHighScore method.
+            </summary>
+            <param name="gm">Its a IGameModel parameter which is a gamemodel.</param>
+        </member>
+    </members>
+</doc>

@@ -29,12 +29,10 @@ namespace FFYLife
             }
         }
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         /// <summary>
         /// Gets or sets the HighScores.
         /// </summary>
         public string[] HighScores { get; private set; }
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         private void SetUpListBox()
         {
