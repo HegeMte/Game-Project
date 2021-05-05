@@ -50,7 +50,7 @@
         </member>
         <member name="M:StorageRepository.StorageRepo.SaveHighScore(GameModel.Models.IGameModel)">
             <summary>
-            Initializes a new instance of the <see cref="!:GameLogic"/> class.
+            SaveHighScore method.
             </summary>
             <param name="gm">the first parameter of the constuctor.</param>
         </member>
