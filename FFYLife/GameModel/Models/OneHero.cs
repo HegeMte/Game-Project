@@ -26,7 +26,7 @@ namespace GameModel.Models
             switch (type)
             {
                 case "Light":
-                    this.Hp = 10;
+                    this.Hp = 50;
                     this.AttackDMG = 1;
                     this.AttackSpeed = 750;
                     this.Armor = 4;
@@ -35,7 +35,7 @@ namespace GameModel.Models
                     break;
 
                 case "Heavy":
-                    this.Hp = 10;
+                    this.Hp = 50;
                     this.AttackDMG = 1;
                     this.AttackSpeed = 1500;
                     this.Armor = 7;

@@ -123,7 +123,7 @@ namespace GameLogic
         /// <returns>returns a number.</returns>
         public int BuyHP()
         {
-            if (this.model.Hero.Cash >= this.model.HPPrice && this.model.Hero.Hp < 10)
+            if (this.model.Hero.Cash >= this.model.HPPrice && this.model.Hero.Hp < 50)
             {
                 this.model.Hero.Hp += 1;
                 this.model.Hero.Cash -= this.model.HPPrice;
@@ -150,8 +150,8 @@ namespace GameLogic
             {
                 this.model.Hero.Armor += 1;
                 this.model.Hero.Cash -= this.model.ArmorPrice;
-                this.model.ArmorPrice += 10;
 
+                // this.model.ArmorPrice += ;
                 return 0;
             }
             else if (this.model.Hero.Cash < this.model.ArmorPrice)
@@ -369,9 +369,10 @@ namespace GameLogic
             List<Chest> chestlist = new List<Chest>();
             chestlist.Add(new Chest() { Question = "Elérjük Péter Árpádot?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 1 });
             chestlist.Add(new Chest() { Question = "Mennyi 5+5?", Answers = new List<string>() { "10", "15", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
-            chestlist.Add(new Chest() { Question = "egyszerű cserés alg. futási ideje?", Answers = new List<string>() { "n", "n-1", "n^n", "n^2" }, RewardCash = 10, Right = 3 });
+            chestlist.Add(new Chest() { Question = "Bulleted list tag?", Answers = new List<string>() { "<dl>", "<ul>", "<ol>", "<list>" }, RewardCash = 10, Right = 1 });
             chestlist.Add(new Chest() { Question = "Meglesz a prog4?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
-            chestlist.Add(new Chest() { Question = "Buta vagy?", Answers = new List<string>() { "Igen", "Nem", "Talán", "Attila" }, RewardCash = 10, Right = 0 });
+            chestlist.Add(new Chest() { Question = "Html line break?", Answers = new List<string>() { "<lb>", "<break>", "<br>", "<bre>" }, RewardCash = 10, Right = 2 });
+            chestlist.Add(new Chest() { Question = "CSS helyes kommentezés", Answers = new List<string>() { "//", "/* valami */", "'valami", "// valami //" }, RewardCash = 10, Right = 1 });
 
             return chestlist;
         }
